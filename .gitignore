@@ -1,0 +1,7 @@
+/logs
+/cache
+/public/upload
+/.cache
+/.settings
+.project
+.buildpath

@@ -1,0 +1,14 @@
+1.1.0
+	stable version
+
+1.1.1
+	WeFlex_Api_YMLP (a email host that can send email for you.)
+	WeFlex_Prince  (a tool for convert html into pdf file.)
+	WeFlex_Mail  (很好的 mail 函数封装体 并且可以发送附件)
+
+1.1.2
+
+(未完成)WeFlex_Image update.  不在支持 背景颜色 取而代之是 生成 png 并且背景色 设置成透明
+？ 可以为每一规格设置是否支持 透明？
+	
+	
