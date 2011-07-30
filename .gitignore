@@ -1,6 +1,7 @@
 /logs
 /cache
 /public/upload
+/public/index.php
 /.cache
 /.settings
 .project
