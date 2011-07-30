@@ -22,6 +22,21 @@
 		
 		
 		/**
+		 * fill in the shipping information
+		 * 
+		 * $data = array(  
+		 * 	"phone"
+		 *  "first_name"
+		 *  "last_name"
+		 * )
+		 */
+		public function addShipping( $data );
+		
+		
+		public function getShipping();
+		
+		
+		/**
 		 * get cart all products
 		 */
 		public function getAllProducts();

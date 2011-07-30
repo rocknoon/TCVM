@@ -1,0 +1,29 @@
+<div id="back_main">
+	<form class="form" action="<?php echo $this->url(array('action' => 'postlogin' , 'module' => 'admin'), null, true);?>" id="loginForm" method="post">
+		
+		<div>
+		<label for="username">Account:</label>
+		<input type="text" name="username" />
+		<br class="clear" />
+		</div>
+		
+		<div>
+		<label for="password">Password</label>
+		<input type="password" name="password" />
+		<br class="clear" />
+		</div>
+		
+		<?php if( $this->error ) :?>
+		<p>
+			<?php echo( $this->error )?>
+		</p>
+		<?php endif;?>
+		
+		
+		<div class="for_align_right">
+		<input type="submit" value="Login" class="back_btn"/>
+		<br class="clear" />
+		</div>
+		
+	</form>
+</div>

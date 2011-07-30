@@ -7,13 +7,11 @@
 		
 		
 		
-		
-	
-			
-		public function payCart($payment, $params = null) {
+		public function payOrder($payment, $orderId, $params = null) {
 			// TODO Auto-generated method stub
 			
 		}
+
 		
 		
 		public function callbackPay($tempOrderId, $payment) {
@@ -33,6 +31,18 @@
 			$this->_log();
 			
 		}
+		
+		
+		
+		public function continuePay($orderId, $payment) {
+			// TODO Auto-generated method stub
+			
+		}
+
+	
+
+		
+		
 
 		
 		

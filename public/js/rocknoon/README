@@ -1,0 +1,7 @@
+1.1.0
+	jplugin : jquery.smoothzone
+
+1.1.1
+	jplugin : jquery.swfupload
+	include.js  增加类创建方法
+

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+	<meta charset="UTF-8" />
+    <title>TCVM Adminbord</title>  
+    <link href="<?php echo $this->baseUrl()?>/css/backend.css" rel="stylesheet" type="text/css">    
+    <?php 
+		echo $this->headScript();
+		echo $this->headStyle();
+		echo $this->headLink(); 
+		echo $this->headTitle();
+	?>
+	
+	<script type="text/javascript">
+	//<!-- 
+	var __BASE_URL__ = '<?php echo $this->baseUrl()?>';
+
+	$(document).ready(function(){
+		$('#nav > li > a').click(function(){
+			if($(this).next().is(':visible')){
+				$(this).next().slideUp(300);
+			} else {
+				$(this).next().slideDown(300);
+			}			
+			return false;
+		});
+		
+		$('.xNote').click(function(){
+			$(this).parent().animate({opacity: 0}, 600, function(){
+				$(this).slideUp(400);
+			});
+		});
+		
+		$('[id^="has_pic_"]').hover(function(){
+				$("#" + $(this).attr('id') + "_img").css({"display":"block"});
+			},function(){
+				$("#" + $(this).attr('id') + "_img").css({"display":"none"});
+		});
+		
+		$("table.backend_show_book tr:odd").addClass("tr_odd");
+		$("table.backend_show_book tr").each(function(){
+			//$("td:first",this).css({"background":"#FFFFFF","text-align":"left","padding-left":"0"});
+			$("td:first",this).css({"text-align":"left","padding-left":"4","border-right":"1px solid #FFFFFF"});
+			$("td:eq(1)",this).css({"border-right":"1px solid #FFFFFF"});
+			$("td:eq(2)",this).css({"border-right":"1px solid #FFFFFF"});
+			$("td:eq(3)",this).css({"border-right":"1px solid #FFFFFF"});
+			//$("td:last",this).css({"background":"#FFFFFF","text-align":"right","padding-left":"0"});
+		});
+	});
+	
+	//--> 
+
+	</script>   
+</head>
+
+<body>
+<div id="wrapper"><div id="logo">ECCKY -</div>
+	<div id="top"><p><a href="<?php echo $this->url(array('controller' => 'index' , "action" => "logout" , 'module' => 'admin' ), 'default', true);?>" class="back_a" >Logout</a></p></div>
+	<div id="sidebar">
+		<ul id="nav" class="cf">            
+			
+			<li class="page_current_on">
+				<a href="#">Manage</a>
+				<ul class="nav_sub">
+					<li><a href="<?php echo $this->url(array('controller' => 'user' , 'module' => 'admin' ), 'default', true);?>">User</a></li>
+					<li><a href="<?php echo $this->url(array('controller' => 'admin' , 'module' => 'admin' ), 'default', true);?>">Admin</a></li>
+					<li><a href="<?php echo $this->url(array('controller' => 'admin' , 'module' => 'admin' ), 'default', true);?>">Order</a></li>
+					
+				</ul> 	
+			</li>            	
+			<li class="page_current_on">
+				<a href="#">CMS</a>
+				<ul class="nav_sub">
+					<li><a href="<?php echo $this->url(array('controller' => 'courses' , 'action' => 'index' , 'module' => 'admin' ), 'default', true);?>">Courses</a></li>	
+				</ul>
+			</li>
+		
+			
+			
+		</ul>
+	</div>
+	<div id="main">	
+		<div class="note error" id="error" style="display:none">
+			<a href="javascript:void(0);" class="xNote" title="close"></a>
+			<p></p>
+		</div>
+		<?php echo $this->layout()->content ?>
+	</div><div class="push"></div>
+</div>
+<div id="footer">
+	<p>TCVM &copy; Copyright &nbsp;&nbsp;&nbsp; Proudly supported by <a href="http://www.rocknoon.com" target="_blank">Rocknoon</a>
+		&nbsp;&nbsp;&nbsp;The background is from Gmail Themem
+	</p>
+</div>
+<script>
+	function showError( error ){		
+		$("#error").html('<p>' + error + '</p>').show();
+	}
+</script>
+</body>
+</html>

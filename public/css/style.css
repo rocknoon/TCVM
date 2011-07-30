@@ -1,0 +1,133 @@
+body {
+	margin-left: 0px;
+	margin-top: 0px; 
+	margin-right: 0px;
+}
+.STYLE1 {
+	color: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+.STYLE1 a:link{
+	color: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+}
+.STYLE2 {
+	color: #353535;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+.STYLE2 a:link {
+	color: #353535;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+}
+
+.STYLE2 a:visited {
+	color: #353535;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+}
+.STYLE2 a:hover {
+	color: #CC0000;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+}
+
+.STYLE3 {
+	font-size: 12px;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.STYLE4 {
+	color: #9b080e;
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+.STYLE5 {
+	color: #A72424;
+	font-size: 18px;
+	font-weight: bold;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+.STYLE9 {
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #2b677f;
+}
+.STYLE9 a:link {
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #2b677f;
+}
+.STYLE10 {font-size: 12px; font-family: Arial, Helvetica, sans-serif;}
+.input1 {
+	background-color: #FFFFFF;
+	border: 1px solid #666666;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	width: 100px;
+}
+
+.input2 {
+	background-color: #FFFFFF;
+	border: 1px solid #666666;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	width: 200px;
+}
+.input3 {
+	background-color: #FFFFFF;
+	border: 1px solid #666666;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	width: 50px;
+}
+.xx {
+	border-bottom-width: 1px;
+	border-bottom-style: dashed;
+	border-bottom-color: #CCCCCC;
+}
+.table2 {
+	background-color: #FCFCFC;
+
+}
+.underline {
+	background-color: #FCFCFC;
+	border-bottom-width: thin;
+	border-bottom-style: solid;
+	border-bottom-color: #CCCCCC;
+}
+.underline2 {
+	background-color: #FCFCFC;
+	border-bottom-width: thin;
+	border-bottom-style: solid;
+	border-bottom-color: #CCCCCC;
+	color: #9b080e;
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+.redbutton{
+	background-color: #ce2607;
+	font-size: 16px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-decoration: none;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.redbutton2{
+	background-color: #ce2607;
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-decoration: none;
+	font-family: Arial, Helvetica, sans-serif;
+	border: thin solid #330000;
+}

@@ -4,15 +4,30 @@
 defined('APPLICATION_PATH')
     || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../application'));
 
+define('APPLICATION_PUBLIC_PATH', realpath(dirname(__FILE__) ) );  
+    
 // Define application environment
 defined('APPLICATION_ENV')
-    || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production'));
+    || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'development'));
+
+    
+define('DS', DIRECTORY_SEPARATOR);
 
 // Ensure library/ is on include_path
 set_include_path(implode(PATH_SEPARATOR, array(
     realpath(APPLICATION_PATH . '/../library'),
+    realpath(APPLICATION_PATH . '/library'),
     get_include_path(),
 )));
+
+require_once 'Zend/Loader/Autoloader.php';
+$autoloader = Zend_Loader_Autoloader::getInstance();
+$autoloader->registerNamespace('WeFlex');
+$autoloader->registerNamespace('TCVM');
+$autoloader->registerNamespace('Zend');
+
+
+
 
 /** Zend_Application */
 require_once 'Zend/Application.php';
@@ -22,5 +37,23 @@ $application = new Zend_Application(
     APPLICATION_ENV,
     APPLICATION_PATH . '/configs/application.ini'
 );
-$application->bootstrap()
-            ->run();
+
+/**
+ * application bootstrap;
+ */
+$application->bootstrap();
+
+/**
+ * WeFlex Start
+ */
+WeFlex_Application::GetInstance()->start( APPLICATION_ENV , APPLICATION_PATH . '/configs/tcvm.ini' );
+
+/**
+ * Eccky Init
+ */
+TCVM::GetInstance()->init();
+
+/**
+ * application run
+ */
+$application->run();

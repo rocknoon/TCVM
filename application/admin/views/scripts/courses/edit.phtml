@@ -1,0 +1,93 @@
+<div id="back_main">
+		<h2 class="cufon_h2">Courses Edit</h2>
+
+		<form class="form" action="<?php echo $this->url(array(
+				'controller' => 'courses', 
+				'action' => 'postsave', 
+				'module' => 'admin'
+				), null , true);?>" 
+				method="post">
+						
+		<input type="hidden" value="<?php if( $this->courses )echo $this->courses['id']?>" name="id" id="id" />
+		<input type="hidden" name="image" id="image" />
+		
+		<div>
+		<label>Name:</label>
+		<input name="name" id="name" type="text" value="<?php if( $this->courses )echo $this->courses['name']?>"></input>
+		</div>
+		
+		<div>
+		<label>Price:</label>
+		<input name="price" id="price" type="text" value="<?php if( $this->courses )echo $this->courses['price']?>"></input>
+		</div>
+		
+		<div>
+		<label>Short Description:</label>
+		<textarea name="short_desc" id="short_desc" rows="" cols="50"><?php if( $this->courses )echo $this->courses['short_desc']?></textarea>
+		</div>
+		
+		<div>
+		<label>Description:</label>
+		<textarea name="desc" id="desc" rows="" cols="100"><?php if( $this->courses )echo $this->courses['desc']?></textarea>
+		</div>
+		
+		<div>
+		<label>Visible:</label>
+		<select name="visible" id="visible">
+			<option value="1">Visible</option>
+			<option value="0">Disable</option>
+		</select>
+		</div>
+		
+		
+		<div>
+		<label>Images:( 111*79 )</label>
+			<div id="imagearea">
+			</div>
+		</div>
+		
+		<?php if( $this->courses && $this->courses['image'] ):?>
+		<div style="display:block">
+		<?php else:?>
+		<div style="display:none">
+		<?php endif;?>
+			<img id="imagesrc" src="<?php if($this->courses) echo $this->baseUrl() . $this->courses['image'] ; ?>"></img>
+		</div>
+		
+
+		<div class="for_align_right">
+		<input type="submit" value="Submit" class="back_btn"/>
+		</div>		
+
+		</form>
+
+<script>
+
+	<?php if($this->courses):?>
+		$("#visible").val(<?php echo $this->courses['visible']?>);
+	<?php endif; ?>
+
+	//header image swfupload
+	var swf = $("#imagearea").swfupload({
+		
+		upload_url 			: __BASE_URL__ + "/admin/index/imageupload",
+		flash_url	  		: __BASE_URL__ + "/js/rocknoon/jplugin/jquery.swfupload/swfupload.swf",
+		button_image_url 	: __BASE_URL__ + "/js/rocknoon/jplugin/jquery.swfupload/upload_bt.gif",
+		complete_handler    : rocknoon.callback( this , 'complete_imageupdate' )
+	});
+
+	//after image update callback function
+	function complete_imageupdate( rst ){
+		if( rst.error ){
+			alert( rst.error );
+		}else{
+			$("#imagesrc").attr( "src" , __BASE_URL__ + rst.imageUrl );
+			$("#imagesrc").parent().show();
+			$("#image").attr( "value" , rst.imageUrl );
+		}	
+	}
+
+	
+	
+	
+</script>

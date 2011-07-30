@@ -3,13 +3,13 @@
 		
 		
 		/**
-		 * 从购物车生成临时订单
+		 * generate order from cart
 		 * 
 		 * //如果用户没登陆 抛出异常
 		 *
 		 * return  boolean
 		 */
-		public function generateLoginUserTempOrder();
+		public function generateLoginUserOrder();
 		
 		
 		/**
@@ -25,7 +25,7 @@
 		 *
 		 * @return boolean 
 		 */
-		public function generateOrderFromTempOrder( $tempOrderId , $paymethod , $status, $payinfo );
+		public function generateOrderFromTempOrder( $orderId , $paymethod , $status, $payinfo );
 		
 		
 		/**

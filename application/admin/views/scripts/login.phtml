@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+	<meta charset="UTF-8" />
+    <title>TCVM Adminbord</title>  
+    <link href="<?php echo $this->baseUrl()?>/css/backend.css" rel="stylesheet" type="text/css">    
+    <?php 
+		echo $this->headScript();
+		echo $this->headStyle();
+		echo $this->headLink(); 
+		echo $this->headTitle();
+	?>
+	
+	<script type="text/javascript">
+	var __BASE_URL__ = '<?php echo $this->baseUrl()?>';
+	</script>   
+</head>
+
+<body>
+	<div id="wrapper">
+    	<div id="backend" class="login">
+		<?php echo $this->layout()->content ?>
+		</div>
+	</div>
+<div id="footer">
+	<p>TCVM &copy; Copyright &nbsp;&nbsp;&nbsp; Proudly supported by <a href="http://www.rocknoon.com" target="_blank">Rocknoon</a>
+	&nbsp;&nbsp;&nbsp;The background is from Gmail Themem
+	</p>
+</div>
+</body>
+</html>

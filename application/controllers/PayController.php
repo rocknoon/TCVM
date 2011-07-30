@@ -2,34 +2,48 @@
 
 class PayController extends TCVM_ZendX_Controller_Action_Front
 {
+	
+	/**
+	 * @var TCVM_Payment_Interface
+	 */
+	private $_pay;
 
     public function init()
     {
         /* Initialize action controller here */
+    }
+    
+    public function paymentAction(){
+    
+    	$orderId = $this->_getParam( "order_id" );
+    	
+    	$this->assign( "order_id", $orderId );
     }
 	
 	
 	
 	public function doPaypalExpressAction(){
 
-		$payMod = TCVM_Payment_Factory::Factory();
-		$payMod->payCart(  TCVM_Payment_Imple::PAYMENT_PAYPAL_EXPRESS_CHECKOUT );	
+		
+		$orderId = $this->_getParam( "order_id" );
+		
+		$this->_pay->payOrder( TCVM_Payment_Imple::PAYMENT_PAYPAL_EXPRESS_CHECKOUT , $orderId );
 	    
 	}
 	
 	public function doPaypalDirectPayAction(){
 		
 		$params = array();
+		$orderId = $this->_getParam( "order_id" );
 		
-		$payMod = TCVM_Payment_Factory::Factory();
 		
 		try {
-			$tempOrderId = $payMod->payCart( TCVM_Payment_Imple::PAYMENT_PAYPAL_DIRECT_PAY , $params );
+			$this->_pay->payOrder( TCVM_Payment_Imple::PAYMENT_PAYPAL_DIRECT_PAY , $orderId, $params );
 		}catch(Exception $ex){
 			
 		}
 		
-		$payMod->callbackPay( $tempOrderId , TCVM_Payment_Imple::PAYMENT_PAYPAL_DIRECT_PAY );
+		$this->_pay->callbackPay( $orderId , TCVM_Payment_Imple::PAYMENT_PAYPAL_DIRECT_PAY );
 		
 		
 		
@@ -37,23 +51,20 @@ class PayController extends TCVM_ZendX_Controller_Action_Front
 	
 	public function doElectronicTransferAction(){
 		
-		$payMod = TCVM_Payment_Factory::Factory();
+		$orderId = $this->_getParam( "order_id" );
 		
-		$tempOrderId = $payMod->payCart( TCVM_Payment_Imple::PAYMENT_ELECTRONIC_TRANSFER );
+		$this->_pay->payOrder( TCVM_Payment_Imple::PAYMENT_ELECTRONIC_TRANSFER , $orderId );
 		
-		$payMod->callbackPay( $tempOrderId , TCVM_Payment_Imple::PAYMENT_ELECTRONIC_TRANSFER );
+		$this->_pay->callbackPay( $orderId , TCVM_Payment_Imple::PAYMENT_ELECTRONIC_TRANSFER );
 			
-		
 	}
 	
 	public function callbackPaypalExpressAction(){
 	
-		$tempOrderId = $this->_getParam( "tempOrderId" );
-		
-		$payMod = TCVM_Payment_Factory::Factory();
+		$orderId = $this->_getParam( "order_id" );
 		
 		try {
-			$payMod->callbackPay( $tempOrderId , TCVM_Payment_Imple::PAYMENT_ELECTRONIC_TRANSFER );
+			$this->_pay->callbackPay( $orderId , TCVM_Payment_Imple::PAYMENT_PAYPAL_EXPRESS_CHECKOUT );
 		}catch( Exception $ex ){
 			
 		}
@@ -62,6 +73,20 @@ class PayController extends TCVM_ZendX_Controller_Action_Front
 	}
 	
 	public function errorAction(){
+		
+		$orderId = $this->_getParam( "order_id" );
+		
+	}
+	
+	public function successAction(){
+		
+		$orderId = $this->_getParam( "order_id" );
+		
+	}
+	
+	public function pendingAction(){
+	
+		$orderId = $this->_getParam( "order_id" );
 		
 	}
 	

@@ -1,0 +1,49 @@
+<div id="back_white_main">	
+
+	<h2 class="cufon_h2">Courses Management</h2>
+		
+	<input type="button"  class="back_btn"  value="Create" onclick="createnew();"/>
+		  
+          <table class="backend_show_book" cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr class="head">
+              <th>Name</th>
+              <th>Price</th>
+              <th>Action</th>
+            </tr>
+            
+            <?php foreach( $this->coursess as $courses ):?>
+            <tr>
+              <td><?php echo $courses['name']?></td>
+              <td><?php echo $courses['price']?></td>
+              <td>
+              	<a href="<?php echo $this->url(array('controller' => 'courses', 'action' => 'edit', 'module' => 'admin' , "id" => $courses['id']), "default" , true);?>">Edit</a>
+				<a href="javascript:void(0);" onclick="deleteone(<?php echo $courses['id']?>);">Delete</a>
+              </td>
+            </tr>
+            <?php endforeach;?>
+            
+		 </table>
+		 
+</div>
+
+
+	
+	
+<script>
+	
+
+	function createnew(){
+		location.href = "<?php echo $this->url(array('controller' => 'courses', 'action' => 'create', 'module' => 'admin'), "default" , true);?>";
+	}
+
+	function deleteone(id){
+		
+		var result = confirm("Are you sure you really wanna delete it?");
+		if( result ){
+			location.href='<?php echo $this->baseUrl()?>/admin/courses/postdelete/id/' + id;
+		}
+		
+	}
+
+
+</script>
