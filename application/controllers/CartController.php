@@ -21,7 +21,7 @@ class CartController extends TCVM_ZendX_Controller_Action_Front
 		$products 	= $this->_cart->getAllProducts();
 		$totalPrice = $this->_cart->getTotalPrice(); 
 		
-		$this->assign( "products", $products );
+		$this->assign( "products", $products[TCVM_Product_Imple::TYPE_COURSES] );
 		$this->assign( "totalPrice", $totalPrice );
 		
 	}
@@ -44,19 +44,28 @@ class CartController extends TCVM_ZendX_Controller_Action_Front
 		
 	}
 	
-	public function doOrderAction(){
+	public function successAction(){
+		
+		
+		
+	}
+	
+	public function doConfirmAction(){
 	
 		$orderMod = TCVM_Order_Factory::Factory();
 		
 		$order = $orderMod->generateLoginUserOrder();
 		
-		$this->redirect( "payment" , "pay" , "default" , array( "order_id" => $order['id'] ) );
+		$this->redirect( "success" , "cart" , "default" , array( "order_id" => $order['id'] ) );
 		
 	}
 	
 	public function doShippingAction(){
 	
 		$data = array();
+		$data['first_name'] = $this->_getParam( "first_name" );
+		$data['last_name'] = $this->_getParam( "last_name" );
+		$data['mobile'] = $this->_getParam( "mobile" );
 		
 		$this->_cart->addShipping( $data );
 		

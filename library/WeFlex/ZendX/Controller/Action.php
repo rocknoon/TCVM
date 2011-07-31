@@ -110,6 +110,10 @@
 			}
 		}
 		
+		public function title($title){
+			 $this->view->headTitle( $title );
+		}
+		
 		/**
 		 * add js file
 		 */

@@ -13,44 +13,18 @@
 		
 		
 		/**
-		 * 成功支付一个临时订单
-		 * 
-		 * 1. 判断临时订单状态
-		 * 2. 从临时订单生成正式订单
-		 * 3. 发送成功支付的邮件
-		 * 
-		 * @param int $tempOrderId 临时订单id
-		 * @param int paymethod    paypal or ideal
-		 * @param int payinfo      paypal or ideal info
-		 *
-		 * @return boolean 
+		 * get certain user order information
 		 */
-		public function generateOrderFromTempOrder( $orderId , $paymethod , $status, $payinfo );
+		public function getsUserOrder( $userId , $order = null, $pageNo = null , $pageSize = null );
 		
 		
-		/**
-		 * Get user's formal order if he login
-		 * 
-		 * @return array 
-		 *
-		 */
-		public function getFormalOrder( $formalOrderId );
+		public function getOrder( $orderId );
 		
-		/**
-		 * Get all of  orders by any conditions 
-		 *
-		 * permission ( Magzine_ACL::ACL_FORMAL_ORDER_GET )
-		 * 
-		 * @param array   $conditions
-		 * @param string  $order
-		 * @param integer $pageNo
-		 * @param integer $pageSize
-		 * 
-		 * @return array
-		 */
-		public function getFormalOrders( $conditions = null , $order = null , $pageNo = null , $pageSize = null );
 		
-		public function getFormalOrdersCount( $conditions = null );
+		
+		
+		
+		
 		
 		
 	}

@@ -8,7 +8,10 @@
 		
 		
 		public function payOrder($payment, $orderId, $params = null) {
-			// TODO Auto-generated method stub
+			
+			$paymentCore = TCVM_Payment_CoreFactory::Factory($payment);
+			
+			$paymentCore->payOrder( $orderId, $params );
 			
 		}
 
@@ -16,7 +19,7 @@
 		
 		public function callbackPay($tempOrderId, $payment) {
 			
-			$paymentCore = TCVM_Payment_Core_Factory::Factory($payment);
+			$paymentCore = TCVM_Payment_CoreFactory::Factory($payment);
 			
 			try {
 				$formalOrderId = $paymentCore->callbackPay();

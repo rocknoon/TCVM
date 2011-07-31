@@ -10,10 +10,16 @@
 	 
 	    	$this->_appendBasicJs();
 	    	$this->_assignGlobalVal();
+	    	$this->_assignTitle();
 	    	
 	    }
 	    
 	    
+	    private function _assignTitle(){
+	    	
+	    	 $this->title( "TCVM Australia" );
+	    	
+	    }
 	    
 	 
 	    

@@ -1,0 +1,126 @@
+			
+			
+			<td width="81%" align="center" valign="top"><!-- InstanceBeginEditable name="EditRegion1" -->
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td height="35" valign="middle"><div align="center"><img src="<?php  echo $this->baseUrl() ?>/images/help.gif" width="773" height="61" /></div></td>
+                  </tr>
+                  <tr>
+                    <td height="120" valign="middle"><div align="center"><span class="STYLE5"><span class="STYLE6"><span class="STYLE7">2012</span> Certified</span><br />
+                      Small Animal Acupuncture Course</span></div></td>
+                  </tr>
+                  <tr>
+                    <td><table width="100%" border="0" cellspacing="0" cellpadding="10">
+                    
+                    <?php foreach( $this->coursess as $key => $courses ):?>
+                        <?php if( $key % 2 == 0 ):?>
+                        <tr>
+                        <?php endif;?>
+                        
+                        
+                          <td width="50%" valign="top" 
+                          
+                          <?php if( ($key % 4 == 3) || ($key % 4 == 0)  ):?>
+                          bgcolor="#FCFCFC"
+                          <?php endif;?>
+                          >
+                          	<table width="100%" border="0" cellspacing="0" cellpadding="5">
+                              <tr>
+                                <td width="30%"><img src="<?php echo $this->baseUrl() . WeFlex_Util::GenerImageUrlBySize( $courses["image"] , 111 , 79 ) ?>" width="111" height="97" /></td>
+                                <td width="70%" valign="top" class="STYLE4"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                      <td><div align="left"><?php echo $courses["name"]?></div></td>
+                                    </tr>
+                                    <tr>
+                                      <td class="STYLE2"><div align="left">
+                                          <?php echo $courses["short_desc"]?>
+                                        </div></td>
+                                    </tr>
+                                </table></td>
+                              </tr>
+                              <tr>
+                                <td colspan="2" class="STYLE3">
+                                	<div align="left">Lecture Topics (tuition: $<?php echo $courses["price"]?>, application fee incl.)
+                                		<a title="push cart" href="<?php echo $this->url(array("action" => "do-push" , "controller" => "cart" , "product_type" => TCVM_Product_Imple::TYPE_COURSES , "product_id" => $courses["id"]), 'default', true);?>"><img src="<?php echo $this->baseUrl()?>/images/shopcart.gif" width="28" height="20" /></a>
+                                	</div></td>
+                              </tr>
+                              
+                              <tr>
+                                <td colspan="2" class="STYLE2"><div align="left">
+                                  <?php echo $courses["desc"]?>
+                                </div></td>
+                              </tr>
+                          </table>
+                          </td>
+                          
+                        <?php if( $key % 2 == 1 ):?>
+                        </tr>
+                        <?php endif;?>
+                          
+                     <?php endforeach;?>
+                     
+                     <?php if( count( $this->coursess ) % 2 == 0 ):?>
+                     <tr>
+                     <?php endif;?>
+                     <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="5">
+                              <tr>
+                                <td width="30%"><img src="<?php  echo $this->baseUrl() ?>/images/ms1.jpg" width="111" height="97" /></td>
+                                <td width="70%" valign="top" class="STYLE4"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                      <td><div align="left">Major Speakers from Australia </div></td>
+                                    </tr>
+                                    <tr>
+                                      <td class="STYLE2"><div align="left">The Key Speaker and Director of the<br />
+                                        Chi Institute Australia</div></td>
+                                    </tr>
+                                    <tr>
+                                      <td height="40" class="STYLE2"><div align="left">
+                                          <p><a href="faculty.html">more details&gt;</a></p>
+                                      </div></td>
+                                    </tr>
+                                </table></td>
+                              </tr>
+                              <tr>
+                                <td colspan="2" class="STYLE3"><div align="left" class="STYLE4">Major Speakers from USA</div>
+                                    <div align="left"></div></td>
+                              </tr>
+                              <tr>
+                                <td colspan="2" class="STYLE3"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                      <td width="6%" valign="middle"><img src="<?php  echo $this->baseUrl() ?>/images/arrow.gif" width="3" height="5" /></td>
+                                      <td width="94%" valign="middle" class="STYLE3"><div align="left">Cheryl Chrisman, DVM, MS, EdS, ACVIM-Neurology, CVA</div></td>
+                                    </tr>
+                                    <tr>
+                                      <td valign="middle"><img src="<?php  echo $this->baseUrl() ?>/images/arrow.gif" width="3" height="5" /></td>
+                                      <td valign="middle"><div align="left">Roger Clemmons, DVM, Ph.D, CVA</div></td>
+                                    </tr>
+                                    <tr>
+                                      <td valign="middle"><img src="<?php  echo $this->baseUrl() ?>/images/arrow.gif" width="3" height="5" /></td>
+                                      <td valign="middle"><div align="left">Huisheng Xie, DVM, Ph.D</div></td>
+                                    </tr>
+                                </table></td>
+                              </tr>
+                              <tr>
+                                <td colspan="2" class="STYLE2"><div align="left">
+                                    <table width="100%" border="0" align="left" cellpadding="1" cellspacing="0">
+                                      <tr>
+                                        <td><div align="left"><img src="<?php  echo $this->baseUrl() ?>/images/ms2.jpg" width="102" height="102" /></div></td>
+                                        <td><div align="left"><img src="<?php  echo $this->baseUrl() ?>/images/ms3.jpg" width="102" height="102" /></div></td>
+                                        <td><div align="left"><img src="<?php  echo $this->baseUrl() ?>/images/ms4.jpg" width="102" height="102" /></div></td>
+                                      </tr>
+                                    </table>
+                                </div></td>
+                              </tr>
+                          </table>
+                        </td>
+                        </tr>
+      
+                          
+                        </tr>
+                        
+                    </table></td>
+                  </tr>
+                </table>
+                <p><br />
+                </p>
+              <!-- InstanceEndEditable --></td>

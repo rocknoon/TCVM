@@ -1,0 +1,55 @@
+			<td width="81%" align="center" valign="top"><!-- InstanceBeginEditable name="EditRegion1" -->
+                <p class="STYLE5">Payment</p>
+                <form id="form1" name="form1" method="post" action="">
+                  <table width="80%" border="1" align="center" cellpadding="10" cellspacing="0" bordercolor="#FFFFFF" bgcolor="#FCFCFC" class="STYLE2">
+                    <tr>
+                      <td width="37%" class="STYLE2"><div align="right">pay for your registration with</div></td>
+                      <td width="63%"><div align="left">
+                        <select name="select3" id="payment" class="input2">
+                          <option value="<?php echo TCVM_Payment_Imple::PAYMENT_PAYPAL_EXPRESS_CHECKOUT?>">payapl</option>
+                          <option value="<?php echo TCVM_Payment_Imple::PAYMENT_PAYPAL_DIRECT_PAY?>">credit card</option>
+                          <option value="<?php echo TCVM_Payment_Imple::PAYMENT_ELECTRONIC_TRANSFER?>">electronic funds transfer </option>                                                        
+                        </select>
+                      </div></td>
+                    </tr>
+
+                    <tr>
+                      <td class="STYLE2"><div align="right">
+                          <label></label>
+                          <input type="submit" name="Submit22" value="Previous step" />
+                      </div></td>
+                      <td><div align="left">
+                          <input type="button" name="Submit2" value="Next step" onclick="doPayment();" />
+                      </div></td>
+                    </tr>
+                  </table>
+                    </form>
+                <p class="STYLE10">&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+              <!-- InstanceEndEditable --></td>
+           
+<script>
+
+var orderId = "<?php echo $this->orderId?>";
+
+	function doPayment(){
+
+		var payment = $("#payment").val();
+		
+		switch( payment ){
+
+		case "<?php echo TCVM_Payment_Imple::PAYMENT_PAYPAL_EXPRESS_CHECKOUT?>":
+			location.href="<?php echo $this->url(array("action" => "do-paypal-express" , "controller" => "pay"), 'default', true);?>" + "/order_id/" + orderId;
+			break;
+		case "<?php echo TCVM_Payment_Imple::PAYMENT_PAYPAL_DIRECT_PAY?>":
+			location.href="<?php echo $this->url(array("action" => "do-paypal-direct-pay" , "controller" => "pay"), 'default', true);?>" + "/order_id/" + orderId;
+			break;
+		case "<?php echo TCVM_Payment_Imple::PAYMENT_PAYPAL_EXPRESS_CHECKOUT?>":
+			location.href="<?php echo $this->url(array("action" => "do-electronic-transfer" , "controller" => "pay"), 'default', true);?>" + "/order_id/" + orderId;
+			break;
+		}
+		
+	}
+
+</script>

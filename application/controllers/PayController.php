@@ -11,13 +11,16 @@ class PayController extends TCVM_ZendX_Controller_Action_Front
     public function init()
     {
         /* Initialize action controller here */
+    	
+    	$this->_pay = TCVM_Payment_Factory::Factory();
+    	
     }
     
     public function paymentAction(){
     
     	$orderId = $this->_getParam( "order_id" );
     	
-    	$this->assign( "order_id", $orderId );
+    	$this->assign( "orderId", $orderId );
     }
 	
 	
@@ -68,6 +71,13 @@ class PayController extends TCVM_ZendX_Controller_Action_Front
 		}catch( Exception $ex ){
 			
 		}
+		
+		
+	}
+	
+	public function cancelPaypalExpressAction(){
+	
+		
 		
 		
 	}

@@ -44,7 +44,28 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     
 	protected function _initRouter(){
 
+		$facultyRouter = new Zend_Controller_Router_Route(
+		    'faculty',
+		    array(
+		        'controller' => 'page',
+		        'action'     => 'faculty',
+		    	'module'	 => 'default'
+		    )
+		);
 		
+		$certificationRouter = new Zend_Controller_Router_Route(
+		    'certification',
+		    array(
+		        'controller' => 'page',
+		        'action'     => 'certification',
+		    	'module'	 => 'default'
+		    )
+		);
+		
+		$router = $this->_front->getRouter();
+		
+		$router->addRoute('faculty', $facultyRouter);
+		$router->addRoute('certification', $certificationRouter);
 		
 	}
 	

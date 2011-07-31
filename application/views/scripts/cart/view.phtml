@@ -1,0 +1,122 @@
+			<td width="81%" align="center" valign="top"><!-- InstanceBeginEditable name="EditRegion1" -->
+                <div align="center"></div>
+                <p class="STYLE5">Shopcart</p>
+                
+                <?php if( $this->products ):?>
+                <table width="750" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td><form id="form1" name="form1" method="post" action="">
+                      <table width="100%" border="0" cellpadding="10" cellspacing="0" class="table2">
+                        <tr>
+                          <td width="3%">&nbsp;</td>
+                          <td width="40%">&nbsp;</td>
+                          <td width="10%">&nbsp;</td>
+                          <td width="17%">&nbsp;</td>
+                          <td width="16%">&nbsp;</td>
+                          <td width="11%">&nbsp;</td>
+                          <td width="3%">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td class="underline2"><div align="left" class="STYLE4">Product Name </div></td>
+                          <td class="underline2"><div align="left" class="STYLE4">Price</div></td>
+                          <td class="underline2"><div align="left" class="STYLE4">Quantity</div></td>
+                          <td class="underline2"><div align="left" class="STYLE4">Amount</div></td>
+                          <td class="underline2"><div align="left" class="STYLE4">Delete</div></td>
+                          <td class="STYLE4">&nbsp;</td>
+                        </tr>
+                        
+                        <?php foreach( $this->products as $product ):?>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td class="underline"><div align="left"><span class="STYLE2"><?php echo $product['name']?></span></div></td>
+                          <td class="underline"><div align="left" class="STYLE2">1045</div></td>
+                          <td class="underline"><label>
+                            <div align="left">
+                              <select name="select3" size="1" class="input3">
+                                <option>1</option>
+                                <option>2</option>
+                              </select>
+                              </div>
+                          </label></td>
+                          <td class="underline"><div align="left" class="STYLE4">2090</div></td>
+                          <td class="underline"><div align="left"><img src="<?php echo $this->baseUrl()?>/images/delete.gif" width="12" height="19" /></div></td>
+                          <td>&nbsp;</td>
+                        </tr>
+                        
+                        <?php endforeach;?>
+                        
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td><div align="left"></div></td>
+                          <td><div align="left"></div></td>
+                          <td><div align="left"></div></td>
+                          <td><div align="left"></div></td>
+                          <td><div align="left"></div></td>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td><div align="left"></div></td>
+                          <td><div align="left"></div></td>
+                          <td><div align="left"></div></td>
+                          <td><div align="left"></div></td>
+                          <td><div align="left"></div></td>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td><div align="left"></div></td>
+                          <td><div align="left"></div></td>
+                          <td><div align="left"></div></td>
+                          <td><div align="left"></div></td>
+                          <td><div align="left"></div></td>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td><div align="left"></div></td>
+                          <td><div align="left"></div></td>
+                          <td><div align="left"></div></td>
+                          <td><div align="left"></div></td>
+                          <td><div align="left"></div></td>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td class="underline">&nbsp;</td>
+                          <td class="underline">&nbsp;</td>
+                          <td class="underline2">Totally Price </td>
+                          <td class="underline2"><div align="left" class="STYLE5"><?php echo $this->totalPrice?></div></td>
+                          <td class="underline">
+                            <div align="left"></div></td>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td><div align="left">
+                            <label>
+                            <input type="submit" name="Submit2" value="continue to buy" />
+                            </label>
+                          </div></td>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;</td>
+                          <td><label><span class="STYLE4">
+                            <input name="Submit" type="button" class="redbutton" value="Pay Now" onclick="shipping();" />
+                          </span></label></td>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;</td>
+                        </tr>
+                      </table>
+                                        </form>
+                    </td>
+                  </tr>
+                </table>
+                <?php endif;?>
+                <!-- InstanceEndEditable --></td>
+                
+<script>
+	function shipping(){
+		location.href = "<?php echo $this->url(array("action" => "shipping" , "controller" => "cart"), 'default', true);?>";
+	}
+</script>

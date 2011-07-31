@@ -2,7 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/t1.dwt" codeOutsideHTMLIsLocked="false" -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>TCVM Australia</title>
 
 <script type="text/javascript">
 //<!--
@@ -310,12 +309,12 @@ if( WeFlex_Application::GetInstance()->config->js->compress ){
 </table>
 
 <map name="Map" id="Map">
-  <area shape="rect" coords="897,62,992,91" href="Registration.html" />
-  <area shape="rect" coords="766,63,886,92" href="http://online.tcvm.com/" />
-  <area shape="rect" coords="662,63,753,92" href="Certification.html" />
-  <area shape="rect" coords="585,63,654,92" href="faculty.html" />
-  <area shape="rect" coords="359,62,578,91" href="program.html" />
-<area shape="rect" coords="293,62,351,91" href="index.html" />
+  <area shape="rect" coords="897,62,992,91" href="<?php echo $this->url(array("action" => "register" , "controller" => "user"), 'default', true);?>" />
+  <area shape="rect" coords="766,63,886,92" target="_blank" href="http://online.tcvm.com/" />
+  <area shape="rect" coords="662,63,753,92" href="<?php echo $this->url(array(), 'certification', true);?>" />
+  <area shape="rect" coords="585,63,654,92" href="<?php echo $this->url(array(), 'faculty', true);?>" />
+  <area shape="rect" coords="359,62,578,91" href="<?php echo $this->url(array("action" => "index" , "controller" => "courses"), 'default', true);?>" />
+  <area shape="rect" coords="293,62,351,91" href="<?php echo $this->url(array("action" => "index" , "controller" => "index"), 'default', true);?>" />
 </map>
 </body>
 <!-- InstanceEnd --></html>

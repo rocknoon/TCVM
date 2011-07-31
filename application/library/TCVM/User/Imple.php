@@ -1,8 +1,20 @@
 <?php 
 	class TCVM_User_Imple implements TCVM_User_Interface{
-			/* (non-PHPdoc)
-		 * @see TCVM_User_Interface::getLoginedUser()
+			
+		
+		const SESSION_NAME_SPACE = "tcvm-user";
+		
+		/**
+		 * @var TCVM_User_Model_User
 		 */
+		private $_model;
+		
+		function __construct(){
+			
+			$this->_model = TCVM_User_Model_User::GetInstance();
+			
+		}
+		
 		public function getLoginedUser() {
 			// TODO Auto-generated method stub
 			
@@ -48,11 +60,23 @@
 			
 		}
 	
-			/* (non-PHPdoc)
-		 * @see TCVM_User_Interface::login()
-		 */
+			
 		public function login($email, $password) {
-			// TODO Auto-generated method stub
+			
+			$user = $this->_getByEmail( $email );
+			
+			if( !$user ){
+				throw new Exception( "user don't exist" );
+			}
+			
+			$md5Password = md5( $password );
+			
+			if( $user['password'] != $md5Password ){
+				throw new Exception( "password is not correct" );
+			}
+			
+			$this->_setSession( $user );
+			
 			
 		}
 	
@@ -72,11 +96,67 @@
 			
 		}
 	
-			/* (non-PHPdoc)
-		 * @see TCVM_User_Interface::register()
-		 */
+			
 		public function register($data) {
-			// TODO Auto-generated method stub
+			
+			if( !$data['email'] ){
+				throw new Exception( "email address could not be null");
+			}
+			
+			if( !$data['password'] ){
+				throw new Exception( "password could not be null");
+			}
+			
+			//check email
+			$isExist = $this->_isEmailExist( $data['email'] );
+			if( $isExist ){
+				throw new Exception( "sorry, email address already exist");
+			}
+			
+			
+			$data['password'] = md5( $data['password']  );
+			$data['date_add'] = time();
+
+			$this->_model->insert( $data );
+			
+			
+		}
+		
+		private function _setSession( $user ){
+			$userStr = serialize( $user );
+			WeFlex_Session::Set( self::SESSION_NAME_SPACE , $userStr );
+		}
+		
+		private function _getSession(){
+			
+			$userStr = WeFlex_Session::Get( self::SESSION_NAME_SPACE );
+			if( $userStr ){
+				$user = unserialize( $userStr );
+				return $user;
+			}
+			return null;
+		}
+		
+		private function _isEmailExist( $email ){
+			
+			$data = $this->_model->getOneByConditions( array( 'email' => $email )  );
+			if ($data)
+			{
+				return true;
+			}
+				
+			return false;
+			
+		}
+		
+		private function _getByEmail( $email ){
+			
+			$data = $this->_model->getOneByConditions( array( 'email' => $email )  );
+			if ($data)
+			{
+				return new TCVM_User_Entity_User( $data );
+			}
+			return false;
 			
 		}
 
