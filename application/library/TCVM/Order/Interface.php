@@ -12,6 +12,8 @@
 		public function generateLoginUserOrder();
 		
 		
+		
+		
 		/**
 		 * get certain user order information
 		 */
@@ -19,6 +21,13 @@
 		
 		
 		public function getOrder( $orderId );
+		
+		
+		
+		/**
+		 * when order success pay, call this function
+		 */
+		public function callbackOrderSuccessPay( $orderId );
 		
 		
 		

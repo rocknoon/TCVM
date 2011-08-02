@@ -3,12 +3,7 @@
 	{
 		
 		/**
-		 * do a payment in the 3rd part.
-		 * 
-		 * @exception order already be paid
-		 * @exception order is not belong to login user
-		 * @exception order is cancel
-		 * @exception user is not login
+		 * do a payment for the order.  will call the 3rd part api to do the payment
 		 * 
 		 * @param enum $paymethod
 		 */
@@ -16,14 +11,16 @@
 		
 		
 		/**
-		 * when success pay order in the bank, then callback this function
-		 * 1. change order status( according with payment )
-		 * 
-		 * @exception order already be paid
-		 * @exception order is not belong to login user
-		 * 
+		 * begin a paypal express process
 		 */
-		public function callbackPay( $orderId, $payment );
+		public function setPaypalExpress( $orderId );
+		
+		
+		/**
+		 * begin a electronic transfer
+		 */
+		public function setElectronicTransfer( $orderId );
+		
 		
 		/**
 		 * when a order is paid, but is still pending, we can use this interface to continue pay this order

@@ -25,24 +25,25 @@
 			
 		}
 		
-		public function callbackPay($orderId, $payment) {
-			// TODO Auto-generated method stub
+		public function setExpressCheckout( $orderId ){
+			
+			$orderEntity = $this->_getOrder($orderId);
+			
+			
+			$this->_checkOrderCanExpress( $orderEntity );
+			$param = $this->_generPaypalParam( $orderEntity );
+    		$this->_paypal->setExpressCheckout( $param );
 			
 		}
 	
 			
 		public function payOrder($orderId, $params = null) {
 			
-			$param = $this->_generPaypalParam( $orderId );
-    		$this->_paypal->setExpressCheckout( $param );
+			
 			
 		}
 		
-		private function _generPaypalParam( $orderId ){
-			
-			$order = TCVM_Order_Factory::Factory();
-			
-			$orderEntity	   = $order->getOrder( $orderId );
+		private function _generPaypalParam( $orderEntity ){
 			
 			$currencyCodeType = "AUD";
 			$paymentType	  = 'Sale';
@@ -87,6 +88,12 @@
 			$rtn = WeFlex_Util::GetFullUrl(array('action' => 'cancel-paypal-express' , 'controller' => 'pay' ) , "default"  ) ;
 			
 			return $rtn;
+			
+		}
+		
+		private function _checkOrderCanExpress( $orderEntity ){
+			
+			
 			
 		}
 

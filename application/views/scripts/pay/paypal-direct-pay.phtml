@@ -1,0 +1,128 @@
+			<td width="81%" align="center" valign="top"><!-- InstanceBeginEditable name="EditRegion1" -->
+                <div align="center"></div>
+                <table width="750" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td height="50"><div align="center" class="STYLE5">Credit Card </div></td>
+                        </tr>
+                      <tr>
+                        <td><div align="center">
+                          <form action="<?php echo $this->url(array("action" => "do-paypal-direct-pay" , "controller" => "pay"), 'default', true);?>" method="post" enctype="multipart/form-data" name="form1" id="form1">
+                            
+                            <input type="hidden" value="<?php echo $this->orderId?>" name="order_id" />
+                            <table width="80%" border="1" cellpadding="10" cellspacing="0" bordercolor="#FFFFFF" bgcolor="#FCFCFC" class="STYLE2">
+                              <tr>
+                                <td width="37%" class="STYLE2"><div align="right">Country</div></td>
+                                <td width="63%">                                 
+                                    <div align="left">
+                                      <select name="country_code" class="input2">
+                                        <option value="AU">Australia</option>
+                                      	<option value="US">USA</option>
+                                      	
+                                      </select>
+                                    </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td width="37%" class="STYLE2"><div align="right">Credit Card Type</div></td>
+                                <td width="63%">                                 
+                                    <div align="left">
+                                    	<select name="credit_card_type" class="input2">
+	                                        <option value="Visa">Visa</option>
+	                                      	<option value="MasterCard">MasterCard</option>
+                                      	</select>
+                                    </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="STYLE2"><div align="right">Credit Card Numeber </div></td>
+                                <td><div align="left">
+                                  <input name="credit_card_number" type="text" class="input2" />
+                                </div></td>
+                              </tr>
+                              <tr>
+                                <td class="STYLE2"><div align="right">CVV2</div></td>
+                                <td><div align="left">
+                                  <input name="cvv2" type="text" class="input2" />
+                                </div></td>
+                              </tr>
+                              <tr>
+                                 <td class="STYLE2"><div align="right">Expiration Date </div></td>
+                              	 <td><div align="left">
+                              	    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                      <td width="16%"><div align="left">
+                                        <input name="expired_month" type="text" class="input3" />
+                                      </div></td>
+                                      <td width="3%" class="STYLE2">/</td>
+                                 
+                                      <td width="16%"><div align="left">
+                                        <input name="expired_day" type="text" class="input3" />
+                                      </div></td>
+                                      <td width="3%" class="STYLE2">/</td>
+                                       <td width="16%"><div align="left">
+                                        <input name="expired_year" type="text" class="input3" />
+                                      </div></td>
+                                      <td width="50%">( month/day/year )</td>
+                                    </tr>
+                                  	</table>
+                                	</div>
+                                  </td>
+                              </tr>
+                              <tr>
+                                <td class="STYLE2"><div align="right">Frist Name </div></td>
+                                <td><div align="left">
+                                  <input name="first_name" type="text" class="input2" />
+                                </div></td>
+                              </tr>
+                              <tr>
+                                <td class="STYLE2"><div align="right">Last Name </div></td>
+                                <td><div align="left">
+                                  <input name="last_name" type="text" class="input2" />
+                                </div></td>
+                              </tr>
+                              
+                              <tr>
+                                <td class="STYLE2"><div align="right">Street</div></td>
+                                <td><div align="left">
+                                  <input name="street" type="text" class="input1" />
+                                </div></td>
+                              </tr>
+                              <tr>
+                                <td class="STYLE2"><div align="right">City</div></td>
+                                <td><div align="left">
+                                  <input name="city" type="text" class="input2" />
+                                </div></td>
+                              </tr>
+                              <tr>
+                                <td class="STYLE2"><div align="right">State</div></td>
+                                <td><div align="left">
+                                  <input name="state" type="text" class="input2" />
+                                </div></td>
+                              </tr>
+                              <tr>
+                                <td class="STYLE2"><div align="right">Zip</div></td>
+                                <td><div align="left">
+                                  <input name="zip" type="text" class="input2" />
+                                </div></td>
+                              </tr>
+                           
+                              <tr>
+                                <td class="STYLE2"><div align="right">
+                                  <label>
+                                  <input type="submit" name="Submit" value="save" />
+                                  </label>
+                                </div></td>
+                                <td><div align="left">
+                                  <input type="submit" name="Submit2" value="cancel" />
+                                </div></td>
+                              </tr>
+                            </table>
+                                  </form>
+                          </div></td>
+                        </tr>
+                    </table></td>
+                  </tr>
+                </table>
+                <!-- InstanceEndEditable --></td>

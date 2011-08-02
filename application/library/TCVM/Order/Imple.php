@@ -93,6 +93,15 @@
 			return $orders[0];
 			
 		}
+		
+		
+		public function callbackOrderSuccessPay($orderId) {
+			
+			//only waiiting can be paid
+			
+			$this->_changeStatus( $orderId , self::STATUS_SUCCESS );
+			
+		}
 
 		private function _generateOrder( $userId, $cartProducts, $shipping, $totalPrice ){
 			
@@ -127,7 +136,13 @@
 			
 		}
 		
-		private function _gets( $conditions, $order, $pageNo , $pageSize ){
+		private function _changeStatus( $orderId, $status ){
+			
+			$this->_orderModel->update( array( "status" => $status ), array( "id" => $orderId ) );
+			
+		}
+		
+		private function _gets( $conditions, $order = null, $pageNo = null , $pageSize = null ){
 			
 			$rtn = array();
 			

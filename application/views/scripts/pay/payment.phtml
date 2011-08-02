@@ -43,7 +43,7 @@ var orderId = "<?php echo $this->orderId?>";
 			location.href="<?php echo $this->url(array("action" => "do-paypal-express" , "controller" => "pay"), 'default', true);?>" + "/order_id/" + orderId;
 			break;
 		case "<?php echo TCVM_Payment_Imple::PAYMENT_PAYPAL_DIRECT_PAY?>":
-			location.href="<?php echo $this->url(array("action" => "do-paypal-direct-pay" , "controller" => "pay"), 'default', true);?>" + "/order_id/" + orderId;
+			location.href="<?php echo $this->url(array("action" => "paypal-direct-pay" , "controller" => "pay"), 'default', true);?>" + "/order_id/" + orderId;
 			break;
 		case "<?php echo TCVM_Payment_Imple::PAYMENT_PAYPAL_EXPRESS_CHECKOUT?>":
 			location.href="<?php echo $this->url(array("action" => "do-electronic-transfer" , "controller" => "pay"), 'default', true);?>" + "/order_id/" + orderId;

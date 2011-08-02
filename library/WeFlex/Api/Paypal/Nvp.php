@@ -70,7 +70,24 @@
 					header("Location: ".$payPalURL);
 					exit();
 			} else  {
-					 throw new Exception($rtn['L_LONGMESSAGE0']);
+					 throw new Exception("ERROR CODE:".$rtn['L_ERRORCODE0']." ERROR MESSAGE:" . $rtn['L_LONGMESSAGE0']);
+			}
+			
+		}
+		
+		public function doDirectPay( array $nvp ){
+			
+			$nvpstr = $this->_nvpToString($nvp);
+			
+			$rtn = $this->hashCall( "DoDirectPayment" , $nvpstr );
+			
+			
+			$ack = strtoupper($rtn["ACK"]);
+			
+			if($ack=="SUCCESS" || $ack=="SUCCESSWITHWARNING"){
+					return $rtn;
+			} else {
+					throw new Exception("ERROR CODE:".$rtn['L_ERRORCODE0']." ERROR MESSAGE:" . $rtn['L_LONGMESSAGE0']);
 			}
 			
 		}
@@ -84,7 +101,7 @@
 			
 			if($ack != 'SUCCESS' && $ack != 'SUCCESSWITHWARNING'){
 				
-				throw new Exception($rtn['L_LONGMESSAGE0']);
+				throw new Exception("ERROR CODE:".$rtn['L_ERRORCODE0']." ERROR MESSAGE:" . $rtn['L_LONGMESSAGE0']);
         	}
         	
         	return $rtn;
@@ -123,8 +140,6 @@
 			
 			$nvpreq="METHOD=".urlencode($methodName).$nvpStr;
 			
-			
-		
 			
 			//setting the nvpreq as POST FIELD to curl
 			curl_setopt($ch,CURLOPT_POSTFIELDS,$nvpreq);
