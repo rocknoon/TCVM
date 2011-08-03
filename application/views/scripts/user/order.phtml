@@ -12,14 +12,13 @@
                             <td width="7%">&nbsp;</td>
                             <td width="20%">&nbsp;</td>
                             <td width="14%">&nbsp;</td>
-                            <td width="13%">&nbsp;</td>
+                           
                             <td width="3%">&nbsp;</td>
                           </tr>
                           <tr>
                             <td>&nbsp;</td>
                             <td class="underline2"><div align="left" class="STYLE4">Product Name </div></td>
-                            <td class="underline2"><div align="left" class="STYLE4">Price</div></td>
-                            <td class="underline2"><div align="left" class="STYLE4">Quantity</div></td>
+                            <td class="underline2"><div align="left" class="STYLE4">Price</div></td>  
                             <td class="underline2"><div align="left" class="STYLE4">Amount</div></td>
                             <td class="underline2"><div align="left" class="STYLE4">Status</div></td>
                             <td class="STYLE4">&nbsp;</td>
@@ -32,30 +31,21 @@
                             <td class="orderid"><div align="left">Date:</div></td>
                             <td class="orderid">2011-7-28</td>
                             <td class="orderid">&nbsp;</td>
-                            <td class="orderid">&nbsp;</td>
                             <td>&nbsp;</td>
                           </tr>
                           
                           <?php foreach( $order['products'] as $key => $product ):?>
+                          
+                   
                           <tr>
                             <td>&nbsp;</td>
                             <td class="underline"><div align="left" class="STYLE2"><?php echo $product['name']?></div></td>
-                            <td class="underline"><div align="left" class="STYLE2"><?php echo $product['price']?></div></td>
-                            <td valign="middle" class="underline"><label>
-                              <div align="left">
-                                <select name="select3" size="1" class="input3">
-                                  <option>1</option>
-                                  <option>2</option>
-                                </select>
-                                </label>
-                              </div></td>
-                            <td class="underline"><div align="left" class="STYLE4">2090</div></td>
+                            <td class="underline"><div align="left" class="STYLE2"><?php echo $product['price'] * $product['amount']?></div></td>
+                            <td class="underline"><div align="left" class="STYLE4"><?php echo $product['amount']?></div></td>
                             
                             
                             <?php if( $key == 0 ):?>
-                            <td rowspan="3" valign="top" class="underline">
-                                <label></label>
-                                
+                            <td rowspan="<?php echo count($order['products']);?>" valign="top" class="underline">    
                                   <div align="left">
                                     <input name="Submit3" type="button" onclick="doPayment(<?php echo $order['id']?>);" class="redbutton2" value="Pay Now" />
                                   </div>                                  
@@ -80,24 +70,8 @@
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                           </tr>
-                          <tr>
-                            <td>&nbsp;</td>
-                            <td class="underline">&nbsp;</td>
-                            <td class="underline">&nbsp;</td>
-                            <td class="underline2">&nbsp;</td>
-                            <td class="underline2">&nbsp;</td>
-                            <td class="underline"><div align="left"></div></td>
-                            <td>&nbsp;</td>
-                          </tr>
-                          <tr>
-                            <td>&nbsp;</td>
-                            <td class="STYLE2"><div align="left">&lt;Previous page </div></td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td><label></label></td>
-                            <td class="STYLE2"><div align="right">next page&gt; </div></td>
-                            <td>&nbsp;</td>
-                          </tr>
+                          
+                          
                         </table>
                             </form>
                       <p class="STYLE5">&nbsp;</p>

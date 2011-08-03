@@ -3,6 +3,18 @@
                 <table width="750" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td><p align="center" class="STYLE5">Shipping</p>
+                    
+                    <table width="80%" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-bottom:20px;" >
+                          <tr>
+                            <td>
+                            <div class="SUCCESS">
+                             Please filling in your personal information below, so that we will know who purchase our courses. 
+							</div>
+                    		</td>
+                          </tr>
+                    </table>
+                    
+                    	
                       <form id="form1" name="form1" method="post" action="<?php echo $this->url(array("action" => "do-shipping" , "controller" => "cart"), 'default', true);?>">
                         <table width="80%" border="1" align="center" cellpadding="10" cellspacing="0" bordercolor="#FFFFFF" bgcolor="#FCFCFC" class="STYLE2">
                           <tr>
@@ -26,14 +38,16 @@
                           </tr>
                           
                           <tr>
-                            <td class="STYLE2"><div align="right">
-                                <label>
-                                <input type="submit" name="Submit" value="save" />
-                                </label>
-                            </div></td>
-                            <td><div align="left">
-                                <input type="submit" name="Submit2" value="cancel" />
-                            </div></td>
+                            <td class="STYLE2">
+                            <div align="right">
+                                
+                            </div>
+                            </td>
+                            <td>
+                            <div align="left">
+                                <input type="submit" value="save" />
+                            </div>
+                            </td>
                           </tr>
                         </table>
                                             </form>

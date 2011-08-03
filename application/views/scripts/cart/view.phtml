@@ -11,7 +11,7 @@
                           <td width="3%">&nbsp;</td>
                           <td width="40%">&nbsp;</td>
                           <td width="10%">&nbsp;</td>
-                          <td width="17%">&nbsp;</td>
+                         
                           <td width="16%">&nbsp;</td>
                           <td width="11%">&nbsp;</td>
                           <td width="3%">&nbsp;</td>
@@ -21,7 +21,7 @@
                           <td class="underline2"><div align="left" class="STYLE4">Product Name </div></td>
                           <td class="underline2"><div align="left" class="STYLE4">Price</div></td>
                           <td class="underline2"><div align="left" class="STYLE4">Quantity</div></td>
-                          <td class="underline2"><div align="left" class="STYLE4">Amount</div></td>
+                          
                           <td class="underline2"><div align="left" class="STYLE4">Delete</div></td>
                           <td class="STYLE4">&nbsp;</td>
                         </tr>
@@ -30,17 +30,19 @@
                         <tr>
                           <td>&nbsp;</td>
                           <td class="underline"><div align="left"><span class="STYLE2"><?php echo $product['name']?></span></div></td>
-                          <td class="underline"><div align="left" class="STYLE2">1045</div></td>
+                          <td class="underline"><div align="left" class="STYLE2">$<?php echo $product['price']?></div></td>
                           <td class="underline"><label>
                             <div align="left">
-                              <select name="select3" size="1" class="input3">
-                                <option>1</option>
-                                <option>2</option>
+                              <select name="select3" size="1" class="input3" id="amount<?php echo $product['id']?>">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
                               </select>
                               </div>
                           </label></td>
-                          <td class="underline"><div align="left" class="STYLE4">2090</div></td>
-                          <td class="underline"><div align="left"><img src="<?php echo $this->baseUrl()?>/images/delete.gif" width="12" height="19" /></div></td>
+                          <td class="underline"><div align="left"><a href="javascript:void(0);" onclick="remove(<?php echo $product['product_type']?> , <?php echo $product['id']?>);"><img src="<?php echo $this->baseUrl()?>/images/delete.gif" width="12" height="19" /></a></div></td>
                           <td>&nbsp;</td>
                         </tr>
                         
@@ -51,16 +53,7 @@
                           <td><div align="left"></div></td>
                           <td><div align="left"></div></td>
                           <td><div align="left"></div></td>
-                          <td><div align="left"></div></td>
-                          <td><div align="left"></div></td>
-                          <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                          <td>&nbsp;</td>
-                          <td><div align="left"></div></td>
-                          <td><div align="left"></div></td>
-                          <td><div align="left"></div></td>
-                          <td><div align="left"></div></td>
+                         
                           <td><div align="left"></div></td>
                           <td>&nbsp;</td>
                         </tr>
@@ -69,7 +62,7 @@
                           <td><div align="left"></div></td>
                           <td><div align="left"></div></td>
                           <td><div align="left"></div></td>
-                          <td><div align="left"></div></td>
+                         
                           <td><div align="left"></div></td>
                           <td>&nbsp;</td>
                         </tr>
@@ -77,6 +70,15 @@
                           <td>&nbsp;</td>
                           <td><div align="left"></div></td>
                           <td><div align="left"></div></td>
+                        
+                          <td><div align="left"></div></td>
+                          <td><div align="left"></div></td>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td><div align="left"></div></td>
+                      
                           <td><div align="left"></div></td>
                           <td><div align="left"></div></td>
                           <td><div align="left"></div></td>
@@ -85,21 +87,21 @@
                         <tr>
                           <td>&nbsp;</td>
                           <td class="underline">&nbsp;</td>
-                          <td class="underline">&nbsp;</td>
+                          
                           <td class="underline2">Totally Price </td>
-                          <td class="underline2"><div align="left" class="STYLE5"><?php echo $this->totalPrice?></div></td>
+                          <td class="underline2"><div align="left" class="STYLE5">$ <?php echo $this->totalPrice?></div></td>
                           <td class="underline">
-                            <div align="left"></div></td>
+                          <div align="left"></div></td>
                           <td>&nbsp;</td>
                         </tr>
                         <tr>
                           <td>&nbsp;</td>
                           <td><div align="left">
                             <label>
-                            <input type="submit" name="Submit2" value="continue to buy" />
+                            <input type="button" onclick="continueBuy();" name="Submit2" value="continue to buy" />
                             </label>
                           </div></td>
-                          <td>&nbsp;</td>
+                          
                           <td>&nbsp;</td>
                           <td><label><span class="STYLE4">
                             <input name="Submit" type="button" class="redbutton" value="Pay Now" onclick="shipping();" />
@@ -116,7 +118,42 @@
                 <!-- InstanceEndEditable --></td>
                 
 <script>
+
+//init amount
+	$(function(){
+		<?php foreach( $this->products as $product ):?>
+		$("#amount<?php echo $product['id']?>").val(<?php echo $product['amount']?>);
+		<?php endforeach;?>
+	});
+
+	<?php foreach( $this->products as $product ):?>
+		$("#amount<?php echo $product['id']?>").change(function(){
+			var productAmount = $(this).val();
+			amount( <?php echo $product['product_type']?>, <?php echo $product['id']?>, productAmount );
+		});
+	<?php endforeach;?>
+
+
 	function shipping(){
 		location.href = "<?php echo $this->url(array("action" => "shipping" , "controller" => "cart"), 'default', true);?>";
+	}
+
+	function continueBuy(){
+		location.href = "<?php echo $this->url(array("action" => "index" , "controller" => "courses"), 'default', true);?>";
+	} 
+
+	function remove( productType, productId ){
+
+		var result = confirm("Are you sure you really wanna remove it from cart?");
+		if( result ){
+			location.href = "<?php echo $this->url(array("action" => "do-remove" , "controller" => "cart"), 'default', true);?>" + "/product_type/" + productType + "/product_id/" + productId;
+		}	
+		
+
+
+	}
+
+	function amount( productType, productId, amount ){
+		location.href = "<?php echo $this->url(array("action" => "do-amount" , "controller" => "cart"), 'default', true);?>" + "/product_type/" + productType + "/product_id/" + productId + "/amount/" + amount;
 	}
 </script>

@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2011 年 08 月 03 日 14:38
--- 服务器版本: 5.1.44
--- PHP 版本: 5.3.1
+-- 生成日期: 2011 年 08 月 03 日 10:01
+-- 服务器版本: 5.1.41
+-- PHP 版本: 5.2.14
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `log_payment_error` (
   `error` text NOT NULL,
   `date_add` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `log_payment_success` (
   `info` text,
   `date_add` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -94,6 +94,7 @@ CREATE TABLE IF NOT EXISTS `order_product` (
   `product_type` tinyint(1) NOT NULL,
   `product_id` int(11) NOT NULL,
   `price` float NOT NULL,
+  `amount` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `order_id` (`order_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;

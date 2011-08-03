@@ -135,7 +135,8 @@
 					$orderProductInfo['order_id'] = $orderId;
 					$orderProductInfo['product_type'] = $productType;
 					$orderProductInfo['product_id']   = $item['id'];
-					$orderProductInfo['price']        = $item['price'];
+					$orderProductInfo['price']         = $item['price'];
+					$orderProductInfo['amount']        = $item['amount'];
 
 					$this->_orderProductModel->insert($orderProductInfo);
 					

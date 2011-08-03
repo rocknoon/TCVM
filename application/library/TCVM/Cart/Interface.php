@@ -20,6 +20,11 @@
 		 */
 		public function clean();
 		
+		/**
+		 * change certain product amount
+		 */
+		public function amount( $productType , $productId, $amount );
+		
 		
 		/**
 		 * fill in the shipping information

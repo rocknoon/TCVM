@@ -35,8 +35,25 @@
 			// TODO Auto-generated method stub
 			
 		}
+		
+		
 	
+		public function amount($productType, $productId, $amount) {
 			
+			$productEntity = $this->_product->get( $productType , $productId  );
+			
+			if(!$productEntity)
+			{
+				throw new Exception( $this->_translate->_("product is not exist ") , 1 );	
+			}
+			else 
+			{	
+				$this->_setSession( $productType , $productEntity, $amount );
+				return true;
+			}
+			
+		}
+
 		public function getAllProducts() {
 			
 			$products = $this->_getSession();
@@ -81,7 +98,7 @@
 			}
 			else 
 			{	
-				$this->_setSession( $type , $productEntity );
+				$this->_setSession( $type , $productEntity, 1 );
 				return true;
 			}
 			
@@ -89,11 +106,21 @@
 	
 			
 		public function remove($productType, $id) {
-			// TODO Auto-generated method stub
+			
+			$productEntity = $this->_product->get( $productType , $id  );
+			$this->_setSession( $productType , $productEntity, 0 );
 			
 		}
 		
-		private function _setSession( $productType , $entity  ){
+		/**
+		 * if amount <= 0 means remove this product in the cart
+		 */
+		private function _setSession( $productType , $entity,  $amount  ){
+			
+			$amount = intval( $amount );
+			if ( !is_integer( $amount ) ){
+				$amount = 1;
+			}
 			
 			$cartArray = WeFlex_Session::Get( self::SESSION_PRODUCTS );
 			
@@ -101,7 +128,16 @@
 				$cartArray  = array();
 			}else{
 				$cartArray 	= unserialize( $cartArray );
+			}
+			
+			
+			//if amount < 0 then remove this product
+			if( $amount <= 0 ){
 				
+				unset($cartArray[$productType][$entity['id']]);
+				$cartArray = serialize( $cartArray );
+				WeFlex_Session::Set( self::SESSION_PRODUCTS , $cartArray );
+				return;
 			}
 			
 			$cartEntity = new TCVM_Cart_Entity_Product( array(
@@ -109,7 +145,7 @@
 				"name" => $entity['name'],
 				"price" => $entity['price'],
 				"product_type" => $productType,
-				"amount"	   => 1
+				"amount"	   => $amount
 			) );
 
 			$cartArray[$productType][$entity['id']] = $cartEntity;

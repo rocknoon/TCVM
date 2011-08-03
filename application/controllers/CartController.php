@@ -38,10 +38,11 @@ class CartController extends TCVM_ZendX_Controller_Action_Front
 		$totalPrice = $this->_cart->getTotalPrice(); 
 		$shipping	= $this->_cart->getShipping();
 		
-		$this->assign( "products", $products );
+		$this->assign( "products", $products[TCVM_Product_Imple::TYPE_COURSES] );
 		$this->assign( "totalPrice", $totalPrice );
 		$this->assign( "shipping" , $shipping );
 		
+	
 	}
 	
 	public function successAction(){
@@ -78,6 +79,18 @@ class CartController extends TCVM_ZendX_Controller_Action_Front
 		$productType 	= $this->_getParam( "product_type" );
 
 		$this->_cart->remove( $productType , $productId );
+		
+		$this->redirect( "view" );		
+	}
+	
+	
+	public function doAmountAction(){
+	
+		$productId 		= $this->_getParam( "product_id" );
+		$productType 	= $this->_getParam( "product_type" );
+		$amount 	    = $this->_getParam( "amount" );
+
+		$this->_cart->amount( $productType , $productId, $amount );
 		
 		$this->redirect( "view" );		
 	}

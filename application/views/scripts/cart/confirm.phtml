@@ -4,22 +4,162 @@
                   <tr>
                     <td><p align="center" class="STYLE5">Confirm</p>
                       <form id="form1" name="form1" method="post" action="<?php echo $this->url(array("action" => "do-confirm" , "controller" => "cart"), 'default', true);?>">
-                        <table width="80%" border="1" align="center" cellpadding="10" cellspacing="0" bordercolor="#FFFFFF" bgcolor="#FCFCFC" class="STYLE2">
-                          
-                          
-                          <tr>
-                            <td class="STYLE2"><div align="right">
-                                <label>
-                                <input type="submit" name="Submit" value="save" />
-                                </label>
-                            </div></td>
-                            <td><div align="left">
-                                <input type="submit" name="Submit2" value="cancel" />
-                            </div></td>
-                          </tr>
-                        </table>
-                                            </form>
+                        <?php if( $this->products ):?>
+		                <table width="750" border="0" cellspacing="0" cellpadding="0">
+		                  <tr>
+		                    <td>
+		                      <table width="100%" border="0" cellpadding="10" cellspacing="0" class="table2">
+		                        <tr>
+		                          <td width="3%">&nbsp;</td>
+		                          <td width="40%">&nbsp;</td>
+		                          <td width="10%">&nbsp;</td>
+		                          <td width="10%">&nbsp;</td>
+		                          <td width="3%">&nbsp;</td>
+		                        </tr>
+		                        <tr>
+		                          <td>&nbsp;</td>
+		                          <td class="underline2"><div align="left" class="STYLE4">Product Name </div></td>
+		                          <td class="underline2"><div align="left" class="STYLE4">Price</div></td>
+		                          <td class="underline2"><div align="left" class="STYLE4">Quantity</div></td>
+		                          <td class="STYLE4">&nbsp;</td>
+		                        </tr>
+		                        
+		                        <?php foreach( $this->products as $product ):?>
+		                        <tr>
+		                          <td>&nbsp;</td>
+		                          <td class="underline"><div align="left"><span class="STYLE2"><?php echo $product['name']?></span></div></td>
+		                          <td class="underline"><div align="left" class="STYLE2">$<?php echo $product['price']?></div></td>
+		                          <td class="underline"><div align="left" class="STYLE2"><?php echo $product['amount']?></div></td>
+		                          <td>&nbsp;</td>
+		                        </tr>
+		                        
+		                        <?php endforeach;?>
+		                        
+		                        <tr>
+		                          <td>&nbsp;</td>
+		                          <td><div align="left"></div></td>
+		                          <td><div align="left"></div></td>
+		                          <td><div align="left"></div></td>
+		                          <td>&nbsp;</td>
+		                        </tr>
+		                        <tr>
+		                          <td>&nbsp;</td>
+		                          <td><div align="left"></div></td>
+		                          <td><div align="left"></div></td>
+		                          <td><div align="left"></div></td>
+		                          <td>&nbsp;</td>
+		                        </tr>
+		                        
+		                      </table>
+		                                   
+		                    </td>
+		                  </tr>
+		                </table>
+		                <?php endif;?>
+		                
+		                <table width="750" border="0" cellspacing="0" cellpadding="0">
+		                  <tr>
+		                    <td>
+		                      <table width="100%" border="0" cellpadding="10" cellspacing="0" class="table2">
+		                        <tr>
+		                          <td width="3%">&nbsp;</td>
+		                          <td width="40%">&nbsp;</td>
+		                          <td width="10%">&nbsp;</td>
+		                          <td width="3%">&nbsp;</td>
+		                        </tr>
+		                        <tr>
+		                          <td>&nbsp;</td>
+		                          <td class="underline2"><div align="left" class="STYLE4">Buyer Information</div></td>
+		                          <td class="underline2"><div align="left" class="STYLE4"></div></td>
+		                          <td class="STYLE4">&nbsp;</td>
+		                        </tr>
+		                        
+		                        
+		                        <tr>
+		                          <td>&nbsp;</td>
+		                          <td class="underline"><div align="left"><span class="STYLE2">First name</span></div></td>
+		                          <td class="underline"><div align="left" class="STYLE2"><?php echo $this->shipping['first_name']?></div></td>
+		                          <td>&nbsp;</td>
+		                        </tr>
+		                        
+		                        <tr>
+		                          <td>&nbsp;</td>
+		                          <td class="underline"><div align="left"><span class="STYLE2">Last name</span></div></td>
+		                          <td class="underline"><div align="left" class="STYLE2"><?php echo $this->shipping['last_name']?></div></td>
+		                          <td>&nbsp;</td>
+		                        </tr>
+		                        
+		                         <tr>
+		                          <td>&nbsp;</td>
+		                          <td class="underline"><div align="left"><span class="STYLE2">Mobile</span></div></td>
+		                          <td class="underline"><div align="left" class="STYLE2"><?php echo $this->shipping['mobile']?></div></td>
+		                          <td>&nbsp;</td>
+		                        </tr>
+		                        
+		                        
+		                        
+		                        <tr>
+		                          <td>&nbsp;</td>
+		                          <td><div align="left"></div></td>
+		                          <td><div align="left"></div></td>
+		                          <td><div align="left"></div></td>
+		                          <td>&nbsp;</td>
+		                        </tr>
+		                        <tr>
+		                          <td>&nbsp;</td>
+		                          <td><div align="left"></div></td>
+		                          <td><div align="left"></div></td>
+		                          <td><div align="left"></div></td>
+		                          <td>&nbsp;</td>
+		                        </tr>
+		                        
+		                        <tr>
+		                          <td>&nbsp;</td>
+		                          <td class="underline2"><div align="left">Totally Price</div> </td>
+		                          <td class="underline2"><div align="left" class="STYLE5">$ <?php echo $this->totalPrice?></div></td>
+		                          <td>&nbsp;</td>
+		                        </tr>
+		                        
+		                        <tr>
+		                          <td>&nbsp;</td>
+		                          <td><div align="left"></div></td>
+		                          <td><div align="left"></div></td>
+		                          <td><div align="left"></div></td>
+		                          <td>&nbsp;</td>
+		                        </tr>
+		                        
+		                        
+		                        
+		                        <tr>
+		                          <td>&nbsp;</td>
+		                          <td><div align="left">
+		                            <label>
+		                            <input type="button" onclick="backCart();" name="Submit2" value="back to cart" />
+		                            </label>
+		                          </div></td>
+		            
+		                          <td><label><span class="STYLE4">
+		                            <input name="Submit" type="submit" class="redbutton" value="Confirm" />
+		                          </span></label></td>
+		                          <td>&nbsp;</td>
+		                         
+		                        </tr>
+		                        
+		                      </table>
+		                                   
+		                    </td>
+		                  </tr>
+		                </table>
+		                
+		                
+                      </form>
                       <p>&nbsp;</p></td>
                   </tr>
                 </table>
                 <!-- InstanceEndEditable --></td>
+                
+ <script>
+ 	function backCart(){
+		location.href = "<?php echo $this->url(array("action" => "view" , "controller" => "cart"), 'default', true);?>";
+	} 
+ </script>
