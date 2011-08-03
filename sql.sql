@@ -2,21 +2,21 @@
 -- version 3.2.4
 -- http://www.phpmyadmin.net
 --
--- Ö÷»ú: localhost
--- Éú³ÉÈÕÆÚ: 2011 Äê 08 ÔÂ 02 ÈÕ 09:46
--- ·şÎñÆ÷°æ±¾: 5.1.41
--- PHP °æ±¾: 5.2.14
+-- ä¸»æœº: localhost
+-- ç”Ÿæˆæ—¥æœŸ: 2011 å¹´ 08 æœˆ 03 æ—¥ 14:38
+-- æœåŠ¡å™¨ç‰ˆæœ¬: 5.1.44
+-- PHP ç‰ˆæœ¬: 5.3.1
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 --
--- Êı¾İ¿â: `tcvm`
+-- æ•°æ®åº“: `tcvm`
 --
 
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `admin`
+-- è¡¨çš„ç»“æ„ `admin`
 --
 
 DROP TABLE IF EXISTS `admin`;
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `log_payment_error`
+-- è¡¨çš„ç»“æ„ `log_payment_error`
 --
 
 DROP TABLE IF EXISTS `log_payment_error`;
@@ -47,16 +47,16 @@ CREATE TABLE IF NOT EXISTS `log_payment_error` (
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `log_payment_success`
+-- è¡¨çš„ç»“æ„ `log_payment_success`
 --
 
 DROP TABLE IF EXISTS `log_payment_success`;
 CREATE TABLE IF NOT EXISTS `log_payment_success` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) NOT NULL,
-  `transaction_id` varchar(100) NOT NULL,
+  `transaction_id` varchar(100) DEFAULT NULL,
   `payment` tinyint(1) NOT NULL,
-  `info` text NOT NULL,
+  `info` text,
   `date_add` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `log_payment_success` (
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `order`
+-- è¡¨çš„ç»“æ„ `order`
 --
 
 DROP TABLE IF EXISTS `order`;
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `order` (
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `order_product`
+-- è¡¨çš„ç»“æ„ `order_product`
 --
 
 DROP TABLE IF EXISTS `order_product`;
@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `order_product` (
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `product_courses`
+-- è¡¨çš„ç»“æ„ `product_courses`
 --
 
 DROP TABLE IF EXISTS `product_courses`;
@@ -123,7 +123,7 @@ CREATE TABLE IF NOT EXISTS `product_courses` (
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `user`
+-- è¡¨çš„ç»“æ„ `user`
 --
 
 DROP TABLE IF EXISTS `user`;

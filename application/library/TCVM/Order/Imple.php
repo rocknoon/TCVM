@@ -95,6 +95,16 @@
 		}
 		
 		
+		
+		
+		
+		
+		public function setElectronicTransfer($orderId) {
+			
+			$this->_changeStatus( $orderId , self::STATUS_WAITTING_ELECTRONIC_TRANSFER );
+			
+		}
+
 		public function callbackOrderSuccessPay($orderId) {
 			
 			//only waiiting can be paid

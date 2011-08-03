@@ -1,7 +1,6 @@
 <?php 
 	class TCVM_Payment_PaypalExpress_Imple extends TCVM_Payment_CoreAbstract{
 		
-		const STATUS_COMPLETED = "Completed";
 		
 		/**
 		 * @var WeFlex_Api_Paypal_Nvp
@@ -39,6 +38,18 @@
 			
 		public function payOrder($orderId, $params = null) {
 			
+			try {
+				$rtn = $this->_paypal->doExpressCheckoutPayment( $params['token'] , $params['PayerID'] , $params['paymentType']  , $params['currencyCodeType']  , $params['paymentAmount'] );
+			}catch( Exception $ex ){
+				$this->_logErrorPayment( $orderId, TCVM_Payment_Imple::PAYMENT_PAYPAL_EXPRESS_CHECKOUT, $ex->getMessage() );
+				throw $ex;
+			}
+			
+			$this->_logSuccessPayment( $orderId, TCVM_Payment_Imple::PAYMENT_PAYPAL_EXPRESS_CHECKOUT, $rtn['TRANSACTIONID'] , $rtn );
+    		
+			
+			return $rtn;
+			
 			
 			
 		}
@@ -51,7 +62,7 @@
 			$products 		  = $orderEntity['products'];
 			$amt			  = $orderEntity['total_price'];
 			
-			$returnUrl		  = $this->_getReturnUrl( $orderId );
+			$returnUrl		  = $this->_getReturnUrl( $orderEntity['id'], $amt,  $currencyCodeType, $paymentType);
 			$cancelUrl		  = $this->_getCancelUrl();
 			
 			
@@ -76,9 +87,9 @@
 		}
 		
 		
-		private function _getReturnUrl( $orderId ){
+		private function _getReturnUrl( $orderId, $amt, $currencyCodeType, $paymentType  ){
 			
-			$rtn = WeFlex_Util::GetFullUrl(array('action' => 'callback-paypal-express' , 'controller' => 'pay' , 'order_id' => $orderId ) , "default" ) ;
+			$rtn = WeFlex_Util::GetFullUrl(array('action' => 'callback-paypal-express' , 'controller' => 'pay' , 'paymentAmount' => $amt , 'currencyCodeType' => $currencyCodeType , 'paymentType' => $paymentType, 'orderId' => $orderId ) , "default" ) ;
 			
 			return $rtn;
 		}

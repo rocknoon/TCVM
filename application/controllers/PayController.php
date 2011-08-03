@@ -63,8 +63,6 @@ class PayController extends TCVM_ZendX_Controller_Action_Front
 		try {
 			$this->_pay->payOrder( TCVM_Payment_Imple::PAYMENT_PAYPAL_DIRECT_PAY , $orderId, $params );
 		}catch(Exception $ex){
-			dump($ex->getMessage());
-			die();
 			$this->redirect( "error", "pay", "default", array( "error" => $ex->getMessage() ) );
 		}
 		
@@ -78,17 +76,39 @@ class PayController extends TCVM_ZendX_Controller_Action_Front
 		
 		$this->_pay->setElectronicTransfer( $orderId );
 		
+		$this->redirect( "electronic-finish", "pay", "default",  array( "order_id" => $orderId ));
+		
 	}
 	
 	public function callbackPaypalExpressAction(){
 	
-		$orderId = $this->_getParam( "order_id" );
+		
+		$params = array();
+		$params['token'] 		  = $this->_getParam( "token" );
+		$params['PayerID'] 		  = $this->_request->getParam( 'PayerID' );
+		$params['paymentAmount'] 		  = $this->_request->getParam( 'paymentAmount' );
+		$params['currencyCodeType'] 		  = $this->_request->getParam( 'currencyCodeType' );
+		$params['paymentType'] 		  = $this->_request->getParam( 'paymentType' );
+    
+		
+		$orderId = $this->_getParam( "orderId" );
+		
+		
 		
 		try {
-			$this->_pay->payOrder( $orderId , TCVM_Payment_Imple::PAYMENT_PAYPAL_EXPRESS_CHECKOUT );
+			$this->_pay->payOrder( TCVM_Payment_Imple::PAYMENT_PAYPAL_EXPRESS_CHECKOUT,  $orderId , $params );
 		}catch( Exception $ex ){
-			
+			$this->redirect( "error", "pay", "default", array( "error" => $ex->getMessage() ) );
 		}
+		
+		$this->redirect( "success", "pay", "default",  array( "order_id" => $orderId ));
+		
+	}
+	
+	public function electronicFinishAction(){
+		
+		$orderId = $this->_getParam( "order_id" );
+		
 		
 		
 	}

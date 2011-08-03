@@ -23,6 +23,10 @@
 		public function getOrder( $orderId );
 		
 		
+		/**
+		 * when user select electronic payment, will call this function
+		 */
+		public function setElectronicTransfer( $orderId );
 		
 		/**
 		 * when order success pay, call this function

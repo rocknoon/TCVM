@@ -1,8 +1,6 @@
 <?php 
 	class TCVM_Payment_PaypalDirect_Imple extends TCVM_Payment_CoreAbstract{
 		
-		const STATUS_COMPLETED = "Completed";
-		
 		/**
 		 * @var WeFlex_Api_Paypal_Nvp
 		 */
