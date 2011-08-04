@@ -47,7 +47,25 @@
                             <?php if( $key == 0 ):?>
                             <td rowspan="<?php echo count($order['products']);?>" valign="top" class="underline">    
                                   <div align="left">
-                                    <input name="Submit3" type="button" onclick="doPayment(<?php echo $order['id']?>);" class="redbutton2" value="Pay Now" />
+                                  <?php switch( $order['status'] ):
+                                  
+                                  	 case TCVM_Order_Imple::STATUS_WAITTING_PAY:?>
+                                    	<input name="Submit3" type="button" onclick="doPayment(<?php echo $order['id']?>);" class="redbutton2" value="Pay Now" />
+                                  	<?php break;?>
+                                  	
+                                  	<?php case TCVM_Order_Imple::STATUS_CANCEL:?>
+                                    	Cancel
+                                  	<?php break;?>
+                                  	
+                                  	<?php case TCVM_Order_Imple::STATUS_SUCCESS:?>
+                                    	Success
+                                  	<?php break;?>
+                                  	
+                                  	<?php case TCVM_Order_Imple::STATUS_WAITTING_ELECTRONIC_TRANSFER:?>
+                                    	Waitting for your electronic transfer
+                                  	<?php break;?>
+                                  	
+                                  <?php endswitch;?>
                                   </div>                                  
                                   <div align="left" class="STYLE2"></div>
                             </td>

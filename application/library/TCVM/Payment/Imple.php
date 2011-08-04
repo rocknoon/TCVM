@@ -30,7 +30,8 @@
 		
 		public function setElectronicTransfer($orderId) {
 			
-			
+			$paymentCore = TCVM_Payment_CoreFactory::Factory(self::PAYMENT_ELECTRONIC_TRANSFER);
+			$paymentCore->setElectronicTransfer($orderId);
 			
 		}
 	

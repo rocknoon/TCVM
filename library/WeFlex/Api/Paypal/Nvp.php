@@ -70,7 +70,7 @@
 					header("Location: ".$payPalURL);
 					exit();
 			} else  {
-					 throw new Exception("ERROR CODE:".$rtn['L_ERRORCODE0']." ERROR MESSAGE:" . $rtn['L_LONGMESSAGE0']);
+					 throw new Exception("ERROR CODE:".$rtn['L_ERRORCODE0']." ERROR MESSAGE:" . $rtn['L_LONGMESSAGE0'] . "NVP : " . $rtn['nvpreq']);
 			}
 			
 		}
@@ -87,7 +87,7 @@
 			if($ack=="SUCCESS" || $ack=="SUCCESSWITHWARNING"){
 					return $rtn;
 			} else {
-					throw new Exception("ERROR CODE:".$rtn['L_ERRORCODE0']." ERROR MESSAGE:" . $rtn['L_LONGMESSAGE0']);
+					throw new Exception("ERROR CODE:".$rtn['L_ERRORCODE0']." ERROR MESSAGE:" . $rtn['L_LONGMESSAGE0'] . "NVP : " . $rtn['nvpreq']);
 			}
 			
 		}
@@ -101,7 +101,7 @@
 			
 			if($ack != 'SUCCESS' && $ack != 'SUCCESSWITHWARNING'){
 				
-				throw new Exception("ERROR CODE:".$rtn['L_ERRORCODE0']." ERROR MESSAGE:" . $rtn['L_LONGMESSAGE0']);
+				throw new Exception("ERROR CODE:".$rtn['L_ERRORCODE0']." ERROR MESSAGE:" . $rtn['L_LONGMESSAGE0'] . "NVP : " . $rtn['nvpreq']);
         	}
         	
         	return $rtn;
@@ -140,6 +140,8 @@
 			
 			$nvpreq="METHOD=".urlencode($methodName).$nvpStr;
 			
+//			dump($nvpreq);
+//			die();
 			
 			//setting the nvpreq as POST FIELD to curl
 			curl_setopt($ch,CURLOPT_POSTFIELDS,$nvpreq);
@@ -162,7 +164,9 @@
 			 } else {
 				 //closing the curl
 					curl_close($ch);
-			  }
+			 }
+			 
+			 $nvpResArray['nvpreq'] = $nvpreq;
 		
 			return $nvpResArray;
 			

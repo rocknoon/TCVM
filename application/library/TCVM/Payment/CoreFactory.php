@@ -6,6 +6,8 @@ class TCVM_Payment_CoreFactory{
 		
 		private static $_paypalDirectInstance;
 		
+		private static $_electronicTransferInstance;
+		
 		/**
 		 * @return  TCVM_Payment_CoreAbstract
 		 */
@@ -24,6 +26,12 @@ class TCVM_Payment_CoreFactory{
 						self::$_paypalDirectInstance = new TCVM_Payment_PaypalDirect_Imple();
 					}
 					return self::$_paypalDirectInstance;
+					break;
+				case TCVM_Payment_Imple::PAYMENT_ELECTRONIC_TRANSFER:
+					if( !self::$_electronicTransferInstance ){
+						self::$_electronicTransferInstance = new TCVM_Payment_ElectronicTransfer_Imple();
+					}
+					return self::$_electronicTransferInstance;
 					break;
 				default:
 					throw new Exception( "no such payment type $type" );

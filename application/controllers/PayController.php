@@ -74,6 +74,7 @@ class PayController extends TCVM_ZendX_Controller_Action_Front
 		
 		$orderId = $this->_getParam( "order_id" );
 		
+		
 		$this->_pay->setElectronicTransfer( $orderId );
 		
 		$this->redirect( "electronic-finish", "pay", "default",  array( "order_id" => $orderId ));

@@ -12,6 +12,10 @@ class IndexController extends TCVM_ZendX_Controller_Action_Front
     {
         // action body
     }
+    
+    public function underConstructionAction(){
+    
+    }
 
 
 }

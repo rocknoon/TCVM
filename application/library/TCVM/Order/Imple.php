@@ -101,6 +101,7 @@
 		
 		public function setElectronicTransfer($orderId) {
 			
+			
 			$this->_changeStatus( $orderId , self::STATUS_WAITTING_ELECTRONIC_TRANSFER );
 			
 		}
