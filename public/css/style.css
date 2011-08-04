@@ -140,6 +140,40 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 	text-align: left;
 }
+.topmenu a:link{
+	font-size: 12px;
+	font-weight: bold;
+	color: #ffffff;
+	text-decoration: none;
+	font-family: Arial, Helvetica, sans-serif;
+	border-top-width: 7px;
+	border-top-style: solid;
+	border-top-color: #931919;
+	padding-top: 15px;
+}
+.topmenu a:visited{
+	font-size: 12px;
+	font-weight: bold;
+	color: #ffffff;
+	text-decoration: none;
+	font-family: Arial, Helvetica, sans-serif;
+	border-top-width: 7px;
+	border-top-style: solid;
+	border-top-color: #931919;
+	padding-top: 15px;
+}
+.topmenu a:hover{
+	font-size: 12px;
+	font-weight: bold;
+	color: #ffffff;
+	text-decoration: none;
+	font-family: Arial, Helvetica, sans-serif;
+	border-top-width: 7px;
+	border-top-style: solid;
+	border-top-color: #fff;
+	padding-top: 15px;
+	
+}
 
 
 /** Author Rocky **/
