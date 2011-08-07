@@ -22,6 +22,14 @@
 		
 		public function getOrder( $orderId );
 		
+		/**
+		 * gets all the order
+		 */
+		public function getsOrder( $conditions = array(), $order = null, $pageNo = null , $pageSize = null );
+		
+		
+		public function adminStatus( $orderId , $status );
+		
 		
 		/**
 		 * when user select electronic payment, will call this function

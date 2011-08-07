@@ -16,7 +16,8 @@
 		}
 		
 		public function getLoginedUser() {
-			// TODO Auto-generated method stub
+			
+			return $this->_getLoginedUser();
 			
 		}
 	
@@ -52,11 +53,15 @@
 			
 		}
 	
-			/* (non-PHPdoc)
-		 * @see TCVM_User_Interface::isLogined()
-		 */
+		
 		public function isLogined() {
-			// TODO Auto-generated method stub
+			
+			$loginUser = $this->_getLoginedUser();
+			if( $loginUser ){
+				return true;
+			}else{
+				return false;
+			}
 			
 		}
 	
@@ -80,11 +85,10 @@
 			
 		}
 	
-			/* (non-PHPdoc)
-		 * @see TCVM_User_Interface::logout()
-		 */
+			
 		public function logout() {
-			// TODO Auto-generated method stub
+			
+			$this->_setSession( null );
 			
 		}
 	
@@ -119,6 +123,12 @@
 
 			$this->_model->insert( $data );
 			
+			
+		}
+		
+		private function _getLoginedUser(){
+			
+			return $this->_getSession();
 			
 		}
 		

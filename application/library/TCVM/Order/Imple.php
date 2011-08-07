@@ -50,13 +50,24 @@
 		public function generateLoginUserOrder() {
 			
 			$cart = TCVM_Cart_Factory::Factory();
+			$user = TCVM_User_Factory::Factory();
 			
 			//check login
+			$loginUser 	  = $user->getLoginedUser();
+			if( !$loginUser ){
+				throw new Exception( "sorry, only login user can generate order");
+			}
+			
 			//check cart products
+			$cartProducts = $cart->getAllProducts();
+			if( count( $cartProducts ) == 0 ){
+				throw new Exception( "sorry, there is no products in the cart");
+			}
+			
 			//check shipping
 			
-			$userId = 1;
-			$cartProducts = $cart->getAllProducts();
+			
+			$userId = $loginUser['id'];
 			$shipping	  = $cart->getShipping();
 			$totalPrice	  = $cart->getTotalPrice();
 			
@@ -99,6 +110,18 @@
 		
 		
 		
+		
+		
+		public function adminStatus($orderId, $status) {
+			
+			$this->_changeStatus( $orderId , $status);
+			
+		}
+
+		public function getsOrder($conditions = array(), $order = null, $pageNo = null, $pageSize = null) {
+			return $this->_gets($conditions , $order , $pageNo , $pageSize);
+		}
+
 		public function setElectronicTransfer($orderId) {
 			
 			

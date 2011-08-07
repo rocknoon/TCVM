@@ -51,7 +51,16 @@ if( WeFlex_Application::GetInstance()->config->js->compress ){
               <td width="263"><div align="left"><img src="<?php echo $this->baseUrl()?>/images/logo.gif" width="210" height="70" /></div></td>
               <td width="761"><table width="100%" height="130" border="0" cellpadding="0" cellspacing="0">
                 <tr>
-                  <td><div align="right"><!-- InstanceBeginEditable name="EditRegion2" -->Demo<!-- InstanceEndEditable --></div></td>
+                  <td>
+                  	<div align="right" class="headerLogin">
+                  		<?php if( !$this->isLogin ):?>
+                        	<!-- InstanceBeginEditable name="EditRegion2" --><a href="<?php echo $this->url(array("action" => "login" , "controller" => "user"), 'default', true);?>">Login</a><!-- InstanceEndEditable -->
+                        <?php else:?>
+                        	<!-- InstanceBeginEditable name="EditRegion2" -->Welcome: <?php echo $this->loginUser['email']?> <a href="<?php echo $this->url(array("action" => "do-logout" , "controller" => "user"), 'default', true);?>">Logout</a><!-- InstanceEndEditable -->
+                        <?php endif;?>
+                  		
+                  	</div>
+                  </td>
                 </tr>
                 <tr>
                   <td height="45" valign="bottom"><div align="center">
@@ -92,13 +101,19 @@ if( WeFlex_Application::GetInstance()->config->js->compress ){
                             </tr>
                           </table>
                           <a href="#"></a><a href="#"></a></div></td>
+                          
+                          
+                        <?php if( !$this->isLogin ):?>
                         <td width="15%" ><div align="center">
                           <table width="100" border="0" cellpadding="0" cellspacing="0" class="topmenu">
                             <tr>
                               <td><div align="center"><a href="<?php echo $this->url(array("action" => "register" , "controller" => "user"), 'default', true);?>">Registration</a></div></td>
                             </tr>
                           </table>
-                        </div></td>
+                        </div>
+                        </td>
+                        <?php endif;?>
+                        
                       </tr>
                     </table>
                   </div></td>
@@ -217,6 +232,7 @@ if( WeFlex_Application::GetInstance()->config->js->compress ){
                                           </table>
                                   </div></td>
                                 </tr>
+                                <?php if( $this->isLogin ):?>
                                 <tr>
                                   <td><div align="left">
                                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -227,6 +243,7 @@ if( WeFlex_Application::GetInstance()->config->js->compress ){
                                           </table>
                                   </div></td>
                                 </tr>
+                                <?php endif;?>
                                 <tr>
                                   <td>&nbsp;</td>
                                 </tr>

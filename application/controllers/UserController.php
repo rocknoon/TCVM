@@ -15,11 +15,11 @@ class UserController extends TCVM_ZendX_Controller_Action_Front
 	public function orderAction(){
 		
 		$order = TCVM_Order_Factory::Factory();
+		$user  = TCVM_User_Factory::Factory();
 		
-		$userId = 1;
+		$loginUser = $user->getLoginedUser();
 		
-		
-		$orders = $order->getsUserOrder( $userId );
+		$orders = $order->getsUserOrder( $loginUser['id'] );
 		
 		$this->assign( "orders", $orders );
 		
@@ -65,6 +65,15 @@ class UserController extends TCVM_ZendX_Controller_Action_Front
 		$password 	= $this->_getParam( "password" );
 		
 		$this->_user->login($email, $password);
+		
+		$this->redirect( "index", "index" );
+		
+	}
+	
+	public function doLogoutAction(){
+	
+		
+		$this->_user->logout();
 		
 		$this->redirect( "index", "index" );
 		

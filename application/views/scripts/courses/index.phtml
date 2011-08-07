@@ -41,7 +41,14 @@
                               <tr>
                                 <td colspan="2" class="STYLE3">
                                 	<div align="left">Lecture Topics (tuition: $<?php echo $courses["price"]?>, application fee incl.)
-                                		<a title="push cart" href="<?php echo $this->url(array("action" => "do-push" , "controller" => "cart" , "product_type" => TCVM_Product_Imple::TYPE_COURSES , "product_id" => $courses["id"]), 'default', true);?>"><img src="<?php echo $this->baseUrl()?>/images/shopcart.gif" width="28" height="20" /></a>
+                                		<a title="push cart" href="
+                                		<?php if( $this->isLogin ):?>
+                                			<?php echo $this->url(array("action" => "do-push" , "controller" => "cart" , "product_type" => TCVM_Product_Imple::TYPE_COURSES , "product_id" => $courses["id"]), 'default', true);?>
+                                		<?php else:?>
+                                			<?php echo $this->url(array("action" => "login" , "controller" => "user" ), 'default', true);?>
+                                		<?php endif;?>
+                                		
+                                		"><img src="<?php echo $this->baseUrl()?>/images/shopcart.gif" width="28" height="20" /></a>
                                 	</div></td>
                               </tr>
                               

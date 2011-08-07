@@ -3,27 +3,27 @@
                 <table width="750" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td><p align="center" class="STYLE5">Registration</p>
-                      <form id="form1" name="form1" method="post" action="<?php echo $this->url(array("action" => "do-register" , "controller" => "user"), 'default', true);?>">
+                      <form id="form1" name="form1" method="post" onsubmit="return checkForm();" action="<?php echo $this->url(array("action" => "do-register" , "controller" => "user"), 'default', true);?>">
                         <table width="80%" border="1" align="center" cellpadding="10" cellspacing="0" bordercolor="#FFFFFF" bgcolor="#FCFCFC" class="STYLE2">
                         
                           <tr>
                             <td class="STYLE2"><div align="right">Email Address *</div></td>
                             <td><div align="left">
-                                <input name="email" type="text" class="input2" />
+                                <input name="email" id="email" type="text" class="input2" />
                             </div></td>
                           </tr>
                           
                           <tr>
                             <td class="STYLE2"><div align="right">Password *</div></td>
                             <td><div align="left">
-                                <input name="password" type="password" class="input2" />
+                                <input name="password" id="password" type="password" class="input2" />
                             </div></td>
                           </tr>
                           
                           <tr>
                             <td class="STYLE2"><div align="right">Re-type password *</div></td>
                             <td><div align="left">
-                                <input name="retype_password" type="password" class="input2" />
+                                <input name="retype_password" id="retype_password" type="password" class="input2" />
                             </div></td>
                           </tr>
                           
@@ -97,3 +97,30 @@
                   </tr>
                 </table>
                 <!-- InstanceEndEditable --></td>
+                
+                
+<script>
+	function checkForm(){
+
+		var isEmail = rocknoon.validate.is_email( $("#email").val() );
+		if( !isEmail ){
+			alert( "sorry, the email address is not correct." )
+			return false;
+		}
+
+		var isEmpty = rocknoon.validate.is_empty( $("#password").val() );
+		if( isEmpty ){
+			alert( "please fill in a password" );
+			return false;
+		}
+
+		var isSame = rocknoon.validate.is_same( $("#password").val(), $("#retype_password").val() );
+		if( !isSame ){
+			alert( "The passwords you type twice are not same" );
+			return false;
+		}
+		
+		return true;
+		
+	}
+</script>

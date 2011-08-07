@@ -1,0 +1,54 @@
+<div id="back_main">
+		<h2 class="cufon_h2">Order View</h2>
+
+		<form class="form" action="<?php echo $this->url(array(
+				'controller' => 'order', 
+				'action' => 'do-status', 
+				'module' => 'admin'
+				), null , true);?>" 
+				method="post">
+						
+		<input type="hidden" value="<?php echo $this->order['id']?>" name="id" id="id" />
+		
+		
+		<div>
+		<label>Order Id:</label>
+		<?php echo $this->order['id']?>
+		</div>
+		
+		<div>
+		<label>Total Price:</label>
+		<?php echo $this->order['total_price']?>
+		</div>
+		
+		
+		
+		<div>
+		<label>Status:</label>
+		<select name="status" id="status">
+			<option value="<?php echo TCVM_Order_Imple::STATUS_WAITTING_PAY?>">Waitting For Pay</option>
+			<option value="<?php echo TCVM_Order_Imple::STATUS_WAITTING_ELECTRONIC_TRANSFER?>">Waitting For Electronic Transfer</option>
+			<option value="<?php echo TCVM_Order_Imple::STATUS_CANCEL?>">Cancel</option>
+			<option value="<?php echo TCVM_Order_Imple::STATUS_SUCCESS?>">Success</option>
+		</select>
+		</div>
+		
+
+		
+
+		<div class="for_align_right">
+		<input type="submit" value="Submit" class="back_btn"/>
+		</div>		
+
+		</form>
+		
+</div>
+
+<script>
+
+
+	$("#status").val(<?php echo $this->order['status']?>);
+
+
+	
+</script>

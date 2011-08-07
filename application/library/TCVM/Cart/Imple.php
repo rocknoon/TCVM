@@ -32,7 +32,8 @@
 	
 			
 		public function clean() {
-			// TODO Auto-generated method stub
+			
+			WeFlex_Session::Set( self::SESSION_PRODUCTS , serialize(null) );
 			
 		}
 		
