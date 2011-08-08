@@ -1,0 +1,33 @@
+<div id="back_white_main">	
+
+	<h2 class="cufon_h2">Electronic Fund Transfer Management</h2>
+		
+		  
+          <table class="backend_show_book" cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr class="head">
+              <th>Order Id</th>
+              <th>Info</th>
+              <th>Add Date</th>
+        
+            </tr>
+            
+            <?php foreach( $this->etfs as $etf ):?>
+            <tr>
+              <td><?php echo $etf['order_id']?></td>
+              <td><?php echo $etf['info']?></td>
+              <td><?php echo date("Y-m-d" , $etf['date_add']) ?></td>
+              
+          
+            </tr>
+            <?php endforeach;?>
+            
+		 </table>
+		 <?php if($this->pagination):?>
+			 <?php echo $this->pagination ?>
+		 <?php endif;?>
+		 
+</div>
+
+
+	
+	

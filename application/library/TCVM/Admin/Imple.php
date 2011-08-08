@@ -84,7 +84,16 @@
 				throw new Exception ( "sorry you are not login" );
 			}
 			
+			if( !$password ){
+				throw new Exception ( "sorry new password could not be empty" );
+			}
 			
+			$username    = TCVM::GetInstance()->config->admin->username;
+			$newpassword = md5( $password );
+					
+			$model = TCVM_Admin_Model_Admin::GetInstance();
+			
+			$model->update( array( "password" => $newpassword ) , array( "username" => $username ) );
 			
 		}
 

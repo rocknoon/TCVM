@@ -67,6 +67,11 @@ class CartController extends TCVM_ZendX_Controller_Action_Front
 		$data['first_name'] = $this->_getParam( "first_name" );
 		$data['last_name'] = $this->_getParam( "last_name" );
 		$data['mobile'] = $this->_getParam( "mobile" );
+		$data['zip_code'] = $this->_getParam( "zip_code" );
+		$data['city'] = $this->_getParam( "city" );
+		$data['street'] = $this->_getParam( "street" );
+		$data['country'] = $this->_getParam( "country" );
+		
 		
 		$this->_cart->addShipping( $data );
 		

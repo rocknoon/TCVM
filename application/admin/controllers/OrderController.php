@@ -16,9 +16,16 @@
 		}
 
 		public function indexAction(){
-
-			$orders = $this->_order->getsOrder();
 			
+			$pageSize 	= 10;
+	    	$pageNo 	= $this->paginationNo();
+	    	
+			$orders = $this->_order->getsOrder( array() , "id DESC" , $pageNo , $pageSize);
+			$count  = $this->_order->getsOrderCount( array() );
+			
+			$pagination = $this->pagination( $count , $pageSize );
+			
+			$this->assign( "pagination" , $pagination);
 			$this->assign( "orders" , $orders );
 		
 		}

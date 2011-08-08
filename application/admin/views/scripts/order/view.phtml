@@ -21,6 +21,38 @@
 		<?php echo $this->order['total_price']?>
 		</div>
 		
+		<div>
+		<label>Products:</label>
+		<?php foreach($this->order['products'] as $product):?>
+			<?php echo $product['name'] ?> &nbsp;&nbsp; Amount: <?php echo $product['amount'] ?> &nbsp;&nbsp; Price:<?php echo $product['price'] * $product['amount'] ?><br/>
+		<?php endforeach;?>
+		</div>
+		
+		<div>
+		<label>Buyer First Name:</label>
+		<?php echo $this->order['first_name']?>
+		</div>
+		
+		<div>
+		<label>Buyer Last Name:</label>
+		<?php echo $this->order['last_name']?>
+		</div>
+		
+		<div>
+		<label>Buyer Mobile:</label>
+		<?php echo $this->order['mobile']?>
+		</div>
+		
+		<div>
+		<label>Buyer Address:</label>
+		<?php echo $this->order['street']?> <?php echo $this->order['city']?> <?php echo $this->order['country']?>
+		</div>
+		
+		<div>
+		<label>Zip code:</label>
+		<?php echo $this->order['zip_code']?>
+		</div>
+		
 		
 		
 		<div>

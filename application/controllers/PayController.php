@@ -30,6 +30,25 @@ class PayController extends TCVM_ZendX_Controller_Action_Front
     	$this->assign( "orderId", $orderId );
     	
     }
+    
+    public function applyForEtfAction(){
+    
+    	
+    	
+    }
+ 	
+	public function doApplyForEtfAction(){
+	
+		$data = array();
+		
+		$orderId = $this->_getParam( "order_id" );
+		$info    = $this->_getParam( "info" );
+		
+		$this->_pay->recordETF( $orderId, $info );
+		
+		$this->redirect( "success-etf" );
+		
+	}
 	
 	
 	
@@ -134,6 +153,12 @@ class PayController extends TCVM_ZendX_Controller_Action_Front
 	public function successAction(){
 		
 		$orderId = $this->_getParam( "order_id" );
+		
+	}
+	
+	public function successEtfAction(){
+		
+		
 		
 	}
 	

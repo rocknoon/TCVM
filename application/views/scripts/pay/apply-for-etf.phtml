@@ -1,0 +1,55 @@
+<td width="81%" align="center" valign="top"><!-- InstanceBeginEditable name="EditRegion1" -->
+                <p align="center" class="STYLE5">Electronic funds transfer </p>
+                <form id="form1" name="form1" method="post" action="<?php echo $this->url(array("action" => "do-apply-for-etf" , "controller" => "pay"), 'default', true);?>" onsubmit="return checkForm();">
+                  <table width="80%" border="1" align="center" cellpadding="10" cellspacing="0" bordercolor="#FFFFFF" bgcolor="#FCFCFC" class="STYLE2">
+                    
+                    <tr>
+                      <td class="STYLE2"><div align="right">Order ID </div></td>
+                      <td width="63%"><div align="left">
+                        <input name="order_id" id="order_id" type="text" class="input2" />
+                      </div></td>
+                    </tr>
+                    <tr>
+                      <td width="37%" class="STYLE2"><div align="right">Please input your EFT information here </div></td>
+                      <td width="63%"><div align="left">
+                      <textarea id="info" id="info" name="info" style="width:200px; height:60px;"></textarea>
+</div></td>
+                    </tr>
+                    <tr>
+                      <td class="STYLE2"></td>
+                      <td><div align="left">
+                        <input type="submit" name="Submit2" value="save" />
+                      </div></td>
+                    </tr>
+                  </table>
+                    </form>
+                <div align="center"></div>
+                <table width="750" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td>&nbsp;</td>
+                  </tr>
+                </table>
+                <!-- InstanceEndEditable --></td>
+                
+                
+<script>
+function checkForm(){
+
+	
+
+	var isEmpty = rocknoon.validate.is_empty( $("#order_id").val() );
+	if( isEmpty ){
+		alert( "please fill in order id" );
+		return false;
+	}
+
+	var isEmpty = rocknoon.validate.is_empty( $("#info").val() );
+	if( isEmpty ){
+		alert( "please fill in electronic payment information" );
+		return false;
+	}
+
+	return true;
+
+}
+</script>

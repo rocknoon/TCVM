@@ -15,18 +15,18 @@
                     </table>
                     
                     	
-                      <form id="form1" name="form1" method="post" action="<?php echo $this->url(array("action" => "do-shipping" , "controller" => "cart"), 'default', true);?>">
+                      <form id="form1" name="form1" method="post" action="<?php echo $this->url(array("action" => "do-shipping" , "controller" => "cart"), 'default', true);?>" onsubmit="return checkForm();">
                         <table width="80%" border="1" align="center" cellpadding="10" cellspacing="0" bordercolor="#FFFFFF" bgcolor="#FCFCFC" class="STYLE2">
                           <tr>
-                            <td width="37%" class="STYLE2"><div align="right">Frist Name </div></td>
+                            <td width="37%" class="STYLE2"><div align="right">Frist Name *</div></td>
                             <td width="63%"><div align="left">
-                                <input name="first_name" type="text" class="input2" />
+                                <input name="first_name" id="first_name" type="text" class="input2" />
                             </div></td>
                           </tr>
                           <tr>
-                            <td class="STYLE2"><div align="right">Last Name </div></td>
+                            <td class="STYLE2"><div align="right">Last Name *</div></td>
                             <td><div align="left">
-                                <input name="last_name" type="text" class="input2" />
+                                <input name="last_name" id="last_name" type="text" class="input2" />
                             </div></td>
                           </tr>
                           
@@ -34,6 +34,34 @@
                             <td class="STYLE2"><div align="right">Mobile</div></td>
                             <td><div align="left"><span class="STYLE1">
                                 <input name="mobile" type="text" class="input2" />
+                            </span></div></td>
+                          </tr>
+                          
+                          <tr>
+                            <td class="STYLE2"><div align="right">Street</div></td>
+                            <td><div align="left"><span class="STYLE1">
+                                <input name="street" type="text" class="input2" />
+                            </span></div></td>
+                          </tr>
+                          
+                          <tr>
+                            <td class="STYLE2"><div align="right">City</div></td>
+                            <td><div align="left"><span class="STYLE1">
+                                <input name="city" type="text" class="input2" />
+                            </span></div></td>
+                          </tr>
+                          
+                          <tr>
+                            <td class="STYLE2"><div align="right">Zip Code</div></td>
+                            <td><div align="left"><span class="STYLE1">
+                                <input name="zip_code" type="text" class="input2" />
+                            </span></div></td>
+                          </tr>
+                          
+                          <tr>
+                            <td class="STYLE2"><div align="right">Country</div></td>
+                            <td><div align="left"><span class="STYLE1">
+                                <input name="country" type="text" class="input2" />
                             </span></div></td>
                           </tr>
                           
@@ -55,3 +83,28 @@
                   </tr>
                 </table>
                 <!-- InstanceEndEditable --></td>
+                
+<script>
+
+	function checkForm(){
+
+		
+
+		var isEmpty = rocknoon.validate.is_empty( $("#first_name").val() );
+		if( isEmpty ){
+			alert( "please fill in your first name" );
+			return false;
+		}
+
+		var isEmpty = rocknoon.validate.is_empty( $("#last_name").val() );
+		if( isEmpty ){
+			alert( "please fill in your last name" );
+			return false;
+		}
+
+		
+		
+		return true;
+		
+	}
+</script>

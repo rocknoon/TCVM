@@ -122,6 +122,13 @@
 			return $this->_gets($conditions , $order , $pageNo , $pageSize);
 		}
 
+		
+		
+		public function getsOrderCount($conditions = array()) {
+			return $this->_getsCount($conditions);
+			
+		}
+
 		public function setElectronicTransfer($orderId) {
 			
 			
@@ -145,6 +152,10 @@
 			$orderInfo["first_name"] = $shipping['first_name'];
 			$orderInfo["last_name"] = $shipping['last_name'];
 			$orderInfo["mobile"] = $shipping['mobile'];
+			$orderInfo["zip_code"] = $shipping['zip_code'];
+			$orderInfo["country"] = $shipping['country'];
+			$orderInfo["city"] = $shipping['city'];
+			$orderInfo["street"] = $shipping['street'];
 			$orderInfo["total_price"] = $totalPrice;
 			$orderInfo["status"] 	= self::STATUS_WAITTING_PAY;
 			$orderInfo["date_add"] = time();
@@ -175,6 +186,10 @@
 			
 			$this->_orderModel->update( array( "status" => $status ), array( "id" => $orderId ) );
 			
+		}
+		
+		private function _getsCount( $conditions  ){
+			return $this->_orderModel->where( $conditions )->count();
 		}
 		
 		private function _gets( $conditions, $order = null, $pageNo = null , $pageSize = null ){

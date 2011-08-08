@@ -26,6 +26,12 @@ class UserController extends TCVM_ZendX_Controller_Action_Front
 		
 	}
 	
+	public function electronicFundTransferAction(){
+	
+		
+		
+	}
+	
 	public function registerAction(){
 		
 		$this->title( "TCVM Australia | Register" );
@@ -36,6 +42,8 @@ class UserController extends TCVM_ZendX_Controller_Action_Front
 	
 		$this->title( "TCVM Australia | Login" );
 	}
+	
+	
 	
 	public function doRegisterAction(){
 	

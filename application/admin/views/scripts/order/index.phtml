@@ -6,7 +6,7 @@
           <table class="backend_show_book" cellpadding="0" cellspacing="0" border="0" width="100%">
             <tr class="head">
               <th>ID</th>
-              <th>User</th>
+              <th>User Id</th>
               <th>Total Price</th>
               <th>Status</th>
               <th>Action</th>
@@ -17,7 +17,29 @@
               <td><?php echo $order['id']?></td>
               <td><?php echo $order['user_id']?></td>
               <td><?php echo $order['total_price']?></td>
-              <td><?php echo $order['status']?></td>
+              <td>
+              						<?php switch( $order['status'] ):
+                                  
+                                  	 case TCVM_Order_Imple::STATUS_WAITTING_PAY:?>
+                                    	Waitting For pay
+                                  	<?php break;?>
+                                  	
+                                  	<?php case TCVM_Order_Imple::STATUS_CANCEL:?>
+                                    	Cancel
+                                  	<?php break;?>
+                                  	
+                                  	<?php case TCVM_Order_Imple::STATUS_SUCCESS:?>
+                                    	Success
+                                  	<?php break;?>
+                                  	
+                                  	<?php case TCVM_Order_Imple::STATUS_WAITTING_ELECTRONIC_TRANSFER:?>
+                                    	Waitting for your electronic transfer
+                                  	<?php break;?>
+                                  	
+                                  <?php endswitch;?>
+             
+              
+              </td>
               <td>
               	<a href="<?php echo $this->url(array('controller' => 'order', 'action' => 'view', 'module' => 'admin' , "id" => $order['id']), "default" , true);?>">View Detail</a>
               </td>
@@ -25,6 +47,9 @@
             <?php endforeach;?>
             
 		 </table>
+		 <?php if($this->pagination):?>
+			 <?php echo $this->pagination ?>
+		 <?php endif;?>
 		 
 </div>
 

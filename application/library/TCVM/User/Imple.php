@@ -21,33 +21,27 @@
 			
 		}
 	
-			/* (non-PHPdoc)
-		 * @see TCVM_User_Interface::getsCount()
-		 */
+			
 		public function getsCount($conditions = null) {
-			// TODO Auto-generated method stub
+			
+			$this->_getsCount($conditions);
 			
 		}
 	
-			/* (non-PHPdoc)
-		 * @see TCVM_User_Interface::getUserById()
-		 */
+			
 		public function getUserById($id) {
 			// TODO Auto-generated method stub
 			
 		}
 	
-			/* (non-PHPdoc)
-		 * @see TCVM_User_Interface::getUsers()
-		 */
+			
 		public function getUsers($conditions = null, $order = null, $pageNo = null, $pageSize = null) {
-			// TODO Auto-generated method stub
+			
+			return $this->_getsUsers($conditions , $order , $pageNo , $pageSize );
 			
 		}
 	
-			/* (non-PHPdoc)
-		 * @see TCVM_User_Interface::isEmailExist()
-		 */
+			
 		public function isEmailExist($email) {
 			// TODO Auto-generated method stub
 			
@@ -124,6 +118,23 @@
 			$this->_model->insert( $data );
 			
 			
+		}
+		
+		private function _getsUsers( $conditions , $order , $pageNo , $pageSize  ){
+			
+			$datas = $this->_model->getAllByConditions( $conditions , $order , $pageNo , $pageSize  );  
+			
+			$rtn = array();
+			
+			foreach( $datas as $data ){
+				$rtn []= new TCVM_User_Entity_User( $data );
+			}
+			
+			return $rtn;
+		}
+		
+		private function _getsCount($conditions = null){
+			return $this->_model->where( $conditions )->count();
 		}
 		
 		private function _getLoginedUser(){

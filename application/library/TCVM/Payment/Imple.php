@@ -51,6 +51,42 @@
 			
 		}
 		
+		
+		
+		
+		
+		public function getsETF($conditions = array(), $order = null, $pageNo = null, $pageSize = null) {
+			
+			$model = TCVM_Payment_Model_ApplyETF::GetInstance();
+			
+			$rtn = $model->getAllByConditions($conditions, $order , $pageNo , $pageSize );
+			 
+			return $rtn;
+		}
+	
+			
+		public function getsETFCount($conditions = array()) {
+			
+			$model = TCVM_Payment_Model_ApplyETF::GetInstance();
+			
+			return $model->where( $conditions ) ->count();
+			
+		}
+	
+			
+		public function recordETF($orderId, $info) {
+			
+			$model = TCVM_Payment_Model_ApplyETF::GetInstance();
+			
+			$model->insert( array(
+				'order_id' => $orderId,
+				"info"	   => $info,
+				"date_add" => time()
+			) );
+			
+			
+		}
+
 		private function _orderSuccess( $orderId ){
 			
 			$order = TCVM_Order_Factory::Factory();

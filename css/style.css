@@ -178,6 +178,10 @@ body {
 
 /** Author Rocky **/
 
+a img{
+	border : 0px;	
+}
+
 .SUCCESS {
 	background-color:#F1FAD4;
 	border:1px solid #5B864A;
@@ -203,3 +207,4 @@ div.headerLogin a{
 	color: white;
 	
 }
+

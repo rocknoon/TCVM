@@ -27,6 +27,8 @@
 		 */
 		public function getsOrder( $conditions = array(), $order = null, $pageNo = null , $pageSize = null );
 		
+		public function getsOrderCount( $conditions = array() );
+		
 		
 		public function adminStatus( $orderId , $status );
 		

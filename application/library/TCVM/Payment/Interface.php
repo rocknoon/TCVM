@@ -30,6 +30,13 @@
 		 */
 		public function continuePay($orderId, $payment);
 		
+		/**
+		 * apply for etf
+		 */
+		public function recordETF( $orderId , $info );
 		
+		public function getsETF( $conditions = array() , $order = null , $pageNo = null, $pageSize = null );
+		
+		public function getsETFCount( $conditions = array() );
 	}
 ?>

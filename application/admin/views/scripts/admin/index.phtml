@@ -1,0 +1,59 @@
+<div id="back_main">
+		<h2 class="cufon_h2">Admin</h2>
+
+		<form class="form" action="<?php echo $this->url(array(
+				'controller' => 'admin', 
+				'action' => 'do-password', 
+				'module' => 'admin'
+				), null , true);?>" 
+				method="post" onsubmit="return checkForm();">
+						
+		
+		
+		
+		<div>
+		<label>New Password:</label>
+		<input type="password" id="password" name="password" />
+		</div>
+		
+		<div>
+		<label>Re-type Password:</label>
+		<input type="password" id="retype_password" name="retype_password" />
+		</div>
+		
+		
+		
+
+		<div class="for_align_right">
+		<input type="submit" value="Submit" class="back_btn"/>
+		</div>		
+
+		</form>
+		
+</div>
+
+<script>
+function checkForm(){
+
+
+	var isEmpty = rocknoon.validate.is_empty( $("#password").val() );
+	if( isEmpty ){
+		alert( "please fill in a password" );
+		return false;
+	}
+
+	var isSame = rocknoon.validate.is_same( $("#password").val(), $("#retype_password").val() );
+	if( !isSame ){
+		alert( "The passwords you type twice are not same" );
+		return false;
+	}
+	
+	return true;
+	
+}
+
+	
+
+
+	
+</script>

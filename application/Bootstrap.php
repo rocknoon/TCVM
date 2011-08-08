@@ -62,10 +62,20 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		    )
 		);
 		
+		$outofauRouter = new Zend_Controller_Router_Route(
+		    'out-of-australia',
+		    array(
+		        'controller' => 'page',
+		        'action'     => 'outofau',
+		    	'module'	 => 'default'
+		    )
+		);
+		
 		$router = $this->_front->getRouter();
 		
 		$router->addRoute('faculty', $facultyRouter);
 		$router->addRoute('certification', $certificationRouter);
+		$router->addRoute('outofau', $outofauRouter);
 		
 	}
 	
