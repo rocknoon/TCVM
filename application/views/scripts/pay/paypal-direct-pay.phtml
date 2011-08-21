@@ -8,7 +8,7 @@
                         </tr>
                       <tr>
                         <td><div align="center">
-                          <form action="<?php echo $this->url(array("action" => "do-paypal-direct-pay" , "controller" => "pay"), 'default', true);?>" method="post" enctype="multipart/form-data" name="form1" id="form1">
+                          <form onsubmit="return checkForm();" action="<?php echo $this->url(array("action" => "do-paypal-direct-pay" , "controller" => "pay"), 'default', true);?>" method="post" enctype="multipart/form-data" name="form1" id="form1">
                             
                             <input type="hidden" value="<?php echo $this->orderId?>" name="order_id" />
                             <table width="80%" border="1" cellpadding="10" cellspacing="0" bordercolor="#FFFFFF" bgcolor="#FCFCFC" class="STYLE2">
@@ -39,73 +39,56 @@
                               <tr>
                                 <td class="STYLE2"><div align="right">Credit Card Numeber </div></td>
                                 <td><div align="left">
-                                  <input name="credit_card_number" type="text" class="input2" />
+                                  <input name="credit_card_number" id="credit_card_number" type="text" class="input2" />
                                 </div></td>
                               </tr>
                               <tr>
-                                <td class="STYLE2"><div align="right">CVV2</div></td>
+                                <td class="STYLE2"><div align="right">CVV</div></td>
                                 <td><div align="left">
-                                  <input name="cvv2" type="text" class="input2" />
+                                  <input name="cvv2" id="cvv2" type="text" class="input2" />
                                 </div></td>
                               </tr>
                               <tr>
                                  <td class="STYLE2"><div align="right">Expiration Date </div></td>
                               	 <td><div align="left">
-                              	    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                      <td width="16%"><div align="left">
-                                        <input name="expired_month" type="text" class="input3" />
-                                      </div></td>
-                                      <td width="3%" class="STYLE2">/</td>
-                                 
-                                      <td width="16%"><div align="left">
-                                        <input name="expired_day" type="text" class="input3" />
-                                      </div></td>
-                                      <td width="3%" class="STYLE2">/</td>
-                                       <td width="16%"><div align="left">
-                                        <input name="expired_year" type="text" class="input3" />
-                                      </div></td>
-                                      <td width="50%">( month/day/year )</td>
-                                    </tr>
-                                  	</table>
-                                	</div>
-                                  </td>
+                                  <input name="expiration_date" id="expiration_date" type="text" class="input2" />
+                                </div></td>
                               </tr>
                               <tr>
                                 <td class="STYLE2"><div align="right">Frist Name </div></td>
                                 <td><div align="left">
-                                  <input name="first_name" type="text" class="input2" />
+                                  <input name="first_name" id="first_name" type="text" class="input2" />
                                 </div></td>
                               </tr>
                               <tr>
                                 <td class="STYLE2"><div align="right">Last Name </div></td>
                                 <td><div align="left">
-                                  <input name="last_name" type="text" class="input2" />
+                                  <input name="last_name" id="last_name" type="text" class="input2" />
                                 </div></td>
                               </tr>
                               
                               <tr>
                                 <td class="STYLE2"><div align="right">Street</div></td>
                                 <td><div align="left">
-                                  <input name="street" type="text" class="input1" />
+                                  <input name="street" id="street" type="text" class="input1" />
                                 </div></td>
                               </tr>
                               <tr>
                                 <td class="STYLE2"><div align="right">City</div></td>
                                 <td><div align="left">
-                                  <input name="city" type="text" class="input2" />
+                                  <input name="city" id="city" type="text" class="input2" />
                                 </div></td>
                               </tr>
                               <tr>
                                 <td class="STYLE2"><div align="right">State</div></td>
                                 <td><div align="left">
-                                  <input name="state" type="text" class="input2" />
+                                  <input name="state" id="state" type="text" class="input2" />
                                 </div></td>
                               </tr>
                               <tr>
                                 <td class="STYLE2"><div align="right">Zip</div></td>
                                 <td><div align="left">
-                                  <input name="zip" type="text" class="input2" />
+                                  <input name="zip" id="zip" type="text" class="input2" />
                                 </div></td>
                               </tr>
                            
@@ -125,3 +108,75 @@
                   </tr>
                 </table>
                 <!-- InstanceEndEditable --></td>
+                
+                
+                
+                <script>
+                	$("#expiration_date").datepicker({ dateFormat: 'dd-mm-yy' });
+		
+                	function checkForm(){
+
+                		
+
+                		var isEmpty = rocknoon.validate.is_empty( $("#credit_card_number").val() );
+                		if( isEmpty ){
+                			alert( "please fill in your credit card number" );
+                			return false;
+                		}
+
+                		var isEmpty = rocknoon.validate.is_empty( $("#cvv2").val() );
+                		if( isEmpty ){
+                			alert( "please fill in your Card Verification Value" );
+                			return false;
+                		}
+
+                		var isEmpty = rocknoon.validate.is_empty( $("#expiration_date").val() );
+                		if( isEmpty ){
+                			alert( "please select expiration date" );
+                			return false;
+                		}
+
+                		var isEmpty = rocknoon.validate.is_empty( $("#first_name").val() );
+                		if( isEmpty ){
+                			alert( "please fill in your first name" );
+                			return false;
+                		}
+
+                		var isEmpty = rocknoon.validate.is_empty( $("#last_name").val() );
+                		if( isEmpty ){
+                			alert( "please fill in your last name" );
+                			return false;
+                		}
+
+                		var isEmpty = rocknoon.validate.is_empty( $("#street").val() );
+                		if( isEmpty ){
+                			alert( "please fill in street" );
+                			return false;
+                		}
+
+                		var isEmpty = rocknoon.validate.is_empty( $("#city").val() );
+                		if( isEmpty ){
+                			alert( "please fill in city" );
+                			return false;
+                		}
+
+                		var isEmpty = rocknoon.validate.is_empty( $("#state").val() );
+                		if( isEmpty ){
+                			alert( "please fill in state" );
+                			return false;
+                		}
+
+                		var isEmpty = rocknoon.validate.is_empty( $("#zip").val() );
+                		if( isEmpty ){
+                			alert( "please fill in zip" );
+                			return false;
+                		}
+
+                		
+                		
+                		
+                		return true;
+                		
+                	}
+                	
+                </script>

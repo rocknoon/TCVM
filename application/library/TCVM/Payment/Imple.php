@@ -9,6 +9,8 @@
 		
 		public function payOrder($payment, $orderId, $params = null) {
 			
+			$this->_checkOrderCanBePaid($orderId);
+			
 			$paymentCore = TCVM_Payment_CoreFactory::Factory($payment);
 			
 			$paymentCore->payOrder( $orderId, $params );
@@ -99,6 +101,26 @@
 			$cart = TCVM_Cart_Factory::Factory();
 			
 			$cart->clean();
+			
+		}
+		
+		private function _checkOrderCanBePaid( $orderId ){
+			
+			$order = TCVM_Order_Factory::Factory();
+			
+			$order = $order->getOrder( $orderId );
+			
+			if( $order['status'] == TCVM_Order_Imple::STATUS_CANCEL ){
+				throw new Exception( "order is canceled" );
+			}
+			
+			if( $order['status'] == TCVM_Order_Imple::STATUS_EXPIRED ){
+				throw new Exception( "order is expired" );
+			}
+			
+			if( $order['status'] == TCVM_Order_Imple::STATUS_SUCCESS ){
+				throw new Exception( "order is already paid" );
+			}
 			
 		}
 

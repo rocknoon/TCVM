@@ -103,10 +103,21 @@
 			{ 
 				$ip = "Unknown"; 
 			}
+			
+			if( !self::IsIP( $ip ) ){
+				$ip = "127.0.0.1";
+			}
 
 			return $ip;
     		
     	}
+    	
+    	
+    	
+		private static function IsIP($str) {
+		    if(!strcmp(long2ip(sprintf("%u",ip2long($ip))),$ip)) return 1;
+		    else return 0;
+		}
     	
     	public static function GetEurPriceFormat( $price ){
     		

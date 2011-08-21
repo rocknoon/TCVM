@@ -68,7 +68,7 @@ class PayController extends TCVM_ZendX_Controller_Action_Front
 		$params = array();
 		$params['CREDITCARDTYPE'] = $this->_getParam( "credit_card_type" );
 		$params['ACCT'] = $this->_getParam( "credit_card_number" );
-		$params['EXPDATE'] = "092011";
+
 		$params['FIRSTNAME'] = $this->_getParam( "first_name" );
 		$params['LASTNAME'] = $this->_getParam( "last_name" );
 		$params['STREET'] = $this->_getParam( "street" );
@@ -77,12 +77,17 @@ class PayController extends TCVM_ZendX_Controller_Action_Front
 		$params['ZIP'] = $this->_getParam( "zip" );
 		$params['COUNTRYCODE'] = $this->_getParam( "country_code" );
 		$params['CVV2'] = $this->_getParam( "cvv2" );
+		
+		
+		$expirationDate = strtotime($this->_getParam( "expiration_date" ));
+		$expirationDate = date( "mY" , $expirationDate );
+		$params['EXPDATE'] = $expirationDate;
 
 		
 		try {
 			$this->_pay->payOrder( TCVM_Payment_Imple::PAYMENT_PAYPAL_DIRECT_PAY , $orderId, $params );
 		}catch(Exception $ex){
-			$this->redirect( "error", "pay", "default", array( "error" => $ex->getMessage() ) );
+			$this->redirect( "error-direct-pay", "pay", "default", array( "error" => $ex->getMessage() ) );
 		}
 		
 		$this->redirect( "success", "pay", "default",  array( "order_id" => $orderId ));
@@ -144,7 +149,15 @@ class PayController extends TCVM_ZendX_Controller_Action_Front
 		
 		$error = $this->_getParam( "error" );
 		
-		$orderId = $this->_getParam( "order_id" );
+		
+		$this->assign( "error" , $error );
+		
+	}
+	
+	public function errorDirectPayAction(){
+		
+		$error = $this->_getParam( "error" );
+		
 		
 		$this->assign( "error" , $error );
 		
