@@ -71,11 +71,34 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		    )
 		);
 		
+		$qigongRouter = new Zend_Controller_Router_Route(
+		    'qigong',
+		    array(
+		        'controller' => 'page',
+		        'action'     => 'qigong',
+		    	'module'	 => 'default'
+		    )
+		);
+		
+		$moxibustionRouter = new Zend_Controller_Router_Route(
+		    'moxibustion',
+		    array(
+		        'controller' => 'page',
+		        'action'     => 'moxibustion',
+		    	'module'	 => 'default'
+		    )
+		);
+		
+		
+		
+		
 		$router = $this->_front->getRouter();
 		
 		$router->addRoute('faculty', $facultyRouter);
 		$router->addRoute('certification', $certificationRouter);
 		$router->addRoute('outofau', $outofauRouter);
+		$router->addRoute('qigong', $qigongRouter);
+		$router->addRoute('moxibustion', $moxibustionRouter);
 		
 	}
 	

@@ -18,6 +18,17 @@ class PageController extends TCVM_ZendX_Controller_Action_Front
     {
        $this->title( "TCVM Australia | Out of Australia" );
     }
+    
+	public function qigongAction()
+    {
+       $this->title( "TCVM Australia | Qigong" );
+    }
+    
+    public function moxibustionAction(){
+    	
+    	$this->title( "TCVM Australia | Moxibustion" );
+    	
+    }
 
 
 }

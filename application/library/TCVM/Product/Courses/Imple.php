@@ -49,6 +49,7 @@
 			
 			$this->_updateImage( $id , $image );
 			
+			TCVM::CleanCache();
 			
 			return $id;
 			

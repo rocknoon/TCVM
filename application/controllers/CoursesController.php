@@ -16,7 +16,7 @@ class CoursesController extends TCVM_ZendX_Controller_Action_Front
     public function indexAction()
     {
         
-    	$coursess = $this->_product->getsVisibleCourses( "date_add DESC", null, null, TCVM::UseCache() );
+    	$coursess = $this->_product->getsVisibleCourses( "date_add ASC", null, null, TCVM::UseCache() );
     	
     	$this->assign( "coursess" , $coursess );
     	$this->title( "TCVM Australia | Courses" );
