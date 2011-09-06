@@ -144,7 +144,7 @@ class WeFlex_Image_Uploader
 
         }
         
-        return $is_vaild;
+        return $is_valid;
     }
     
     private function _process_target_path()
