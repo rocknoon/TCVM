@@ -242,6 +242,30 @@
 			
 		} 
 		
+		
+		/**
+		 * randomly generate random code
+		 * 
+		 * @param $source  the source chars
+		 * @param $length
+		 */
+		public static function GenerRandomCode( $source = array() , $length ){
+			
+			$randomCode = "";
+			
+			$sourceLength = count($source);
+			
+			for( $i = 0 ; $i < $length; $i ++ ){
+				
+				$index = rand( 0 , $sourceLength - 1 );
+				
+				$randomCode .= $source[$index];
+			}
+			
+			return $randomCode;
+			
+		}
+		
 	  private static function _IsExternalUrl( $url ){
     	
 	  	//hack

@@ -10,5 +10,7 @@
 
 (未完成)WeFlex_Image update.  不在支持 背景颜色 取而代之是 生成 png 并且背景色 设置成透明
 ？ 可以为每一规格设置是否支持 透明？
+
+2009-9-21 WeFlex_Util 加入 GenerRandomCode;
 	
 	
