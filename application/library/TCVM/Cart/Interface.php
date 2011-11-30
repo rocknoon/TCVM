@@ -2,60 +2,21 @@
 	interface TCVM_Cart_Interface
 	{
 		
-		/**
-		 * push a product into cart
-		 */
-		public function push ( $type , $id );
 		
-
+		public function getCartInfo();
 		
-		/**
-		 * remove one product from cart
-		 */
-		public function remove( $productType , $id );
-
-		/**
-		 * clean cart
-		 *
-		 */
-		public function clean();
+		public function basicInfo( $data );
 		
-		/**
-		 * change certain product amount
-		 */
-		public function amount( $productType , $productId, $amount );
+		public function product( $data );
 		
+		public function profileAttached( $data );
 		
-		/**
-		 * fill in the shipping information
-		 * 
-		 * $data = array(  
-		 * 	"phone"
-		 *  "first_name"
-		 *  "last_name"
-		 * )
-		 */
-		public function addShipping( $data );
+		public function payInfo($data);
 		
-		
-		public function getShipping();
-		
-		
-		/**
-		 * get cart all products
-		 */
-		public function getAllProducts();
-		
-		
-		/**
-		 * get cart total price
-		 *
-		 * @return float 
-		 */
-		public function getTotalPrice();
-		
+		public function doPay();
 		
 		public function callbackAfterUserPay();
+	
 		
 	}
 ?>

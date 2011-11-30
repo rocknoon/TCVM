@@ -71,7 +71,7 @@
 			$shipping	  = $cart->getShipping();
 			$totalPrice	  = $cart->getTotalPrice();
 			
-			return $this->_generateOrder( $userId, $cartProducts, $shipping, $totalPrice );
+			return $this->_generateOrder( $userId, $cartInfo, $totalPrice );
 			
 			
 		}
