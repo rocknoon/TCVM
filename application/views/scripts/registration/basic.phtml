@@ -1,0 +1,458 @@
+<td width="81%" align="center" valign="top"><!-- InstanceBeginEditable name="EditRegion1" -->
+                <div align="center"></div>
+                <table width="750" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td><p>&nbsp;</p>
+                      <p class="STYLE5" align="center" style='margin-top:9.0pt;margin-right:0cm;
+  margin-bottom:9.0pt;margin-left:0cm;text-align:center'><b style='mso-bidi-font-weight:
+  normal'><span style='font-size:14.0pt' lang="EN-US" xml:lang="EN-US">Chi Institute Australia
+                        2012 Small Animal Acupuncture Program
+                              <o:p></o:p>
+                      </span></b></p>
+                      <p class="STYLE5" align="center" style='margin-top:6.0pt;margin-right:0cm;
+  margin-bottom:6.0pt;margin-left:0cm;text-align:center'><b style='mso-bidi-font-weight:
+  normal'><span style='font-size:14.0pt' lang="EN-US" xml:lang="EN-US">Class Registration
+                        </span></b></p>
+                      <form id="form1" name="form1" method="post" action="<?php echo $this->url(array("action" => "post-basic" , "controller" => "registration"), 'default', true);?>">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <td><div align="left">
+                              <p style="margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;
+  margin-left:6.0pt;text-indent:-6.0pt">&nbsp;</p>
+                              <p style="margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;
+  margin-left:6.0pt;text-indent:-6.0pt"><span class="STYLE3"><b style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt' lang="EN-US" xml:lang="EN-US">STEP 1:
+                                Check courses previously attended.<span style='mso-spacerun:yes'>&nbsp; </span>If none, check appropriate box</span></b></span></p>
+                            </div></td>
+                            </tr>
+                          <tr>
+                            <td><table width="100%" border="1" align="center" cellpadding="10" cellspacing="0" bordercolor="#FFFFFF" bgcolor="#FCFCFC" class="STYLE2">
+                              <tr>
+                                <td width="22%" class="STYLE2"><div align="right">Veterinary Acupuncture:</div></td>
+                                <td width="78%"><div align="left">
+                                  <table width="100%" border="0" cellspacing="5" cellpadding="0">
+                                    <tr>
+                                      <td width="22%"><div align="left">
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                            <td width="21%"><input type="checkbox" name="veterinary_acupuncture[]" <?php if( in_array( "small_animal",  $this->cartInfo['basic']['veterinary_acupuncture']) ) echo "checked"?> value="small_animal" /></td>
+                                            <td width="79%">Small Animal</td>
+                                          </tr>
+                                        </table>
+                                      </div></td>
+                                      <td width="11%"><div align="left">
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                            <td width="15%"><input type="checkbox" name="veterinary_acupuncture[]" <?php if( in_array( "equine",  $this->cartInfo['basic']['veterinary_acupuncture']) ) echo "checked"?> value="equine" /></td>
+                                            <td width="85%"> Equine</td>
+                                          </tr>
+                                        </table>
+                                      </div></td>
+                                      <td width="11%"><div align="left">
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                            <td width="15%"><input type="checkbox" name="veterinary_acupuncture[]" <?php if( in_array( "mixed",  $this->cartInfo['basic']['veterinary_acupuncture']) ) echo "checked"?> value="mixed" /></td>
+                                            <td width="85%">Mixed</td>
+                                          </tr>
+                                        </table>
+                                      </div></td>
+                                      <td width="30%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                          <td width="15%">Where</td>
+                                          <td width="85%"><input name="textfield23322" type="text" class="input1" /></td>
+                                        </tr>
+                                      </table></td>
+                                      <td width="26%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                          <td width="15%">When</td>
+                                          <td><input name="textfield23323" type="text" class="input1" /></td>
+                                        </tr>
+                                      </table></td>
+                                    </tr>
+                                  </table>
+                                </div></td>
+                              </tr>
+                              <tr>
+                                <td class="STYLE2"><div align="right">TCVM Clinical Approach /  Herbology:</div></td>
+                                <td><div align="left">
+                                  <table width="100%" border="0" cellspacing="5" cellpadding="0">
+                                    <tr>
+                                      <td width="20%"><div align="left">
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                            <td width="15%"><input type="checkbox" name="checkbox22" value="checkbox" /></td>
+                                            <td width="85%">HT/LU</td>
+                                          </tr>
+                                        </table>
+                                      </div></td>
+                                      <td width="20%"><div align="left">
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                            <td width="15%"><input type="checkbox" name="checkbox222" value="checkbox" /></td>
+                                            <td width="85%">SP/ST</td>
+                                          </tr>
+                                        </table>
+                                      </div></td>
+                                      <td width="20%"><div align="left">
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                            <td width="15%"><input type="checkbox" name="checkbox2222" value="checkbox" /></td>
+                                            <td width="85%">Liver/Endo</td>
+                                          </tr>
+                                        </table>
+                                      </div></td>
+                                      <td width="20%"><div align="left">
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                            <td width="15%"><input type="checkbox" name="checkbox2223" value="checkbox" /></td>
+                                            <td width="85%">Kid/Geri</td>
+                                          </tr>
+                                        </table>
+                                      </div></td>
+                                      <td width="20%"><div align="left">
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                            <td width="15%"><input type="checkbox" name="checkbox2224" value="checkbox" /></td>
+                                            <td width="85%">Derma/Immu</td>
+                                          </tr>
+                                        </table>
+                                      </div></td>
+                                    </tr>
+                                  </table>
+                                </div></td>
+                              </tr>
+                              <tr>
+                                <td class="STYLE2"><div align="right">Advanced Programs:</div></td>
+                                <td><div align="left">
+                                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                      <td width="33%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                          <td width="15%"><input type="checkbox" name="checkbox223" value="checkbox" /></td>
+                                          <td width="85%">Certified ?Veterinary Tui-na</td>
+                                        </tr>
+                                      </table></td>
+                                      <td width="33%"><table width="98%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                          <td width="15%"><input type="checkbox" name="checkbox2232" value="checkbox" /></td>
+                                          <td width="85%"> TCVM  Annual Conference</td>
+                                        </tr>
+                                      </table></td>
+                                      <td width="33%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                          <td width="11%"><input type="checkbox" name="checkbox2233" value="checkbox" /></td>
+                                          <td width="89%">Tongue/Pulse Diagnosis &amp; Classical Points</td>
+                                        </tr>
+                                      </table></td>
+                                      </tr>
+                                  </table>
+                                </div></td>
+                              </tr>
+
+                              
+                            </table></td>
+                            </tr>
+                          <tr>
+                            <td><div align="left"><span class="STYLE10"><strong>STEP 2:Contact Information/Preferred Mailing  Address. Print or type all information clearly</strong></span></div></td>
+                            </tr>
+                          <tr>
+                            <td><table width="100%" border="1" align="center" cellpadding="10" cellspacing="0" bordercolor="#FFFFFF" bgcolor="#FCFCFC" class="STYLE2">
+                              <tr>
+                                <td width="14%" class="STYLE2"><div align="right">Name</div></td>
+                                <td width="86%"><div align="left">
+                                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                      <td width="33%"><div align="left">
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                              <td width="35%"><div align="right">First Name: </div></td>
+                                              <td width="65%"><div align="left">
+                                                <input name="textfield233222" type="text" class="input1" />
+                                              </div></td>
+                                            </tr>
+                                                                              </table>
+                                      </div></td>
+                                      <td width="33%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                          <td width="45%"><div align="right">Middle Name:</div></td>
+                                          <td width="55%"><input name="textfield233223" type="text" class="input1" /></td>
+                                        </tr>
+                                      </table></td>
+                                      <td width="33%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                          <td width="46%"><div align="right">Last Name:</div></td>
+                                          <td width="54%"><input name="textfield233224" type="text" class="input1" /></td>
+                                        </tr>
+                                      </table></td>
+                                    </tr>
+                                  </table>
+                                </div></td>
+                              </tr>
+                              <tr>
+                                <td class="STYLE2"><div align="right">Title</div>                                  <div align="left"></div></td>
+                                <td class="STYLE2"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                  <tr>
+                                    <td width="33%"><div align="left">
+                                      <input name="textfield2332222" type="text" class="input2" />
+                                    </div></td>
+                                    <td width="33%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                      <tr>
+                                        <td width="45%"><div align="right">Nickname:</div></td>
+                                        <td width="55%"><input name="textfield2332232" type="text" class="input1" /></td>
+                                      </tr>
+                                    </table></td>
+                                    <td width="33%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                      <tr>
+                                        <td width="45%"><div align="right">License#:</div></td>
+                                        <td width="55%"><input name="textfield2332233" type="text" class="input1" /></td>
+                                      </tr>
+                                    </table></td>
+                                  </tr>
+                                </table></td>
+                              </tr>
+                              <tr>
+                                <td class="STYLE2"><div align="right">Business</div></td>
+                                <td><div align="left">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                      <tr>
+                                        <td width="33%"><input name="textfield23322222" type="text" class="input2" /></td>
+                                        <td width="15%"><div align="right">Practice</div></td>
+                                        <td width="52%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                            <td width="25%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                              <tr>
+                                                <td width="15%"><input type="checkbox" name="checkbox2225" value="checkbox" /></td>
+                                                <td width="85%">SA</td>
+                                              </tr>
+                                            </table></td>
+                                            <td width="25%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                              <tr>
+                                                <td width="15%"><input type="checkbox" name="checkbox2226" value="checkbox" /></td>
+                                                <td width="85%">EQ</td>
+                                              </tr>
+                                            </table></td>
+                                            <td width="50%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                              <tr>
+                                                <td width="12%"><input type="checkbox" name="checkbox2227" value="checkbox" /></td>
+                                                <td width="19%">Othe</td>
+                                                <td width="69%"><input name="textfield23322332" type="text" class="input1" /></td>
+                                              </tr>
+                                            </table></td>
+                                          </tr>
+                                        </table></td>
+                                      </tr>
+                                    </table>
+                                </div></td>
+                              </tr>
+                              <tr>
+                                <td rowspan="2" class="STYLE2"><div align="right">Address (W) </div></td>
+                                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                  <tr>
+                                    <td width="14%">Street Address:</td>
+                                    <td width="86%"><div align="left">
+                                      <input name="textfield23322223" type="text" class="input4" size="300" />
+                                    </div></td>
+                                  </tr>
+                                </table></td>
+                              </tr>
+                              <tr>
+                                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                  <tr>
+                                    <td width="25%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                      <tr>
+                                        <td><div align="right">City:</div></td>
+                                        <td><label>
+                                          <div align="left">
+                                            <select name="select3" size="1">
+                                              <option>AAAAAAAAAA</option>
+                                              <option>BBBBBBBBB</option>
+                                            </select>
+                                            </div>
+                                        </label></td>
+                                      </tr>
+                                    </table></td>
+                                    <td width="25%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                      <tr>
+                                        <td><div align="right">State: </div></td>
+                                        <td><label>
+                                          <div align="left">
+                                            <select name="select4" size="1">
+                                              <option>AAAAAAAAAA</option>
+                                              <option>BBBBBBBB</option>
+                                            </select>
+                                            </div>
+                                        </label></td>
+                                      </tr>
+                                    </table></td>
+                                    <td width="25%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                      <tr>
+                                        <td width="46%"><div align="right">Postal Code</div></td>
+                                        <td width="54%"><div align="left">
+                                          <input name="textfield2332242" type="text" class="input3" />
+                                        </div></td>
+                                      </tr>
+                                    </table></td>
+                                    <td width="25%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                      <tr>
+                                        <td><div align="right">Country: </div></td>
+                                        <td><label>
+                                          <div align="left">
+                                            <select name="select5" size="1">
+                                              <option>AAAAAAAAAA</option>
+                                              <option>BBBBBBBB</option>
+                                            </select>
+                                            </div>
+                                        </label></td>
+                                      </tr>
+                                    </table></td>
+                                  </tr>
+                                </table></td>
+                              </tr>
+                              <tr>
+                                <td rowspan="2" class="STYLE2"><div align="right">Address (H) </div></td>
+                                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                      <td width="14%">Street Address:</td>
+                                      <td width="86%"><div align="left">
+                                          <input name="textfield23322223" type="text" class="input4" size="300" />
+                                      </div></td>
+                                    </tr>
+                                </table></td>
+                              </tr>
+                              <tr>
+                                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                      <td width="25%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                            <td><div align="right">City:</div></td>
+                                            <td><label>
+                                              <div align="left">
+                                                  <select name="select3" size="1">
+                                                    <option>AAAAAAAAAA</option>
+                                                    <option>BBBBBBBBB</option>
+                                                  </select>
+                                                </div>
+                                              </label></td>
+                                          </tr>
+                                      </table></td>
+                                      <td width="25%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                            <td><div align="right">State: </div></td>
+                                            <td><label>
+                                                <div align="left">
+                                                  <select name="select4" size="1">
+                                                    <option>AAAAAAAAAA</option>
+                                                    <option>BBBBBBBB</option>
+                                                  </select>
+                                                </div>
+                                              </label></td>
+                                          </tr>
+                                      </table></td>
+                                      <td width="25%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                            <td width="46%"><div align="right">Postal Code</div></td>
+                                            <td width="54%"><div align="left">
+                                                <input name="textfield2332242" type="text" class="input3" />
+                                            </div></td>
+                                          </tr>
+                                      </table></td>
+                                      <td width="25%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                            <td><div align="right">Country: </div></td>
+                                            <td><label>
+                                                <div align="left">
+                                                  <select name="select5" size="1">
+                                                    <option>AAAAAAAAAA</option>
+                                                    <option>BBBBBBBB</option>
+                                                  </select>
+                                                </div>
+                                              </label></td>
+                                          </tr>
+                                      </table></td>
+                                    </tr>
+                                </table></td>
+                                </tr>
+                              <tr>
+                                <td class="STYLE2"><div align="right">Telephone</div></td>
+                                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                  <tr>
+                                    <td width="33%"><table width="77%" border="0" cellspacing="0" cellpadding="0">
+                                      <tr>
+                                        <td width="15%"><div align="right">Work:</div></td>
+                                        <td width="85%"><div align="left">
+                                          <input name="textfield23322322" type="text" class="input1" />
+                                        </div></td>
+                                      </tr>
+                                    </table></td>
+                                    <td width="33%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                      <tr>
+                                        <td width="45%"><div align="right">Home:</div></td>
+                                        <td width="55%"><div align="left">
+                                            <input name="textfield233223222" type="text" class="input1" />
+                                        </div></td>
+                                      </tr>
+                                    </table></td>
+                                    <td width="33%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                      <tr>
+                                        <td width="45%"><div align="right">Fax:</div></td>
+                                        <td width="55%"><div align="left">
+                                            <input name="textfield233223223" type="text" class="input1" />
+                                        </div></td>
+                                      </tr>
+                                    </table></td>
+                                  </tr>
+                                </table></td>
+                              </tr>
+                              <tr>
+                                <td class="STYLE2"><div align="right">Email</div></td>
+                                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                  <tr>
+                                    <td width="30%"><table width="94%" border="0" cellspacing="0" cellpadding="0">
+                                      <tr>
+                                        <td width="26%"><div align="left">Public:</div></td>
+                                        <td width="74%"><div align="left">
+                                            <input name="textfield233223224" type="text" class="input2" />
+                                        </div></td>
+                                      </tr>
+                                    </table></td>
+                                    <td><table width="100%" border="0" align="right" cellpadding="0" cellspacing="0">
+                                      <tr>
+                                        <td width="53%"><div align="right">For Chi Institute only:</div></td>
+                                        <td width="47%"><div align="left">
+                                            <input name="textfield233223225" type="text" class="input2" />
+                                        </div></td>
+                                      </tr>
+                                    </table></td>
+                                  </tr>
+                                </table></td>
+                              </tr>
+                              <tr>
+                                <td colspan="2" class="STYLE2"><div align="right">
+                                  <table width="100%" border="0" cellspacing="5" cellpadding="0">
+                                    <tr>
+                                      <td width="50%"><div align="right">
+                                        <input type="submit" name="Submit" value="Save" />
+                                      </div></td>
+                                      <td width="50%"><div align="left">
+                                        <input type="submit" name="Submit2" value="Next Step&gt;" />
+                                      </div></td>
+                                    </tr>
+                                  </table>
+                                </div></td>
+                                </tr>
+                            </table></td>
+                            </tr>
+                          <tr>
+                            <td>&nbsp;</td>
+                          </tr>
+                          <tr>
+                            <td>&nbsp;</td>
+                          </tr>
+                        </table>
+                          </form>
+                      <p class="STYLE5" align="center" style='margin-top:6.0pt;margin-right:0cm;
+  margin-bottom:6.0pt;margin-left:0cm;text-align:center'>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p></td>
+                  </tr>
+                </table>
+                <!-- InstanceEndEditable --></td>

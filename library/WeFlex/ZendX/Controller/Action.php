@@ -9,35 +9,11 @@
 			
 		}
 		
-		private function _renderGlobalVariable(){
-	    	
-	    	$this->assign( 'action' , $this->_getParam( 'action' ) );
-	    	$this->assign( 'controller' , $this->_getParam( 'controller' ) );
-	    	$this->assign( 'module' , $this->_getParam( 'module' ) );
-	    	
-	    }
 		
-		//filter un-security input
-		protected function _getParam($paramName, $default = null) {
-			
-			$str = parent::_getParam( $paramName , $default );
-			
-		    $farr = array(
-		        "/<(\/?)(script|i?frame|style|html|body|title|link|meta|\?|\%)([^>]*?)>/isU",//过滤 <script 等可能引入恶意内容或恶意改变显示布局的代码,如果不需要插入flash等,还可以加入<object的过滤
-		        "/(<[^>]*)on[a-zA-Z]+\s*=([^>]*>)/isU",//过滤JavaScript的on事件
-		    );
-		    $tarr = array(
-		        "＜\\1\\2\\3＞", //如果要直接清除不安全的标签，这里可以留空
-		        "\\1\\2",
-		    );
-			
-		    if( is_string( $str ) ){
-		    	$str = preg_replace($farr,$tarr,$str);
-		    }
-		    
-		    return $str;
+		public function layout( $layout ){
+			$this->_helper->layout->setLayout( $layout );
 		}
-
+		
 		public function assign( $spec, $value = null ){
 			$this->view->assign($spec , $value);
 		}
@@ -88,6 +64,14 @@
 		}
 		
 		/**
+		 * redirect to a external url
+		 * @param string $url
+		 */
+		public function redirectUrl( $url ){
+			$this->_helper->redirector->gotoUrl($url);
+		}
+		
+		/**
 		 * translate quick using
 		 */
 		public function _($messageId, $locale = null){
@@ -104,7 +88,12 @@
 		 */
 		
 		public function appendJs($file){
-			$usingMergeJs = WeFlex_Application::GetInstance()->config->js->compress;
+			
+			$usingMergeJs = false;
+			if( WeFlex_Application::GetInstance()->config->js && WeFlex_Application::GetInstance()->config->js->compress ){
+				$usingMergeJs = WeFlex_Application::GetInstance()->config->js->compress;
+			}
+			
 			if( !$usingMergeJs ){
 				$this->view->headScript()->appendFile( $this->view->baseUrl() 	.'/' . $file, 	'text/javascript');
 			}
@@ -125,6 +114,60 @@
 		public function jsonEncode( $array ){
 			return Zend_Json::encode( $array );
 		}
+		
+		
+		public function checkMethod( $method ){
+			
+			$method = strtoupper( $method );
+	
+			switch( $method ){
+				
+				case 'POST':
+					$flag = $this->getRequest()->isPost();
+					break;
+				case 'GET':
+					$flag = $this->getRequest()->isGet();
+					break;
+				case 'PUT':
+					$flag = $this->getRequest()->isPut();
+					break;
+				case 'DELETE':
+					$flag = $this->getRequest()->isDelete();
+					break;
+				default:
+					throw new Exception( 'No Support Http Method' );
+					break;
+				
+			}
+			
+			if( !$flag ){	
+				throw new Exception("This request need http method :" . $method );
+			}
+			
+			
+			
+		}
+		
+		
+		private function _renderGlobalVariable(){
+	    	
+	    	$this->assign( 'action' , $this->_getParam( 'action' ) );
+	    	$this->assign( 'controller' , $this->_getParam( 'controller' ) );
+	    	$this->assign( 'module' , $this->_getParam( 'module' ) );
+	    	
+	    }
+	    
+	    protected function _getFilterParams(){
+	    	
+	    	$data = $this->_getAllParams();
+	    	unset( $data['controller'] );
+	    	unset( $data['action'] );
+	    	unset( $data['module'] );
+	    	
+	    	return $data;
+	    	
+	    	
+	    }
 		
 		
 	}

@@ -14,13 +14,7 @@ require_once 'Db/Model.php';
 	{
 		
 				
-		const HOST 		= 'host';
-		const ADAPTER	= 'adpter';
-		const USER		= 'username';
-		const PWD		= 'password';
-		const DATABASE	= 'database';
-		const TABLE		= 'table';
-		
+
 		const TABLE_PRIMARY_KEY	=	'primary_key';
 		
 
@@ -52,5 +46,28 @@ require_once 'Db/Model.php';
 		public static function CreateModel( $options ){
 			return new WeFlex_Db_Model( $options );
 		}
+		
+		/**
+		 * execute a query
+		 * $query sql
+		 */
+		public static function Query( $query , $bind = array() ){
+			$adapter = WeFlex_Db_Adapter_Creator::Create();
+			$rtn = $adapter->query( $query , $bind );
+			return $rtn->fetchAll();
+		}
+		
+		
+		public static function QuoteInto($text, $value, $type = null, $count = null){
+			$adapter = WeFlex_Db_Adapter_Creator::Create();
+			return $adapter->quoteInto($text, $value, $type, $count);
+		}
+		
+		
+		public static function Quote($value , $type = null){
+			$adapter = WeFlex_Db_Adapter_Creator::Create();
+			return $adapter->quote( $value , $type );
+		}
+		
 	}
 ?>

@@ -49,7 +49,7 @@
 		 *
 		 */	
 		public function requestAuthority(){
-				 
+		
 			
 			$token = $this->_consumer->getRequestToken();
 			

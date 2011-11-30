@@ -12,7 +12,7 @@
 		
 		
 		public function basicInfo($data) {	
-			$this->_session( self::STEP_BASIC , $data );
+			$this->_setSession( self::STEP_BASIC , $data );
 		}
 		
 		
@@ -23,19 +23,19 @@
 		}
 
 		public function payInfo($data) {
-			$this->_session( self::STEP_BASIC , $data );
+			$this->_setSession( self::STEP_BASIC , $data );
 			
 		}
 	
 			
 		public function product($data) {
-			$this->_session( self::STEP_BASIC , $data );
+			$this->_setSession( self::STEP_BASIC , $data );
 			
 		}
 	
 		
 		public function profileAttached($data) {
-			$this->_session( self::STEP_BASIC , $data );
+			$this->_setSession( self::STEP_BASIC , $data );
 			
 		}
 		
@@ -55,6 +55,7 @@
 			$cartSession = $this->_getSession();
 			$cartSession[$step] = $data;
 			
+			WeFlex_Session::Set( self::SESSION_CART, $cartSession );
 			
 		}
 		
@@ -68,19 +69,19 @@
 				$session = array();
 			}
 			
-			if( !$session[self::STEP_BASIC] ){
+			if( !isset($session[self::STEP_BASIC]) ){
 				$session[self::STEP_BASIC] = array();
 			}
 			
-			if( !$session[self::STEP_PAYINFO] ){
+			if( !isset($session[self::STEP_PAYINFO]) ){
 				$session[self::STEP_PAYINFO] = array();
 			}
 				
-			if( !$session[self::STEP_PRODUCT] ){
+			if( !isset($session[self::STEP_PRODUCT]) ){
 				$session[self::STEP_PRODUCT] = array();
 			}
 			
-			if( !$session[self::STEP_PROFILE] ){
+			if( !isset($session[self::STEP_PROFILE]) ){
 				$session[self::STEP_PRODUCT] = array();
 			}
 			

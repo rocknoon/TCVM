@@ -134,11 +134,11 @@ class WeFlex_Pagination
         $upRow   = $this->_getNowPage() - 1;
         $downRow = $this->_getNowPage() + 1;
         if ($upRow>0){
-            $upPage = '<li class="item prev_item"><a href="'.$this->_generUrl($upRow).'">previous</a></li>';
+            $upPage = '<a class="prev" href="'.$this->_generUrl($upRow).'">Vorige</a>';
         }
 
         if ($downRow <= $this->totalPages){
-            $downPage='<li class="item next_item"><a href="'.$this->_generUrl($downRow).'">next</a></li>';
+            $downPage='<a  class="next" href="'.$this->_generUrl($downRow).'">Volgende</a>';
         }
 
         $pagecount = $this->totalPages;
@@ -165,7 +165,7 @@ class WeFlex_Pagination
                 $linkPage .= $this->makeItemHtml($i,$curpage);
             }
             //加...
-            $linkPage.='<li>...</li>';
+            $linkPage.='<a>...</a>';
             //加后2页
             $linkPage .= $this->makeItemHtml(($pagecount-1),$curpage);
             $linkPage .= $this->makeItemHtml(($pagecount),$curpage);
@@ -178,14 +178,14 @@ class WeFlex_Pagination
             $linkPage .= $this->makeItemHtml(1,$curpage);
             $linkPage .= $this->makeItemHtml(2,$curpage);
             //加...
-            $linkPage.='<li>...</li>';
+            $linkPage.='<a>...</a>';
             //加当前页前后各2页
             for($i=$curpage-2;$i<=$curpage+2;$i++)
             {
                 $linkPage .= $this->makeItemHtml($i,$curpage);
             }
             //加...
-            $linkPage.='<li>...</li>';
+            $linkPage.='<a>...</a>';
             //加后两页
             $linkPage .= $this->makeItemHtml(($pagecount-1),$curpage);
             $linkPage .= $this->makeItemHtml(($pagecount),$curpage);
@@ -198,7 +198,7 @@ class WeFlex_Pagination
             $linkPage .= $this->makeItemHtml(1,$curpage);
             $linkPage .= $this->makeItemHtml(2,$curpage);
             //加...
-            $linkPage.='<li>...</li>';
+            $linkPage.='<a>...</a>';
             //加最后九页
             for($i=$pagecount-9;$i<=$pagecount;$i++)
             {
@@ -206,7 +206,7 @@ class WeFlex_Pagination
             }
         }
         
-        $pageStr = '<div class="'.$this->className.'" ><ul>'.$upPage.$linkPage.$downPage.'</ul><div class="clear" ></div></div>';
+        $pageStr = '<p class="'.$this->className.'" >'.$upPage.$linkPage.$downPage.'</p>';
 
         return $pageStr;
     }
@@ -232,7 +232,7 @@ class WeFlex_Pagination
     	if( $pageNo && !$this->router ){
     		$requestParams = $this->zendRequest->getParams();
     		$requestParams[$this->pageNoKey] = $pageNo;
-    		return $this->zendView->url($requestParams , null , true);
+    		return $this->zendView->url($requestParams , "default" , true);
     	}else{
     		$requestParams = array();
     		$requestParams[$this->pageNoKey] = $pageNo;
@@ -255,11 +255,11 @@ class WeFlex_Pagination
     {
             if($i==$curpage)
             {
-                $rtn='<li class="item current_item"><a href="'.$this->_generUrl( $i ).'" >'.$i.'</a></li>';
+                $rtn='<a class="current" href="'.$this->_generUrl( $i ).'" >'.$i.'</a>';
             }
             else
             {
-                $rtn='<li class="item"><a href="'.$this->_generUrl( $i ).'" >'.$i.'</a></li>';
+                $rtn='<a href="'.$this->_generUrl( $i ).'" >'.$i.'</a>';
             }
             return $rtn;
     }

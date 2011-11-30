@@ -12,10 +12,10 @@
  *
  */
 
-require_once 'Zend/ZendAdapterFactory.php';
+require_once 'Adapter/Creator.php';
 
 
-	class WeFlex_Db_Model
+	abstract class WeFlex_Db_Model
 	{
 		
 		
@@ -31,30 +31,14 @@ require_once 'Zend/ZendAdapterFactory.php';
 		 */
 		protected $_adapter;
 		
-		function __construct( $options = null ){
+		function __construct(){
 			
-			
-			if( !$options ){				
-				$options = array(
-		   			WeFlex_Db::ADAPTER   => WeFlex_Application::GetInstance()->config->db->adapter , 
-		   			WeFlex_Db::DATABASE  => WeFlex_Application::GetInstance()->config->db->database , 
-		   			WeFlex_Db::HOST 	 => WeFlex_Application::GetInstance()->config->db->host ,
-		   			WeFlex_Db::USER 	 => WeFlex_Application::GetInstance()->config->db->user ,
-		   			WeFlex_Db::PWD		 =>	WeFlex_Application::GetInstance()->config->db->pwd  ,
-		   			WeFlex_Db::TABLE	 => $this->_tableName
-   				);
-			}
-			
-			
-			$this->setOptions( $options );
+			$this->_adapter		=   WeFlex_Db_Adapter_Creator::Create();     
+			$this->_selector	=	$this->_adapter->select();
+			$this->_initSelector();
+				
 		}
 		
-		public function setOptions( $options ){
-			$this->_adapter		=   WeFlex_Db_ZendAdapterFactory::factory($options);     
-			$this->_selector	=	$this->_adapter->select();
-			$this->_tableName 	=   $options[WeFlex_Db::TABLE];
-			$this->_initSelector();
-		}
 		
 		public function setTable( $tableName ){
 			$this->_tableName = $tableName;
@@ -63,12 +47,17 @@ require_once 'Zend/ZendAdapterFactory.php';
 		
 		/**
 		 * init the select
-		 *
 		 */
 		private function _initSelector(){
+			
+			if( !$this->_tableName ){
+				throw new Exception( "if you wanna use model, please specify the table name first" );
+			}
+			
 			$this->_selector->reset();
 			$this->_selector->from( $this->_tableName );
 		}
+		
 		
 		public function getTableName(){
 			return $this->_tableName;
@@ -228,17 +217,7 @@ require_once 'Zend/ZendAdapterFactory.php';
 			return $id;
 		}
 		
-		/**
-		 * query sql 
-		 *
-		 * @param String $sql
-		 * @return array
-		 */
-		public function query( $sql ){
-			$result = $this->_adapter->query( $sql );
-			return $result->fetchAll();
-		}
-		
+
 		
 		/**
 		 * array( 'key' => 1 );
@@ -312,19 +291,6 @@ require_once 'Zend/ZendAdapterFactory.php';
 			return $this->_selector->assemble();
 		}
 		
-		/**
-		 * quote a query
-		 * see more in zend db
-		 * @return String
-		 */
-		public function quoteInto($text, $value, $type = null, $count = null){
-			return $this->_adapter->quoteInto($text, $value, $type, $count);
-		}
-		
-		public function quote($value , $type = null){
-			return $this->_adapter->quote( $value , $type );
-		}
-		
 		/*
 		 * quickly use of find one by conditions
 		 * $model->getOneByCondtions( array( 'id' => 1 , 'name' => 2 , 'age' => array( 'min' , 18 ) ) )
@@ -378,6 +344,43 @@ require_once 'Zend/ZendAdapterFactory.php';
 			
 			return $this->fetchAll();
 		}
+		
+		
+		
+		
+		
+		
+		
+		
+		//=========== deprecated methods ==========//
+		
+		
+		/**
+		 * quote a query
+		 * see more in zend db
+		 * @return String
+		 */
+		public function quoteInto($text, $value, $type = null, $count = null){
+			return $this->_adapter->quoteInto($text, $value, $type, $count);
+		}
+		
+		public function quote($value , $type = null){
+			return $this->_adapter->quote( $value , $type );
+		}
+		
+		/**
+		 * query sql 
+		 *
+		 * @param String $sql
+		 * @return array
+		 */
+		public function query( $sql , $bind = array() ){
+			$result = $this->_adapter->query( $sql , $bind );
+			return $result->fetchAll();
+		}
+		
+		
+		
 		
 		
 		protected function _translateToZendWhere( $conditions ){
