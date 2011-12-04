@@ -34,6 +34,7 @@
 	    		$this->assign( "loginUser" , $loginUser );
 	    	}
 	    	
+	    	Zend_Registry::set( "IS_LOGIN" , $isLogin);
 	    	$this->assign( "isLogin" , $isLogin );
 	    }
 	    

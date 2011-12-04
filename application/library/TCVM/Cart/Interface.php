@@ -13,6 +13,12 @@
 		
 		public function payInfo($data);
 		
+		public function isMeNewUser();
+		
+		public function pushProduct( $id , $type );
+		
+		public function fifthSessionDeduct();
+		
 		public function doPay();
 		
 		public function callbackAfterUserPay();

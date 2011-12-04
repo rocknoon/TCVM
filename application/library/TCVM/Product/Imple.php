@@ -1,82 +1,60 @@
 <?php 
 	class TCVM_Product_Imple implements TCVM_Product_Interface{
 		
-		const TYPE_COURSES = 1;
 		
-		const CACHE_GETS_VISIBLE_COURSES = "cache_product_gets_visible_courses";
+		public function getCourses() {
+			
 		
-		
-		public function delete($productType, $productId) {
-			
-			$core = TCVM_Product_CoreFactory::Factory( $productType );
-			return $core->delete( $productId );
-			
-		}
-	
-			
-		public function get($productType, $id) {
-			
-			$core = TCVM_Product_CoreFactory::Factory( $productType );
-			return $core->get( $id );
-			
-		}
-	
-			
-		public function gets($productType, $conditions = array(), $order = null, $pageNo = null, $pageSize = null) {
-			
-			$core = TCVM_Product_CoreFactory::Factory( $productType );
-			return $core->gets( $conditions , $order, $pageNo , $pageSize );
-			
-			
-		}
-	
-			
-		public function getsVisibleCourses($order = null, $pageNo = null, $pageSize = null, $cache = false) {
-			
-			
-			if( $cache ){
-				
-				/**
-				 * local from cache
-				 */
-				$cache = Zend_Registry::get( 'cache' );
-				
-				//build namespace
-				$namespace = self::CACHE_GETS_VISIBLE_COURSES . '_' . WeFlex_Util::GenerNameForCacheKey( $order ) . "_" . intval($pageNo) . "_" . intval( $pageSize ); 
-				
-				if(!$result = $cache->load( $namespace )) {
-					$result = $this->_getsVisibleCourses( $order, $pageNo, $pageSize  );
-				    $cache->save( $result ,  $namespace );
-				} 
-				
-				return $result;
-				
-			}else{
-				return $this->_getsVisibleCourses( $order, $pageNo, $pageSize  );
-			}
-			
-			
-			
-		}
-	
-			
-		public function save($productType, $data) {
-			
-			$core = TCVM_Product_CoreFactory::Factory( $productType );
-			return $core->save( $data );
+			return $this->_getCourses();
+		 
+		    					
+		    					
+
+  	
+
 			
 		}
 		
-		private function _getsVisibleCourses( $order, $pageNo, $pageSize ){
+		public function getById($id) {
 			
-			$course = TCVM_Product_CoreFactory::Factory(self::TYPE_COURSES);
-			
-			$conditions = array();
-			$conditions['visible'] = intval( true );
-			
-			return $course->gets( $conditions, $order, $pageNo , $pageSize );  
+			$courses = $this->_getCourses();
+			return $courses[$id];
 			
 		}
+		
+		private function _getCourses(){
+			
+			$session1 = array();
+			$session1["id"] = 1;
+			$session1["name"] = "Session 1";
+			$session1["image"] = "";
+			$session1["time_start"] = array( "year" => "2012","month" => 5,"date"  => 1);
+			$session1["time_end"] =  array( "year" => "2012","month" => 6,"date"  => 1);
+			$session1["price"] =  array("before" => 1024,"now"    => 1080 );
+			
+			
+			
+			$session2 = array();
+			$session2["id"] = 2;
+			$session2["name"] = "Session 2";
+			$session2["image"] = "";
+			$session2["time_start"] = array( "year" => "2012","month" => 4,"date"  => 1);
+			$session2["time_end"] =  array( "year" => "2012","month" => 5,"date"  => 1);
+			$session2["price"] =  array("before" => 222,"now"    => 333 );
+			
+			
+			$rtn = array( $session1["id"] => $session1,
+						  $session2["id"] => $session2  );
+			
+			return $rtn;
+			
+		}
+
+		
+		
+
+		
+		
 		
 		
 		

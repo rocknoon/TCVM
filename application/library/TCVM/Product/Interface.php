@@ -2,25 +2,41 @@
 	interface TCVM_Product_Interface
 	{
 		
-		/**
-		 * add product
-		 */
-		public function save( $productType , $data );
-		
-		public function delete( $productType , $productId );
-		
-		public function gets( $productType, $conditions = array(), $order = null , $pageNo = null, $pageSize = null  );
-		
-		public function get( $productType, $id );
-		
-		
-		
 		
 		/**
-		 *
-		 * for certain product
 		 * 
+		 * return array(
+		 * 	  array(
+		 *      "id"
+		 *      "name",
+		 *      "picture",
+		 *      "time_start" => array( 
+		 *      	"year" => "2012",
+		 *          "month" => 5,
+		 *          "date"  => 1
+		 *     	 )
+		 *     "time_end"   => rray( 
+		 *      	"year" => "2012",
+		 *          "month" => 5,
+		 *          "date"  => 1
+		 *     ),
+		 *     "price" => array(
+		 *     	"before" => 1024,
+		 *      "now"    => 1080
+		 *     )
+		 *    )
+		 * 	
+		 * )
 		 */
-		public function getsVisibleCourses( $order = null , $pageNo = null , $pageSize = null, $cache = false );
+		public function getCourses();
+		
+		
+		public function getById( $id );
+		
+		
+		
+		
+		
+		
 	}
 ?>
