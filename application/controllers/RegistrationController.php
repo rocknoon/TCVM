@@ -61,6 +61,31 @@ class RegistrationController extends TCVM_ZendX_Controller_Action_Front
 		
 	}
 	
+	public function paymethodAction(){
+	
+		$this->_renderCartInfo();
+		
+		
+	}
+	
+	
+	public function profileAction(){
+	
+		$this->_renderCartInfo();
+		
+		
+	}
+	
+	public function postPaymethodAction(){
+	
+		$data = $this->_getFilterParams();
+		
+		$this->_cart->payInfo( $data );
+		
+		$this->redirect( "profile" , "registration" );
+		
+	}
+	
 	public function postBasicAction(){
 		
 		$data = array();
