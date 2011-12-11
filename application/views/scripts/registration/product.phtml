@@ -55,10 +55,14 @@
                                       <tr>
                                         <td width="4%"><div align="right">
                                           <input type="radio" 
-                                          <?php if( key_exists( $id , $this->cartInfo[TCVM_Cart_Imple::STEP_PRODUCT]["products"]) && $this->cartInfo[TCVM_Cart_Imple::STEP_PRODUCT]["products"][$id] == "before" ):?>
+                                          <?php if( key_exists( $id , $this->cartInfo[TCVM_Cart_Imple::STEP_PRODUCT]["products"]) && $this->cartInfo[TCVM_Cart_Imple::STEP_PRODUCT]["products"][$id]["type"] == "before" ):?>
                                           checked
                                           <?php endif;?>
-                                          name="products[<?php echo $course["id"]?>]" value="before" onclick="chooseProduct( <?php echo $course["id"]?> , 'before' )" />
+                                          name="products[<?php echo $course["id"]?>]" value="before" onclick="chooseProduct( <?php echo $course["id"]?> , 'before' )" 
+                                          
+                                          <?php if( !TCVM_Product_Factory::Factory()->canGetBeforePrice($course["id"]) )echo "disabled"?>
+                                          
+                                           />
                                         </div></td>
                                         <td width="96%"><div align="left">AU $<?php echo $course["price"]["before"]?> (GST inclusive)paid before April 1,  2012 </div></td>
                                       </tr>
@@ -69,7 +73,7 @@
                                       <tr>
                                         <td width="4%"><div align="right">
                                             <input type="radio"  
-                                            <?php if( key_exists( $id , $this->cartInfo[TCVM_Cart_Imple::STEP_PRODUCT]["products"]) && $this->cartInfo[TCVM_Cart_Imple::STEP_PRODUCT]["products"][$id] == "now" ):?>
+                                            <?php if( key_exists( $id , $this->cartInfo[TCVM_Cart_Imple::STEP_PRODUCT]["products"]) && $this->cartInfo[TCVM_Cart_Imple::STEP_PRODUCT]["products"][$id]["type"] == "now" ):?>
 	                                          checked
 	                                        <?php endif;?>
                                             name="products[<?php echo $course["id"]?>]" value="now" onclick="chooseProduct( <?php echo $course["id"]?> , 'now' )" />
@@ -135,13 +139,13 @@
                                   <table width="100%" border="0" cellspacing="5" cellpadding="0">
                                     <tr>
                                       <td width="46%"><div align="right">
-                                        <input type="submit" name="Submit" value="&lt;Previous Step" />
+                                        <input type="button"  onclick="previous();" value="&lt;Previous Step" />
                                       </div></td>
                                       <td width="7%"><label>
-                                        <input type="submit" name="Submit3" value="Save" />
+                                        
                                       </label></td>
                                       <td width="47%"><div align="left">
-                                          <input type="submit" name="Submit2" value="Next Step&gt;" />
+                                          <input type="submit"  value="Next Step&gt;" />
                                       </div></td>
                                     </tr>
                                   </table>
@@ -163,6 +167,11 @@
                 
  <script>
 
+ function previous(){
+
+	 location.href= "<?php echo $this->url(array("action" => "basic" , "controller" => "registration"), 'default', true);?>";
+	 
+	 }
 
  function refreshCart( cartInfo ){
 	$("#total_price").html(cartInfo.total_price);

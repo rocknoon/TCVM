@@ -33,6 +33,8 @@
 		
 		public function getById( $id );
 		
+		public function canGetBeforePrice( $id );
+		
 		
 		
 		

@@ -10,7 +10,6 @@
                             <td width="3%">&nbsp;</td>
                             <td width="40%">&nbsp;</td>
                             <td width="7%">&nbsp;</td>
-                            <td width="20%">&nbsp;</td>
                             <td width="14%">&nbsp;</td>
                            
                             <td width="3%">&nbsp;</td>
@@ -19,7 +18,6 @@
                             <td>&nbsp;</td>
                             <td class="underline2"><div align="left" class="STYLE4">Product Name </div></td>
                             <td class="underline2"><div align="left" class="STYLE4">Price</div></td>  
-                            <td class="underline2"><div align="left" class="STYLE4">Amount</div></td>
                             <td class="underline2"><div align="left" class="STYLE4">Status</div></td>
                             <td class="STYLE4">&nbsp;</td>
                           </tr>
@@ -30,7 +28,6 @@
                             <td class="orderid">Order ID:<?php echo $order['id']?></td>
                             <td class="orderid"><div align="left">Date:</div></td>
                             <td class="orderid">2011-7-28</td>
-                            <td class="orderid">&nbsp;</td>
                             <td>&nbsp;</td>
                           </tr>
                           
@@ -40,9 +37,7 @@
                           <tr>
                             <td>&nbsp;</td>
                             <td class="underline"><div align="left" class="STYLE2"><?php echo $product['name']?></div></td>
-                            <td class="underline"><div align="left" class="STYLE2"><?php echo $product['price'] * $product['amount']?></div></td>
-                            <td class="underline"><div align="left" class="STYLE4"><?php echo $product['amount']?></div></td>
-                            
+                            <td class="underline"><div align="left" class="STYLE2"><?php echo $product['price'] ?></div></td>
                             
                             <?php if( $key == 0 ):?>
                             <td rowspan="<?php echo count($order['products']);?>" valign="top" class="underline">    

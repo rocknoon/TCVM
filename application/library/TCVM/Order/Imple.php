@@ -59,17 +59,13 @@
 			}
 			
 			//check cart products
-			$cartProducts = $cart->getAllProducts();
-			if( count( $cartProducts ) == 0 ){
-				throw new Exception( "sorry, there is no products in the cart");
-			}
 			
 			//check shipping
 			
 			
+			$cartInfo = $cart->getCartInfo();
 			$userId = $loginUser['id'];
-			$shipping	  = $cart->getShipping();
-			$totalPrice	  = $cart->getTotalPrice();
+			$totalPrice	  = $cartInfo["total_price"];
 			
 			return $this->_generateOrder( $userId, $cartInfo, $totalPrice );
 			
@@ -144,38 +140,30 @@
 			
 		}
 
-		private function _generateOrder( $userId, $cartProducts, $shipping, $totalPrice ){
+		private function _generateOrder( $userId, $cartInfo, $totalPrice ){
 			
 			
 			$orderInfo = array();
 			$orderInfo["user_id"] = $userId;
-			$orderInfo["first_name"] = $shipping['first_name'];
-			$orderInfo["last_name"] = $shipping['last_name'];
-			$orderInfo["mobile"] = $shipping['mobile'];
-			$orderInfo["zip_code"] = $shipping['zip_code'];
-			$orderInfo["country"] = $shipping['country'];
-			$orderInfo["city"] = $shipping['city'];
-			$orderInfo["street"] = $shipping['street'];
+			$orderInfo["cart_info"] = serialize( $cartInfo );
 			$orderInfo["total_price"] = $totalPrice;
 			$orderInfo["status"] 	= self::STATUS_WAITTING_PAY;
 			$orderInfo["date_add"] = time();
 			
+			$cartProducts = $cartInfo[TCVM_Cart_Imple::STEP_PRODUCT]["products"];
 			
 			$orderId = $this->_orderModel->insert($orderInfo);
 			
-			foreach( $cartProducts as $productType => $items ){
-				foreach( $items as $item ){
-					
+			foreach( $cartProducts as $id => $product ){
+				
 					$orderProductInfo = array();
 					$orderProductInfo['order_id'] = $orderId;
-					$orderProductInfo['product_type'] = $productType;
-					$orderProductInfo['product_id']   = $item['id'];
-					$orderProductInfo['price']         = $item['price'];
-					$orderProductInfo['amount']        = $item['amount'];
+					$orderProductInfo['product_id']   = $id;
+					$orderProductInfo['price']   = $product["price"];
+					$orderProductInfo['type']   = $product["type"];
 
 					$this->_orderProductModel->insert($orderProductInfo);
-					
-				}
+
 			}
 			
 			return $orderId;
@@ -205,16 +193,15 @@
 				$orderProductDatas = $this->_orderProductModel->getAllByConditions( array( "order_id" => $orderData['id'] ) );
 				
 				$orderInfo = $orderData;
+				$orderInfo["cart_info"] = unserialize( $orderInfo["cart_info"] );
 				$orderInfo['products'] = array();
 				
 				foreach( $orderProductDatas as $orderProductData ){
 					
-					$productEntity = $product->get( $orderProductData['product_type'], $orderProductData['product_id'] );
+					$productEntity = $product->getById( $orderProductData['product_id'] );
 					
 					$orderProductInfo = array();
 					$orderProductInfo["id"] 			= $orderProductData['product_id'];
-					$orderProductInfo["product_type"] 	= $orderProductData['product_type'];
-					$orderProductInfo["amount"] 		= $orderProductData['amount'];
 					$orderProductInfo["name"] 			= $productEntity['name'];
 					$orderProductInfo["price"] 			= $orderProductData['price'];
 					
@@ -226,6 +213,7 @@
 				
 				
 			}
+			
 			
 			return $rtn;
 			

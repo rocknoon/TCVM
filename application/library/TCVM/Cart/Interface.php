@@ -19,9 +19,7 @@
 		
 		public function fifthSessionDeduct();
 		
-		public function doPay();
-		
-		public function callbackAfterUserPay();
+		public function cleanCart();
 	
 		
 	}

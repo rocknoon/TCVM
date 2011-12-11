@@ -58,13 +58,13 @@
                                       <td width="30%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                         <tr>
                                           <td width="15%">Where</td>
-                                          <td width="85%"><input name="textfield23322" type="text" class="input1" /></td>
+                                          <td width="85%"><input name="where" value="<?php if( isset( $this->cartInfo['basic']['where']) ) echo $this->cartInfo['basic']['where']?>" type="text" class="input1" /></td>
                                         </tr>
                                       </table></td>
                                       <td width="26%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                         <tr>
                                           <td width="15%">When</td>
-                                          <td><input name="textfield23323" type="text" class="input1" /></td>
+                                          <td><input name="when" type="text" value="<?php if( isset( $this->cartInfo['basic']['when']) ) echo $this->cartInfo['basic']['when']?>" class="input1" /></td>
                                         </tr>
                                       </table></td>
                                     </tr>
@@ -79,7 +79,7 @@
                                       <td width="20%"><div align="left">
                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                           <tr>
-                                            <td width="15%"><input type="checkbox" name="checkbox22" value="checkbox" /></td>
+                                            <td width="15%"><input type="checkbox" name="tcvm_clinical_approach[]" <?php if( in_array( "HT/LU",  $this->cartInfo['basic']['tcvm_clinical_approach']) ) echo "checked"?> value="HT/LU" /></td>
                                             <td width="85%">HT/LU</td>
                                           </tr>
                                         </table>
@@ -87,7 +87,7 @@
                                       <td width="20%"><div align="left">
                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                           <tr>
-                                            <td width="15%"><input type="checkbox" name="checkbox222" value="checkbox" /></td>
+                                            <td width="15%"><input type="checkbox" name="tcvm_clinical_approach[]" <?php if( in_array( "SP/ST",  $this->cartInfo['basic']['tcvm_clinical_approach']) ) echo "checked"?> value="SP/ST" /></td>
                                             <td width="85%">SP/ST</td>
                                           </tr>
                                         </table>
@@ -95,7 +95,7 @@
                                       <td width="20%"><div align="left">
                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                           <tr>
-                                            <td width="15%"><input type="checkbox" name="checkbox2222" value="checkbox" /></td>
+                                            <td width="15%"><input type="checkbox" name="tcvm_clinical_approach[]" <?php if( in_array( "Liver/Endo",  $this->cartInfo['basic']['tcvm_clinical_approach']) ) echo "checked"?> value="Liver/Endo" /></td>
                                             <td width="85%">Liver/Endo</td>
                                           </tr>
                                         </table>
@@ -103,7 +103,7 @@
                                       <td width="20%"><div align="left">
                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                           <tr>
-                                            <td width="15%"><input type="checkbox" name="checkbox2223" value="checkbox" /></td>
+                                            <td width="15%"><input type="checkbox" name="tcvm_clinical_approach[]" <?php if( in_array( "Kid/Geri",  $this->cartInfo['basic']['tcvm_clinical_approach']) ) echo "checked"?> value="Kid/Geri" /></td>
                                             <td width="85%">Kid/Geri</td>
                                           </tr>
                                         </table>
@@ -111,11 +111,13 @@
                                       <td width="20%"><div align="left">
                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                           <tr>
-                                            <td width="15%"><input type="checkbox" name="checkbox2224" value="checkbox" /></td>
+                                            <td width="15%"><input type="checkbox" name="tcvm_clinical_approach[]" <?php if( in_array( "Derma/Immu",  $this->cartInfo['basic']['tcvm_clinical_approach']) ) echo "checked"?> value="Derma/Immu" /></td>
                                             <td width="85%">Derma/Immu</td>
                                           </tr>
                                         </table>
                                       </div></td>
+                                       
+                                   
                                     </tr>
                                   </table>
                                 </div></td>
@@ -127,22 +129,24 @@
                                     <tr>
                                       <td width="33%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                         <tr>
-                                          <td width="15%"><input type="checkbox" name="checkbox223" value="checkbox" /></td>
+                                          <td width="15%"><input type="checkbox" name="advanced_programs[]" <?php if( in_array( "Certified ?Veterinary Tui-na",  $this->cartInfo['basic']['advanced_programs']) ) echo "checked"?> value="Certified ?Veterinary Tui-na" /></td>
                                           <td width="85%">Certified ?Veterinary Tui-na</td>
-                                        </tr>
-                                      </table></td>
-                                      <td width="33%"><table width="98%" border="0" cellspacing="0" cellpadding="0">
-                                        <tr>
-                                          <td width="15%"><input type="checkbox" name="checkbox2232" value="checkbox" /></td>
-                                          <td width="85%"> TCVM  Annual Conference</td>
                                         </tr>
                                       </table></td>
                                       <td width="33%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                         <tr>
-                                          <td width="11%"><input type="checkbox" name="checkbox2233" value="checkbox" /></td>
-                                          <td width="89%">Tongue/Pulse Diagnosis &amp; Classical Points</td>
+                                          <td width="15%"><input type="checkbox" name="advanced_programs[]" <?php if( in_array( "TCVM  Annual Conference",  $this->cartInfo['basic']['advanced_programs']) ) echo "checked"?> value="TCVM  Annual Conference" /></td>
+                                          <td width="85%">TCVM  Annual Conference</td>
                                         </tr>
                                       </table></td>
+                                      <td width="33%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                          <td width="15%"><input type="checkbox" name="advanced_programs[]" <?php if( in_array( "Tongue/Pulse Diagnosis &amp; Classical Points",  $this->cartInfo['basic']['advanced_programs']) ) echo "checked"?> value="Tongue/Pulse Diagnosis &amp; Classical Points" /></td>
+                                          <td width="85%">Tongue/Pulse Diagnosis &amp; Classical Points</td>
+                                        </tr>
+                                      </table></td>
+                                      
+                          
                                       </tr>
                                   </table>
                                 </div></td>
@@ -166,7 +170,7 @@
                                             <tr>
                                               <td width="35%"><div align="right">First Name: </div></td>
                                               <td width="65%"><div align="left">
-                                                <input name="textfield233222" type="text" class="input1" />
+                                                <input name="first_name" value="<?php if( isset( $this->cartInfo['basic']['first_name']) ) echo $this->cartInfo['basic']['first_name']?>" type="text" class="input1" />
                                               </div></td>
                                             </tr>
                                                                               </table>
@@ -174,13 +178,13 @@
                                       <td width="33%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                         <tr>
                                           <td width="45%"><div align="right">Middle Name:</div></td>
-                                          <td width="55%"><input name="textfield233223" type="text" class="input1" /></td>
+                                          <td width="55%"><input name="middle_name" value="<?php if( isset( $this->cartInfo['basic']['middle_name']) ) echo $this->cartInfo['basic']['first_name']?>" type="text" class="input1" /></td>
                                         </tr>
                                       </table></td>
                                       <td width="33%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                         <tr>
                                           <td width="46%"><div align="right">Last Name:</div></td>
-                                          <td width="54%"><input name="textfield233224" type="text" class="input1" /></td>
+                                          <td width="54%"><input name="last_name" value="<?php if( isset( $this->cartInfo['basic']['last_name']) ) echo $this->cartInfo['basic']['last_name']?>" type="text" class="input1" /></td>
                                         </tr>
                                       </table></td>
                                     </tr>
@@ -192,18 +196,18 @@
                                 <td class="STYLE2"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                   <tr>
                                     <td width="33%"><div align="left">
-                                      <input name="textfield2332222" type="text" class="input2" />
+                                      <input name="title" value="<?php if( isset( $this->cartInfo['basic']['title']) ) echo $this->cartInfo['basic']['title']?>" type="text" class="input1" />
                                     </div></td>
                                     <td width="33%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                       <tr>
                                         <td width="45%"><div align="right">Nickname:</div></td>
-                                        <td width="55%"><input name="textfield2332232" type="text" class="input1" /></td>
+                                        <td width="55%"><input name="nick_name" value="<?php if( isset( $this->cartInfo['basic']['nick_name']) ) echo $this->cartInfo['basic']['nick_name']?>" type="text" class="input1" /></td>
                                       </tr>
                                     </table></td>
                                     <td width="33%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                       <tr>
                                         <td width="45%"><div align="right">License#:</div></td>
-                                        <td width="55%"><input name="textfield2332233" type="text" class="input1" /></td>
+                                        <td width="55%"><input name="license" value="<?php if( isset( $this->cartInfo['basic']['license']) ) echo $this->cartInfo['basic']['license']?>" type="text" class="input1" /></td>
                                       </tr>
                                     </table></td>
                                   </tr>
@@ -214,29 +218,25 @@
                                 <td><div align="left">
                                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                       <tr>
-                                        <td width="33%"><input name="textfield23322222" type="text" class="input2" /></td>
+                                        <td width="33%"><input name="business" value="<?php if( isset( $this->cartInfo['basic']['business']) ) echo $this->cartInfo['basic']['business']?>" type="text" class="input1" /></td>
                                         <td width="15%"><div align="right">Practice</div></td>
                                         <td width="52%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                           <tr>
                                             <td width="25%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                               <tr>
-                                                <td width="15%"><input type="checkbox" name="checkbox2225" value="checkbox" /></td>
+                                                <td width="15%"><input type="checkbox" name="practice[]" <?php if( in_array( "SA",  $this->cartInfo['basic']['practice']) ) echo "checked"?>  value="SA" /></td>
                                                 <td width="85%">SA</td>
                                               </tr>
                                             </table></td>
                                             <td width="25%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                               <tr>
-                                                <td width="15%"><input type="checkbox" name="checkbox2226" value="checkbox" /></td>
+                                                <td width="15%"><input type="checkbox" name="practice[]" <?php if( in_array( "EQ",  $this->cartInfo['basic']['practice']) ) echo "checked"?>  value="EQ" /></td>
                                                 <td width="85%">EQ</td>
                                               </tr>
                                             </table></td>
-                                            <td width="50%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                              <tr>
-                                                <td width="12%"><input type="checkbox" name="checkbox2227" value="checkbox" /></td>
-                                                <td width="19%">Othe</td>
-                                                <td width="69%"><input name="textfield23322332" type="text" class="input1" /></td>
-                                              </tr>
-                                            </table></td>
+                                            
+                                        
+                                            
                                           </tr>
                                         </table></td>
                                       </tr>
@@ -249,7 +249,7 @@
                                   <tr>
                                     <td width="14%">Street Address:</td>
                                     <td width="86%"><div align="left">
-                                      <input name="textfield23322223" type="text" class="input4" size="300" />
+                                      <input name="street_1" value="<?php if( isset( $this->cartInfo['basic']['street_1']) ) echo $this->cartInfo['basic']['street_1']?>" type="text" class="input1" />
                                     </div></td>
                                   </tr>
                                 </table></td>
@@ -262,10 +262,7 @@
                                         <td><div align="right">City:</div></td>
                                         <td><label>
                                           <div align="left">
-                                            <select name="select3" size="1">
-                                              <option>AAAAAAAAAA</option>
-                                              <option>BBBBBBBBB</option>
-                                            </select>
+                                            <input name="city_1" value="<?php if( isset( $this->cartInfo['basic']['city_1']) ) echo $this->cartInfo['basic']['city_1']?>" type="text" class="input1" />
                                             </div>
                                         </label></td>
                                       </tr>
@@ -275,10 +272,7 @@
                                         <td><div align="right">State: </div></td>
                                         <td><label>
                                           <div align="left">
-                                            <select name="select4" size="1">
-                                              <option>AAAAAAAAAA</option>
-                                              <option>BBBBBBBB</option>
-                                            </select>
+                                            <input name="state_1" value="<?php if( isset( $this->cartInfo['basic']['state_1']) ) echo $this->cartInfo['basic']['state_1']?>" type="text" class="input1" />
                                             </div>
                                         </label></td>
                                       </tr>
@@ -287,7 +281,7 @@
                                       <tr>
                                         <td width="46%"><div align="right">Postal Code</div></td>
                                         <td width="54%"><div align="left">
-                                          <input name="textfield2332242" type="text" class="input3" />
+                                          <input name="post_code_1" value="<?php if( isset( $this->cartInfo['basic']['post_code_1']) ) echo $this->cartInfo['basic']['post_code_1']?>" type="text" class="input1" />
                                         </div></td>
                                       </tr>
                                     </table></td>
@@ -296,10 +290,7 @@
                                         <td><div align="right">Country: </div></td>
                                         <td><label>
                                           <div align="left">
-                                            <select name="select5" size="1">
-                                              <option>AAAAAAAAAA</option>
-                                              <option>BBBBBBBB</option>
-                                            </select>
+                                            <input name="country_1" value="<?php if( isset( $this->cartInfo['basic']['country_1']) ) echo $this->cartInfo['basic']['country_1']?>" type="text" class="input1" />
                                             </div>
                                         </label></td>
                                       </tr>
@@ -308,69 +299,60 @@
                                 </table></td>
                               </tr>
                               <tr>
-                                <td rowspan="2" class="STYLE2"><div align="right">Address (H) </div></td>
+                                <td rowspan="2" class="STYLE2"><div align="right">Address (W) </div></td>
                                 <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                      <td width="14%">Street Address:</td>
-                                      <td width="86%"><div align="left">
-                                          <input name="textfield23322223" type="text" class="input4" size="300" />
-                                      </div></td>
-                                    </tr>
+                                  <tr>
+                                    <td width="14%">Street Address:</td>
+                                    <td width="86%"><div align="left">
+                                      <input name="street_2" value="<?php if( isset( $this->cartInfo['basic']['street_2']) ) echo $this->cartInfo['basic']['street_2']?>" type="text" class="input1" />
+                                    </div></td>
+                                  </tr>
                                 </table></td>
                               </tr>
                               <tr>
                                 <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                      <td width="25%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                          <tr>
-                                            <td><div align="right">City:</div></td>
-                                            <td><label>
-                                              <div align="left">
-                                                  <select name="select3" size="1">
-                                                    <option>AAAAAAAAAA</option>
-                                                    <option>BBBBBBBBB</option>
-                                                  </select>
-                                                </div>
-                                              </label></td>
-                                          </tr>
-                                      </table></td>
-                                      <td width="25%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                          <tr>
-                                            <td><div align="right">State: </div></td>
-                                            <td><label>
-                                                <div align="left">
-                                                  <select name="select4" size="1">
-                                                    <option>AAAAAAAAAA</option>
-                                                    <option>BBBBBBBB</option>
-                                                  </select>
-                                                </div>
-                                              </label></td>
-                                          </tr>
-                                      </table></td>
-                                      <td width="25%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                          <tr>
-                                            <td width="46%"><div align="right">Postal Code</div></td>
-                                            <td width="54%"><div align="left">
-                                                <input name="textfield2332242" type="text" class="input3" />
-                                            </div></td>
-                                          </tr>
-                                      </table></td>
-                                      <td width="25%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                          <tr>
-                                            <td><div align="right">Country: </div></td>
-                                            <td><label>
-                                                <div align="left">
-                                                  <select name="select5" size="1">
-                                                    <option>AAAAAAAAAA</option>
-                                                    <option>BBBBBBBB</option>
-                                                  </select>
-                                                </div>
-                                              </label></td>
-                                          </tr>
-                                      </table></td>
-                                    </tr>
+                                  <tr>
+                                    <td width="25%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                      <tr>
+                                        <td><div align="right">City:</div></td>
+                                        <td><label>
+                                          <div align="left">
+                                            <input name="city_2" value="<?php if( isset( $this->cartInfo['basic']['city_2']) ) echo $this->cartInfo['basic']['city_2']?>" type="text" class="input1" />
+                                            </div>
+                                        </label></td>
+                                      </tr>
+                                    </table></td>
+                                    <td width="25%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                      <tr>
+                                        <td><div align="right">State: </div></td>
+                                        <td><label>
+                                          <div align="left">
+                                            <input name="state_2" value="<?php if( isset( $this->cartInfo['basic']['state_2']) ) echo $this->cartInfo['basic']['state_2']?>" type="text" class="input1" />
+                                            </div>
+                                        </label></td>
+                                      </tr>
+                                    </table></td>
+                                    <td width="25%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                      <tr>
+                                        <td width="46%"><div align="right">Postal Code</div></td>
+                                        <td width="54%"><div align="left">
+                                          <input name="post_code_2" value="<?php if( isset( $this->cartInfo['basic']['post_code_2']) ) echo $this->cartInfo['basic']['post_code_2']?>" type="text" class="input1" />
+                                        </div></td>
+                                      </tr>
+                                    </table></td>
+                                    <td width="25%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                      <tr>
+                                        <td><div align="right">Country: </div></td>
+                                        <td><label>
+                                          <div align="left">
+                                            <input name="country_2" value="<?php if( isset( $this->cartInfo['basic']['country_2']) ) echo $this->cartInfo['basic']['country_2']?>" type="text" class="input1" />
+                                            </div>
+                                        </label></td>
+                                      </tr>
+                                    </table></td>
+                                  </tr>
                                 </table></td>
-                                </tr>
+                              </tr>
                               <tr>
                                 <td class="STYLE2"><div align="right">Telephone</div></td>
                                 <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -379,7 +361,7 @@
                                       <tr>
                                         <td width="15%"><div align="right">Work:</div></td>
                                         <td width="85%"><div align="left">
-                                          <input name="textfield23322322" type="text" class="input1" />
+                                          <input name="work" value="<?php if( isset( $this->cartInfo['basic']['work']) ) echo $this->cartInfo['basic']['work']?>" type="text" class="input1" />
                                         </div></td>
                                       </tr>
                                     </table></td>
@@ -387,7 +369,7 @@
                                       <tr>
                                         <td width="45%"><div align="right">Home:</div></td>
                                         <td width="55%"><div align="left">
-                                            <input name="textfield233223222" type="text" class="input1" />
+                                            <input name="home" value="<?php if( isset( $this->cartInfo['basic']['home']) ) echo $this->cartInfo['basic']['home']?>" type="text" class="input1" />
                                         </div></td>
                                       </tr>
                                     </table></td>
@@ -395,7 +377,7 @@
                                       <tr>
                                         <td width="45%"><div align="right">Fax:</div></td>
                                         <td width="55%"><div align="left">
-                                            <input name="textfield233223223" type="text" class="input1" />
+                                            <input name="fax" value="<?php if( isset( $this->cartInfo['basic']['fax']) ) echo $this->cartInfo['basic']['fax']?>" type="text" class="input1" />
                                         </div></td>
                                       </tr>
                                     </table></td>
@@ -410,7 +392,7 @@
                                       <tr>
                                         <td width="26%"><div align="left">Public:</div></td>
                                         <td width="74%"><div align="left">
-                                            <input name="textfield233223224" type="text" class="input2" />
+                                            <input name="public" value="<?php if( isset( $this->cartInfo['basic']['public']) ) echo $this->cartInfo['basic']['public']?>" type="text" class="input2" />
                                         </div></td>
                                       </tr>
                                     </table></td>
@@ -418,7 +400,7 @@
                                       <tr>
                                         <td width="53%"><div align="right">For Chi Institute only:</div></td>
                                         <td width="47%"><div align="left">
-                                            <input name="textfield233223225" type="text" class="input2" />
+                                            <input name="for_chi_institute_only" value="<?php if( isset( $this->cartInfo['basic']['for_chi_institute_only']) ) echo $this->cartInfo['basic']['for_chi_institute_only']?>" type="text" class="input2" />
                                         </div></td>
                                       </tr>
                                     </table></td>
@@ -430,10 +412,10 @@
                                   <table width="100%" border="0" cellspacing="5" cellpadding="0">
                                     <tr>
                                       <td width="50%"><div align="right">
-                                        <input type="submit" name="Submit" value="Save" />
+                                       
                                       </div></td>
                                       <td width="50%"><div align="left">
-                                        <input type="submit" name="Submit2" value="Next Step&gt;" />
+                                        <input type="submit" value="Next Step&gt;" />
                                       </div></td>
                                     </tr>
                                   </table>

@@ -76,9 +76,14 @@ class RegistrationController extends TCVM_ZendX_Controller_Action_Front
 		
 	}
 	
+	public function lastStepAction(){
+		
+	}
+	
 	public function postPaymethodAction(){
 	
 		$data = $this->_getFilterParams();
+		
 		
 		$this->_cart->payInfo( $data );
 		
@@ -88,13 +93,31 @@ class RegistrationController extends TCVM_ZendX_Controller_Action_Front
 	
 	public function postBasicAction(){
 		
-		$data = array();
-		$data['veterinary_acupuncture'] = $this->_getParam( "veterinary_acupuncture" );
+		$data = $this->_getFilterParams();
+		
 		
 		
 		$this->_cart->basicInfo( $data );
 		
 		$this->redirect( "product" , "registration" );
+		
+	}
+	
+	
+	public function postProfileAction(){
+		
+		$data = array();
+		$data['biographical'] = $_FILES["biographical"];
+		$data['photo'] = $_FILES["photo"];
+		
+		$order = TCVM_Order_Factory::Factory();
+		
+		
+		$this->_cart->profileAttached( $data );
+		$order->generateLoginUserOrder();
+		$this->_cart->cleanCart();
+		
+		$this->redirect( "last-step" , "registration" );
 		
 	}
 	
@@ -134,6 +157,8 @@ class RegistrationController extends TCVM_ZendX_Controller_Action_Front
 	
 		
 		$cartInfo = $this->_cart->getCartInfo();
+		
+		
 		$this->assign( "cartInfo" , $cartInfo );
 		
 	}

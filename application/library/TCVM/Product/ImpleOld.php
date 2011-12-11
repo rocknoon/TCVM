@@ -1,5 +1,5 @@
 <?php 
-	class TCVM_Product_Imple {
+	class TCVM_Product_ImpleOld {
 		
 		const TYPE_COURSES = 1;
 		

@@ -45,13 +45,34 @@
 			  
 			$rtn = $this->_getSession();
 			
-			$rtn[self::STEP_PRODUCT]["products"][$id] = $type;
+			$rtn[self::STEP_PRODUCT]["products"][$id] = array();
+			$rtn[self::STEP_PRODUCT]["products"][$id]["type"] = $type;
 			
 			$this->_setSession( self::STEP_PRODUCT , $rtn[self::STEP_PRODUCT]);
 			
 		}
 
 		public function basicInfo($data) {	
+		
+			
+			if(!isset($data["veterinary_acupuncture"])){
+				$data["veterinary_acupuncture"] = array();
+			}
+			
+			if(!isset($data["tcvm_clinical_approach"])){
+				$data["tcvm_clinical_approach"] = array();
+			}
+			
+			if(!isset($data["advanced_programs"])){
+				$data["advanced_programs"] = array();
+			}
+			
+			if(!isset($data["practice"])){
+				$data["practice"] = array();
+			}
+			
+			
+			
 			$this->_setSession( self::STEP_BASIC , $data );
 		}
 		
@@ -68,38 +89,71 @@
 		}
 
 		public function payInfo($data) {
-			$this->_setSession( self::STEP_BASIC , $data );
+			$this->_setSession( self::STEP_PAYINFO , $data );
 			
 		}
 	
 			
 		public function product($data) {
-			$this->_setSession( self::STEP_BASIC , $data );
+			$this->_setSession( self::STEP_PRODUCT , $data );
 			
 		}
 	
 		
 		public function profileAttached($data) {
-			$this->_setSession( self::STEP_BASIC , $data );
+			
+			
+			$uploadDir = APPLICATION_PUBLIC_PATH.'/upload/profile/';
+		    WeFlex_Util::MkDir( $uploadDir );
+		    	
+		    	
+			//process new file
+			if( $data["biographical"] ){
+				$file = $data["biographical"];
+				$extention = explode(".", $file['name']);
+		    	$fileName = md5(time()).".".$extention[1];
+		    	$newfile = $uploadDir . "/" . $fileName;
+		    	WeFlex_Util::Copy( $file['tmp_name'] , $newfile);
+		    	$fileUrl = '/upload/profile/' . $fileName;
+		    	$data["biographical"] = $fileUrl;
+			}
+			
+			if( $data["photo"] ){
+				$file = $data["photo"];
+				$extention = explode(".", $file['name']);
+		    	$fileName = md5(time() + 1).".".$extention[1];
+		    	$newfile = $uploadDir . "/" . $fileName;
+		    	WeFlex_Util::Copy( $file['tmp_name'] , $newfile);
+		    	$fileUrl = '/upload/profile/' . $fileName;
+		    	$data["photo"] = $fileUrl;
+			}
+		
+		   
+		    
+			
+			
+			
+			
+			
+			
+			$this->_setSession( self::STEP_PROFILE , $data );
 			
 		}
 		
 		
-		public function doPay() {
-			// TODO Auto-generated method stub
+		
+		
+		
+		
+		
+		public function cleanCart() {
+			WeFlex_Session::Set( self::SESSION_CART, null );
 			
 		}
-		
-		public function callbackAfterUserPay() {
-			// TODO Auto-generated method stub
-			
-		}
-		
-		
-		
-		
+
 		public function isMeNewUser() {
-			// TODO Auto-generated method stub
+			
+			return $this->_isMeNewUser();
 			
 		}
 
@@ -125,6 +179,9 @@
 			if( !isset($session[self::STEP_BASIC]) ){
 				$session[self::STEP_BASIC] = array();
 				$session[self::STEP_BASIC]["veterinary_acupuncture"] = array();
+				$session[self::STEP_BASIC]["tcvm_clinical_approach"] = array();
+				$session[self::STEP_BASIC]["advanced_programs"] = array();
+				$session[self::STEP_BASIC]["practice"] = array();
 			}
 			
 			if( !isset($session[self::STEP_PAYINFO]) ){
@@ -170,23 +227,24 @@
 			
 			if( is_array( $products ) ){
 			//if re-token course
-			foreach( $products as $id => $type ){
+			foreach( $products as $id => $product ){
 				$item = $productMod->getById( $id );
-				$price = $item["price"][$type];
+				$price = $item["price"][$product["type"]];
 				if( $this->_myReTokenCourse( $id ) ){
-					$rtn += $price * (1 -  self::RETOKEN_DISCOUNT);
+					$price = $price * (1 -  self::RETOKEN_DISCOUNT);
 					$cartInfo["info"][$id] = $item["name"] . "get ".(self::RETOKEN_DISCOUNT * 100)."% discount";
-				}else{
-					$rtn += $price;
 				}
+				$rtn += $price;
+				$cartInfo[self::STEP_PRODUCT]["products"][$id]["price"] = $price;
 			}
 				
 			}
 			
 			
 			
-			if( $deduct ){
+			if( $deduct && key_exists( "5" , $products) ){
 				$rtn = $rtn - self::FIFTH_SESSION_DEDUCT;
+				$cartInfo[self::STEP_PRODUCT]["products"][5]["price"] = $cartInfo[self::STEP_PRODUCT]["products"][5]["price"] - self::FIFTH_SESSION_DEDUCT;
 			}
 			
 			return $rtn;
