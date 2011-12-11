@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2011 年 12 月 07 日 13:50
+-- 生成日期: 2011 年 12 月 11 日 11:54
 -- 服务器版本: 5.1.44
 -- PHP 版本: 5.3.1
 
@@ -87,13 +87,7 @@ CREATE TABLE IF NOT EXISTS `order` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `status` int(5) NOT NULL,
-  `first_name` varchar(255) NOT NULL,
-  `last_name` varchar(255) NOT NULL,
-  `mobile` varchar(255) DEFAULT NULL,
-  `street` varchar(255) DEFAULT NULL,
-  `zip_code` varchar(255) DEFAULT NULL,
-  `country` varchar(255) DEFAULT NULL,
-  `city` varchar(255) DEFAULT NULL,
+  `cart_info` text NOT NULL,
   `total_price` float NOT NULL,
   `date_add` int(11) NOT NULL,
   PRIMARY KEY (`id`),
@@ -110,10 +104,9 @@ DROP TABLE IF EXISTS `order_product`;
 CREATE TABLE IF NOT EXISTS `order_product` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) NOT NULL,
-  `product_type` tinyint(1) NOT NULL,
   `product_id` int(11) NOT NULL,
   `price` float NOT NULL,
-  `amount` int(11) NOT NULL,
+  `type` varchar(20) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `order_id` (`order_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
