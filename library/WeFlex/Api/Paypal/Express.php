@@ -1,6 +1,6 @@
 <?php 
 	
-	class WeFlex_Api_Paypal_Nvp{
+	class WeFlex_Api_Paypal_Express{
 		
 		const API_ENDPOINT_DEVELOPMENT 	  = "https://api-3t.sandbox.paypal.com/nvp";
 		const URL_PAYPAL_DEVELOPMENT	  = "https://www.sandbox.paypal.com/webscr&cmd=_express-checkout&token=";

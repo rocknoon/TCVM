@@ -3,55 +3,30 @@
 		
 		const PAYMENT_PAYPAL_EXPRESS_CHECKOUT = 1;
 		const PAYMENT_PAYPAL_DIRECT_PAY		  = 2;
-		const PAYMENT_ELECTRONIC_TRANSFER	  = 3;
+		const PAYMENT_PAYPAL_ADAPTIVE	  	  = 3;
+		const PAYMENT_ELECTRONIC_TRANSFER	  = 4;
 		
 		
 		
-		public function payOrder($payment, $orderId, $params = null) {
+		
+		public function payOrder($orderId, $params = null) {
 			
-			$this->_checkOrderCanBePaid($orderId);
+			$order = TCVM_Order_Factory::Factory();
 			
-			$paymentCore = TCVM_Payment_CoreFactory::Factory($payment);
+			$orderInfo = $order->getOrder( $orderId );
+			$this->_checkOrderCanBePaid($orderInfo);
+			
+			$paymentCore = TCVM_Payment_CoreFactory::Factory($orderInfo["cart_info"][TCVM_Cart_Imple::STEP_PAYINFO]["paymethod"]);
 			
 			$paymentCore->payOrder( $orderId, $params );
 			
-			$this->_orderSuccess( $orderId );
-			$this->_cleanCart();
 			
 		}
 		
 		
 
 		
-		/**
-		 * special functions
-		 */
 		
-		
-		
-		
-		public function setElectronicTransfer($orderId) {
-			
-			$paymentCore = TCVM_Payment_CoreFactory::Factory(self::PAYMENT_ELECTRONIC_TRANSFER);
-			$paymentCore->setElectronicTransfer($orderId);
-			
-		}
-	
-			
-		public function setPaypalExpress($orderId) {
-			
-			$paymentCore = TCVM_Payment_CoreFactory::Factory(self::PAYMENT_PAYPAL_EXPRESS_CHECKOUT);
-			$paymentCore->setExpressCheckout($orderId);
-			
-		}
-		
-		
-		
-		
-		public function continuePay($orderId, $payment) {
-			// TODO Auto-generated method stub
-			
-		}
 		
 		
 		
@@ -104,11 +79,7 @@
 			
 		}
 		
-		private function _checkOrderCanBePaid( $orderId ){
-			
-			$order = TCVM_Order_Factory::Factory();
-			
-			$order = $order->getOrder( $orderId );
+		private function _checkOrderCanBePaid( $order ){
 			
 			if( $order['status'] == TCVM_Order_Imple::STATUS_CANCEL ){
 				throw new Exception( "order is canceled" );
@@ -121,6 +92,35 @@
 			if( $order['status'] == TCVM_Order_Imple::STATUS_SUCCESS ){
 				throw new Exception( "order is already paid" );
 			}
+			
+		}
+		
+			
+		/**
+		 * deprecated functions
+		 */
+		
+		
+		private function _setElectronicTransfer($orderId) {
+			
+			$paymentCore = TCVM_Payment_CoreFactory::Factory(self::PAYMENT_ELECTRONIC_TRANSFER);
+			$paymentCore->setElectronicTransfer($orderId);
+			
+		}
+	
+			
+		private function _setPaypalExpress($orderId) {
+			
+			$paymentCore = TCVM_Payment_CoreFactory::Factory(self::PAYMENT_PAYPAL_EXPRESS_CHECKOUT);
+			$paymentCore->setExpressCheckout($orderId);
+			
+		}
+		
+		
+		
+		
+		private function _continuePay($orderId, $payment) {
+			// TODO Auto-generated method stub
 			
 		}
 

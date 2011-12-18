@@ -12,7 +12,6 @@ class TCVM_Payment_CoreFactory{
 		 * @return  TCVM_Payment_CoreAbstract
 		 */
 		public static function Factory( $type ){
-			
 			switch( $type ){
 			
 				case TCVM_Payment_Imple::PAYMENT_PAYPAL_EXPRESS_CHECKOUT:
@@ -32,6 +31,9 @@ class TCVM_Payment_CoreFactory{
 						self::$_electronicTransferInstance = new TCVM_Payment_ElectronicTransfer_Imple();
 					}
 					return self::$_electronicTransferInstance;
+					break;
+				case TCVM_Payment_Imple::PAYMENT_PAYPAL_ADAPTIVE:
+					return new TCVM_Payment_PaypalAdaptive_Imple();
 					break;
 				default:
 					throw new Exception( "no such payment type $type" );

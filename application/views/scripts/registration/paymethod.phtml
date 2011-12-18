@@ -28,30 +28,16 @@
                               <tr>
                                 <td colspan="2" class="STYLE2"><div align="right">
                                   <table width="100%" border="0" cellspacing="5" cellpadding="0">
+                                    
                                     <tr>
-                                      <td width="3%"><input type="radio" name="paymethod" <?php if( $this->cartInfo['payinfo']['paymethod'] == "check" ) echo "checked"?> value="check" /></td>
-                                      <td width="9%"><div align="left">CHECK#:</div></td>
-                                      <td width="14%"><div align="left">
-                                        <input name="paymethod_check_id" type="text" class="input1" value="<?php if( isset($this->cartInfo['payinfo']['paymethod_check_id'])) echo $this->cartInfo['payinfo']['paymethod_check_id']?>" />
-                                      </div></td>
-                                      <td width="74%">   <div align="left">Payable to: Bruce Ferguson</div></td>
-                                    </tr>
-                                    <tr>
-                                      <td>&nbsp;</td>
-                                      <td colspan="3"> <div align="left">(Include your name &amp; program of study as the  memo if paying by company check).</div></td>
-                                      </tr>
-                                    <tr>
-                                      <td><input type="radio" name="paymethod" <?php if( $this->cartInfo['payinfo']['paymethod'] == "bank" ) echo "checked"?> value="bank" /></td>
+                                      <td><input type="radio" name="paymethod" <?php if( $this->cartInfo['payinfo']['paymethod'] == TCVM_Payment_Imple::PAYMENT_ELECTRONIC_TRANSFER ) echo "checked"?> value="<?php echo TCVM_Payment_Imple::PAYMENT_ELECTRONIC_TRANSFER?>" /></td>
                                       <td colspan="3"><div align="left">Bank Transfer?(please email <span class="STYLE9" style="font-weight: bold"><a href="mailto:admin@tcvm.com.au">admin@tcvm.com</a></span><a href="mailto:admin@tcvm.com.au">.au</a> for detailed instructions)</div></td>
                                     </tr>
                                     <tr>
-                                      <td><input type="radio" name="paymethod" value="paypal" <?php if( $this->cartInfo['payinfo']['paymethod'] == "paypal" ) echo "checked"?> /></td>
+                                      <td><input type="radio" name="paymethod" value="<?php echo TCVM_Payment_Imple::PAYMENT_PAYPAL_ADAPTIVE?>" <?php if( $this->cartInfo['payinfo']['paymethod'] == TCVM_Payment_Imple::PAYMENT_PAYPAL_ADAPTIVE ) echo "checked"?> /></td>
                                       <td colspan="3"><p align="left">Paypal; (please send tuition  payment to<a href="mailto:naturalvet@earthlink.net" class="STYLE9" style="color: #2b677f; font-weight: bold"> naturalvet@earthlink.net</a>)</p></td>
                                     </tr>
-                                    <tr>
-                                      <td><input type="radio" name="paymethod" value="credit" <?php if( $this->cartInfo['payinfo']['paymethod'] == "credit" ) echo "checked"?>/></td>
-                                      <td colspan="3"><div align="left">Credit Card; (please  make payment at <a href="http://www.tcvm.com.au" class="STYLE9" style="color: #2b677f; font-weight: bold">www.tcvm.com.au</a> )</div></td>
-                                    </tr>
+                                    
                                   </table>
                                 </div></td>
                                 </tr>

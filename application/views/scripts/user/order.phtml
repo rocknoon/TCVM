@@ -104,6 +104,6 @@
                 
 <script>
 function doPayment(orderId){
-	location.href="<?php echo $this->url(array("action" => "payment" , "controller" => "pay"), 'default', true);?>" + "/order_id/" + orderId;
+	location.href="<?php echo $this->url(array("action" => "execute" , "controller" => "pay"), 'default', true);?>" + "/order_id/" + orderId;
 }
 </script>

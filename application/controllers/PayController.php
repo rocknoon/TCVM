@@ -16,20 +16,20 @@ class PayController extends TCVM_ZendX_Controller_Action_Front
     	
     }
     
-    public function paymentAction(){
     
-    	$orderId = $this->_getParam( "order_id" );
-    	
-    	$this->assign( "orderId", $orderId );
-    }
+  	public function executeAction(){
+  	
+  		$orderId = $this->_getParam( "order_id" );
+  		$order = TCVM_Order_Factory::Factory()->getOrder( $orderId );
+  		
+  		if( $order["cart_info"][TCVM_Cart_Imple::STEP_PAYINFO]["paymethod"] == TCVM_Payment_Imple::PAYMENT_ELECTRONIC_TRANSFER ){
+  			$this->redirect("electronic-finish");
+  		}else{
+  			$this->_pay->payOrder( $orderId );
+  		}
+  	}
     
-    public function paypalDirectPayAction(){
     
-    	$orderId = $this->_getParam( "order_id" );
-    	
-    	$this->assign( "orderId", $orderId );
-    	
-    }
     
     public function applyForEtfAction(){
     
@@ -52,7 +52,96 @@ class PayController extends TCVM_ZendX_Controller_Action_Front
 	
 	
 	
-	public function doPaypalExpressAction(){
+	
+	public function callbackPaypalAdaptiveAction(){
+	
+		
+		$params = array();
+		$orderId = $this->_getParam( "orderId" );
+		
+		TCVM_Order_Factory::Factory()->adminStatus( $orderId , TCVM_Order_Imple::STATUS_SUCCESS);
+		
+		$this->redirect( "success", "pay", "default",  array( "order_id" => $orderId ));
+		
+	}
+	
+	
+	public function electronicFinishAction(){
+		
+		$orderId = $this->_getParam( "order_id" );
+		
+		
+		
+	}
+	
+	public function cancelPaypalExpressAction(){
+	
+		
+		
+		
+	}
+	
+	public function errorAction(){
+		
+		$error = $this->_getParam( "error" );
+		
+		
+		$this->assign( "error" , $error );
+		
+	}
+	
+	public function errorDirectPayAction(){
+		
+		$error = $this->_getParam( "error" );
+		
+		
+		$this->assign( "error" , $error );
+		
+	}
+	
+	public function successAction(){
+		
+		$orderId = $this->_getParam( "order_id" );
+		
+	}
+	
+	public function successEtfAction(){
+		
+		
+		
+	}
+	
+	public function pendingAction(){
+	
+		$orderId = $this->_getParam( "order_id" );
+		
+	}
+	
+	
+	
+	
+	
+	/**
+	 * deprecated
+	 * Enter description here ...
+	 */
+	public function paymentAction(){
+    	
+    	$orderId = $this->_getParam( "order_id" );
+    	
+    	$this->assign( "orderId", $orderId );
+    }
+    
+    public function paypalDirectPayAction(){
+    
+    	$orderId = $this->_getParam( "order_id" );
+    	
+    	$this->assign( "orderId", $orderId );
+    	
+    }
+    
+    
+public function doPaypalExpressAction(){
 
 		
 		$orderId = $this->_getParam( "order_id" );
@@ -127,57 +216,6 @@ class PayController extends TCVM_ZendX_Controller_Action_Front
 		}
 		
 		$this->redirect( "success", "pay", "default",  array( "order_id" => $orderId ));
-		
-	}
-	
-	public function electronicFinishAction(){
-		
-		$orderId = $this->_getParam( "order_id" );
-		
-		
-		
-	}
-	
-	public function cancelPaypalExpressAction(){
-	
-		
-		
-		
-	}
-	
-	public function errorAction(){
-		
-		$error = $this->_getParam( "error" );
-		
-		
-		$this->assign( "error" , $error );
-		
-	}
-	
-	public function errorDirectPayAction(){
-		
-		$error = $this->_getParam( "error" );
-		
-		
-		$this->assign( "error" , $error );
-		
-	}
-	
-	public function successAction(){
-		
-		$orderId = $this->_getParam( "order_id" );
-		
-	}
-	
-	public function successEtfAction(){
-		
-		
-		
-	}
-	
-	public function pendingAction(){
-	
-		$orderId = $this->_getParam( "order_id" );
 		
 	}
 	
