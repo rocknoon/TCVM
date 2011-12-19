@@ -39,6 +39,7 @@
 			$order 		= $this->_order->getOrder( $id);
 			
 			
+			
 			$this->assign( "order" , $order );
 		}
 		

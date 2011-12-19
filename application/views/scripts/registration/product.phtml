@@ -31,7 +31,7 @@
                               <tr>
                                 <td width="30%" class="STYLE2"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                   <tr>
-                                    <td width="28%"><div align="right"><img src="images/s1.jpg" width="60" height="60" /></div></td>
+                                    <td width="28%"><div align="right"><img src="<?php echo $this->baseUrl().$course["image"]?>" width="60" height="60" /></div></td>
                                     <td width="72%" valign="top"><table width="95%" border="0" align="right" cellpadding="0" cellspacing="0">
                                       <tr>
                                         <td><p align="left" class="STYLE4"><strong><?php echo $course["name"]?></strong></p></td>
@@ -40,7 +40,7 @@
                                         <td><div align="left">
                                         <strong>
                                   
-                                        	May 1 - July 1, 2012
+                                        	<?php echo during_time( $course["id"] )?>
                                         </strong></div></td>
                                       </tr>
                                     </table>
@@ -64,7 +64,7 @@
                                           
                                            />
                                         </div></td>
-                                        <td width="96%"><div align="left">AU $<?php echo $course["price"]["before"]?> (GST inclusive)paid before April 1,  2012 </div></td>
+                                        <td width="96%"><div align="left">AU $<?php echo $course["price"]["before"]?> (GST inclusive)paid before <?php echo before_time($course["id"]);?> </div></td>
                                       </tr>
                                     </table></td>
                                   </tr>
@@ -78,7 +78,7 @@
 	                                        <?php endif;?>
                                             name="products[<?php echo $course["id"]?>]" value="now" onclick="chooseProduct( <?php echo $course["id"]?> , 'now' )" />
                                         </div></td>
-                                        <td width="96%"><div align="left">AU $<?php echo $course["price"]["now"]?> (GST inclusive)paid  April 1�May 1, 2012</div></td>
+                                        <td width="96%"><div align="left">AU $<?php echo $course["price"]["now"]?> (GST inclusive)paid <?php echo between_time($course["id"]);?> </div></td>
                                       </tr>
                                     </table></td>
                                   </tr>
@@ -224,3 +224,58 @@
 	}
  
  </script>
+ 
+ <?php 
+ function before_time( $courseId ){
+ 	
+ 	$course  = TCVM_Product_Factory::Factory()->getById( $courseId );
+ 	
+ 	if( $course["time_start"]["month"] == 1 ){
+ 		$beforeMonth = 12;
+ 		$beforeYear  = $course["time_start"]["year"] - 1;
+ 	}else{
+ 		$beforeMonth = $course["time_start"]["month"] - 1;
+ 		$beforeYear  = $course["time_start"]["year"];
+ 	}
+ 	
+ 	$beforeTime = mktime( 0 , 0 , 0 , $beforeMonth , 1 , $beforeYear );
+ 	
+ 	$rtn = date( "F j,Y" ,  $beforeTime );
+ 	return $rtn;
+ }
+ 
+ function between_time( $courseId ){
+ 
+ 	$course  = TCVM_Product_Factory::Factory()->getById( $courseId );
+ 	
+ 	if( $course["time_start"]["month"] == 1 ){
+ 		$beforeMonth = 12;
+ 		$beforeYear  = $course["time_start"]["year"] - 1;
+ 	}else{
+ 		$beforeMonth = $course["time_start"]["month"] - 1;
+ 		$beforeYear  = $course["time_start"]["year"];
+ 	}
+ 	
+ 	$beforeTime = mktime( 0 , 0 , 0 , $beforeMonth , 1 , $beforeYear );
+ 	$endtime    = mktime( 0 , 0 , 0 , $course["time_start"]["month"] , $course["time_start"]["date"] , $course["time_start"]["year"] );
+ 	$rtn = date( "F j" ,  $beforeTime ) . " - " .  date( "F j,Y" ,  $endtime )  ;
+ 	return $rtn;
+ 	
+ 
+ }
+ 
+ function during_time($courseId){
+ 	
+ 	$course  = TCVM_Product_Factory::Factory()->getById( $courseId );
+ 	
+ 	
+ 	
+
+ 	$startTime    = mktime( 0 , 0 , 0 , $course["time_start"]["month"] , $course["time_start"]["date"] , $course["time_start"]["year"] );
+ 	$endTime    = mktime( 0 , 0 , 0 , $course["time_end"]["month"] , $course["time_end"]["date"] , $course["time_end"]["year"] );
+ 	$rtn = date( "F j" ,  $startTime ) . " - " .  date( "F j,Y" ,  $endTime )  ;
+ 	return $rtn;
+ 	
+ }
+ 
+ ?>

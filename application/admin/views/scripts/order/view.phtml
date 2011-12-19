@@ -24,37 +24,10 @@
 		<div>
 		<label>Products:</label>
 		<?php foreach($this->order['products'] as $product):?>
-			<?php echo $product['name'] ?> &nbsp;&nbsp; Amount: <?php echo $product['amount'] ?> &nbsp;&nbsp; Price:<?php echo $product['price'] * $product['amount'] ?><br/>
+			<?php echo $product['name'] ?> &nbsp;&nbsp;  &nbsp;&nbsp; Price:<?php echo $product['price'] ?><br/>
 		<?php endforeach;?>
 		</div>
-		
-		<div>
-		<label>Buyer First Name:</label>
-		<?php echo $this->order['first_name']?>
-		</div>
-		
-		<div>
-		<label>Buyer Last Name:</label>
-		<?php echo $this->order['last_name']?>
-		</div>
-		
-		<div>
-		<label>Buyer Mobile:</label>
-		<?php echo $this->order['mobile']?>
-		</div>
-		
-		<div>
-		<label>Buyer Address:</label>
-		<?php echo $this->order['street']?> <?php echo $this->order['city']?> <?php echo $this->order['country']?>
-		</div>
-		
-		<div>
-		<label>Zip code:</label>
-		<?php echo $this->order['zip_code']?>
-		</div>
-		
-		
-		
+			
 		<div>
 		<label>Status:</label>
 		<select name="status" id="status">
@@ -63,6 +36,27 @@
 			<option value="<?php echo TCVM_Order_Imple::STATUS_CANCEL?>">Cancel</option>
 			<option value="<?php echo TCVM_Order_Imple::STATUS_SUCCESS?>">Success</option>
 		</select>
+		</div>
+		
+		
+		<!-- basic info -->
+		<?php foreach( $this->order["cart_info"]["basic"] as $key => $value ):?>
+		
+		<div>
+		<label><?php echo $key?>:<?php echo $value?></label>
+		
+		</div>
+		<?php endforeach;?>
+		
+		<!-- profile info -->
+		<div>
+		<label>Biographical:<a href="<?php echo $this->baseUrl().$this->order["cart_info"]['profile']["biographical"]?>" target="_blank">view</a></label>
+			
+		</div>
+		
+		<div>
+		<label>photo:<a href="<?php echo $this->baseUrl().$this->order["cart_info"]['profile']["photo"]?>" target="_blank">view</a></label>
+			
 		</div>
 		
 
