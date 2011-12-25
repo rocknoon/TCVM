@@ -263,7 +263,7 @@
 			
 			$rtn = WeFlex_Db::Query($sql);
 			
-			if( !empty( $rtn ) ){
+			if( empty( $rtn ) ){
 				return true;
 			}else{
 				return false;

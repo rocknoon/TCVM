@@ -256,11 +256,8 @@ require_once "Adaptive/NVP_SampleConstants.php";
 			//$_SESSION['nvpReqArray']=$nvpReqArray;
 		
 			if (curl_errno($ch)) {
+				throw new Exception(curl_error($ch));
 				// moving to display page to display curl errors
-				  $_SESSION['curl_error_no']=curl_errno($ch) ;
-				  $_SESSION['curl_error_msg']=curl_error($ch);
-				  $location = "APIError.php";
-				  header("Location: $location");
 			 } else {
 				 //closing the curl
 					curl_close($ch);

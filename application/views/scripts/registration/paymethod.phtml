@@ -13,7 +13,7 @@
   margin-bottom:6.0pt;margin-left:0cm;text-align:center'><b style='mso-bidi-font-weight:
   normal'><span style='font-size:14.0pt' lang="EN-US" xml:lang="EN-US">Class Registration
                         </span></b></p>
-                      <form id="form1" name="form1" method="post" action="<?php echo $this->url(array("action" => "post-paymethod" , "controller" => "registration"), 'default', true);?>">
+                      <form onsubmit="return checkForm();" id="form1" name="form1" method="post" action="<?php echo $this->url(array("action" => "post-paymethod" , "controller" => "registration"), 'default', true);?>">
                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                           <tr>
                             <td><div align="left">
@@ -69,6 +69,21 @@
                 </table>
                 
                 <script>
+              
+                	function checkForm(){
+                		
+                		var selected = $('input:checked').val();
+                	
+                		if( !selected ){
+							alert( "please choose payment method" );
+							return false;
+	                    }
+
+                    	return true;
+                    	
+                		
+                    	}
+                	
                 	function previous(){
 
                   	 	location.href= "<?php echo $this->url(array("action" => "product" , "controller" => "registration"), 'default', true);?>";

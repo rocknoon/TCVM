@@ -13,7 +13,7 @@
   margin-bottom:6.0pt;margin-left:0cm;text-align:center'><b style='mso-bidi-font-weight:
   normal'><span style='font-size:14.0pt' lang="EN-US" xml:lang="EN-US">Class Registration
                         </span></b></p>
-                      <form action="<?php echo $this->url(array("action" => "post-profile" , "controller" => "registration"), 'default', true);?>" method="post" enctype="multipart/form-data" name="form1" id="form1">
+                      <form onsubmit="return checkForm();"action="<?php echo $this->url(array("action" => "post-profile" , "controller" => "registration"), 'default', true);?>" method="post" enctype="multipart/form-data" name="form1" id="form1">
                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                           <tr>
                             <td><div align="left">
@@ -27,7 +27,7 @@
                                 <td valign="top" class="STYLE3"><div align="right">Or upload your  brief biographical sketch</div></td>
                                 <td class="STYLE2"><table width="100%" border="0" cellspacing="5" cellpadding="0">
                                   <tr>
-                                    <td width="59%"><input name="biographical" type="file" size="40" /></td>
+                                    <td width="59%"><input name="biographical" id="biographical" type="file" size="40" /></td>
                                     <td width="41%"><div align="left">
                                        
                                     </div></td>
@@ -38,7 +38,7 @@
                                 <td class="STYLE3"><div align="right">upload your <strong>recent</strong> photo </div></td>
                                 <td class="STYLE2"><table width="100%" border="0" cellspacing="5" cellpadding="0">
                                   <tr>
-                                    <td width="59%"><input name="photo" type="file" size="40" /></td>
+                                    <td width="59%"><input name="photo" id="photo" type="file" size="40" /></td>
                                     <td width="41%"><div align="left">
                                      
                                     </div></td>
@@ -76,6 +76,24 @@
                 <!-- InstanceEndEditable --></td>
                 
                 <script>
+
+                function checkForm(){
+
+                	if( !$("#biographical").val() ){
+                		alert( "please choose your biographical attachment." );
+            			return false;
+                    }
+
+                	if( !$("#photo").val() ){
+                		alert( "please choose your profile photo attachment." );
+            			return false;
+                    }
+
+                    return true;
+                }
+
+                
+                
                 function previous(){
 
               	 	location.href= "<?php echo $this->url(array("action" => "paymethod" , "controller" => "registration"), 'default', true);?>";

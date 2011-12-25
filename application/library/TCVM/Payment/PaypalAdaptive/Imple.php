@@ -98,7 +98,7 @@
 		}
 		
 		
-		private function _getReturnUrl( $orderId, $amt, $currencyCodeType, $paymentType  ){
+		private function _getReturnUrl( $orderId   ){
 			
 			$rtn = WeFlex_Util::GetFullUrl(array('action' => 'callback-paypal-adaptive' , 'controller' => 'pay' ,  'orderId' => $orderId ) , "default" ) ;
 			
