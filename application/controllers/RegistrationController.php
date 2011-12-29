@@ -121,6 +121,19 @@ class RegistrationController extends TCVM_ZendX_Controller_Action_Front
 		
 	}
 	
+	public function ajaxCleanProductAction(){
+		
+		try{
+			$this->_cart->cleanProduct();
+			$cartInfo = $this->_cart->getCartInfo();
+		}catch( Exception $ex ){
+			$this->error( $ex->getMessage() );
+		}
+		
+		$this->success($cartInfo);
+		
+	}
+	
 	
 	
 	public function ajaxProductAction(){

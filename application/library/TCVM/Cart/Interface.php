@@ -19,6 +19,8 @@
 		
 		public function fifthSessionDeduct();
 		
+		public function cleanProduct();
+		
 		public function cleanCart();
 	
 		

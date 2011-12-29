@@ -150,6 +150,19 @@
 			WeFlex_Session::Set( self::SESSION_CART, null );
 			
 		}
+		
+		
+
+		
+		public function cleanProduct() {
+			
+			$rtn = $this->_getSession();
+			
+			$rtn[self::STEP_PRODUCT] = null;
+			
+			$this->_setSession( self::STEP_PRODUCT , $rtn[self::STEP_PRODUCT]);
+			
+		}
 
 		public function isMeNewUser() {
 			
@@ -192,6 +205,11 @@
 				$session[self::STEP_PRODUCT] = array();
 				$session[self::STEP_PRODUCT]["products"] = array();
 				$session[self::STEP_PRODUCT]["deduct"] = 0;
+				
+				if( $this->_isMeNewUser() ){
+					$session[self::STEP_PRODUCT]["new"] = self::NEW_USER_FEE;
+				}
+				
 			}
 			
 			if( !isset($session[self::STEP_PROFILE]) ){
@@ -259,7 +277,7 @@
 				throw new Exception( "sorry, you are not login" );
 			}
 			
-			$sql = "select id from `order` where user_id = " . WeFlex_Db::QuoteInto( "?" , $user["id"]);
+			$sql = "select id from `order` where status = ".TCVM_Order_Imple::STATUS_SUCCESS." and  user_id = " . WeFlex_Db::QuoteInto( "?" , $user["id"]);
 			
 			$rtn = WeFlex_Db::Query($sql);
 			
@@ -284,7 +302,7 @@
 					FROM  `order` 
 					LEFT JOIN order_product ON `order`.id = order_product.order_id
 					WHERE `order`.user_id = ". WeFlex_Db::QuoteInto( "?" , $user["id"]) ."
-					AND order_product.product_id = " . WeFlex_Db::QuoteInto( "?" , $id);
+					AND order_product.product_id = " . WeFlex_Db::QuoteInto( "?" , $id) . " AND `order`.status = ".TCVM_Order_Imple::STATUS_SUCCESS;
 			
 			$rtn = WeFlex_Db::Query($sql);
 			

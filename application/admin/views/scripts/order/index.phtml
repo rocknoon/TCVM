@@ -6,8 +6,9 @@
           <table class="backend_show_book" cellpadding="0" cellspacing="0" border="0" width="100%">
             <tr class="head">
               <th>ID</th>
-              <th>User Id</th>
+              <th>User Email</th>
               <th>Total Price</th>
+              <th>Time</th>
               <th>Status</th>
               <th>Action</th>
             </tr>
@@ -15,8 +16,9 @@
             <?php foreach( $this->orders as $order ):?>
             <tr>
               <td><?php echo $order['id']?></td>
-              <td><?php echo $order['user_id']?></td>
+              <td><?php echo $order['email']?></td>
               <td><?php echo $order['total_price']?></td>
+              <td><?php echo date( "Y-m-d" , $order['date_add'] );?></td>
               <td>
               						<?php switch( $order['status'] ):
                                   

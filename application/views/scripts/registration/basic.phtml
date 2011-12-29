@@ -13,7 +13,7 @@
   margin-bottom:6.0pt;margin-left:0cm;text-align:center'><b style='mso-bidi-font-weight:
   normal'><span style='font-size:14.0pt' lang="EN-US" xml:lang="EN-US">Class Registration
                         </span></b></p>
-                      <form id="form1" name="form1" method="post" action="<?php echo $this->url(array("action" => "post-basic" , "controller" => "registration"), 'default', true);?>">
+                      <form onsubmit="return checkForm();" id="form1" name="form1" method="post" action="<?php echo $this->url(array("action" => "post-basic" , "controller" => "registration"), 'default', true);?>">
                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                           <tr>
                             <td><div align="left">
@@ -21,7 +21,7 @@
   margin-left:6.0pt;text-indent:-6.0pt">&nbsp;</p>
                               <p style="margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;
   margin-left:6.0pt;text-indent:-6.0pt"><span class="STYLE3"><b style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt' lang="EN-US" xml:lang="EN-US">STEP 1:
-                                Check courses previously attended.<span style='mso-spacerun:yes'>&nbsp; </span>If none, check appropriate box</span></b></span></p>
+                                Check courses previously attended.<span style='mso-spacerun:yes'>&nbsp; </span><span style="color:red">If none, leave this part as empty.</span></span></b></span></p>
                             </div></td>
                             </tr>
                           <tr>
@@ -129,8 +129,8 @@
                                     <tr>
                                       <td width="33%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                         <tr>
-                                          <td width="15%"><input type="checkbox" name="advanced_programs[]" <?php if( in_array( "Certified ?Veterinary Tui-na",  $this->cartInfo['basic']['advanced_programs']) ) echo "checked"?> value="Certified ?Veterinary Tui-na" /></td>
-                                          <td width="85%">Certified ?Veterinary Tui-na</td>
+                                          <td width="15%"><input type="checkbox" name="advanced_programs[]" <?php if( in_array( "Certified Veterinary Tui-na",  $this->cartInfo['basic']['advanced_programs']) ) echo "checked"?> value="Certified Veterinary Tui-na" /></td>
+                                          <td width="85%">Certified Veterinary Tui-na</td>
                                         </tr>
                                       </table></td>
                                       <td width="33%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -156,7 +156,7 @@
                             </table></td>
                             </tr>
                           <tr>
-                            <td><div align="left"><span class="STYLE10"><strong>STEP 2:Contact Information/Preferred Mailing  Address. Print or type all information clearly</strong></span></div></td>
+                            <td><div align="left"><span class="STYLE10"><strong>STEP 2:Contact Information/Preferred Mailing  Address. Print or type all information clearly. <span style="color:red">The red ones are mandatory.</span></strong></span></div></td>
                             </tr>
                           <tr>
                             <td><table width="100%" border="1" align="center" cellpadding="10" cellspacing="0" bordercolor="#FFFFFF" bgcolor="#FCFCFC" class="STYLE2">
@@ -168,23 +168,23 @@
                                       <td width="33%"><div align="left">
                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                             <tr>
-                                              <td width="35%"><div align="right">First Name: </div></td>
+                                              <td width="35%"><div align="right"><span style="color:red">First Name:</span> </div></td>
                                               <td width="65%"><div align="left">
-                                                <input name="first_name" value="<?php if( isset( $this->cartInfo['basic']['first_name']) ) echo $this->cartInfo['basic']['first_name']?>" type="text" class="input1" />
+                                                <input name="first_name" id="first_name" value="<?php if( isset( $this->cartInfo['basic']['first_name']) ) echo $this->cartInfo['basic']['first_name']?>" type="text" class="input1" />
                                               </div></td>
                                             </tr>
                                                                               </table>
                                       </div></td>
                                       <td width="33%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                         <tr>
-                                          <td width="45%"><div align="right">Middle Name:</div></td>
-                                          <td width="55%"><input name="middle_name" value="<?php if( isset( $this->cartInfo['basic']['middle_name']) ) echo $this->cartInfo['basic']['first_name']?>" type="text" class="input1" /></td>
+                                          <td width="45%"><div align="right"><span style="color:red">Middle Name:</span></div></td>
+                                          <td width="55%"><input name="middle_name" id="middle_name" value="<?php if( isset( $this->cartInfo['basic']['middle_name']) ) echo $this->cartInfo['basic']['first_name']?>" type="text" class="input1" /></td>
                                         </tr>
                                       </table></td>
                                       <td width="33%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                         <tr>
-                                          <td width="46%"><div align="right">Last Name:</div></td>
-                                          <td width="54%"><input name="last_name" value="<?php if( isset( $this->cartInfo['basic']['last_name']) ) echo $this->cartInfo['basic']['last_name']?>" type="text" class="input1" /></td>
+                                          <td width="46%"><div align="right"><span style="color:red">Last Name:</span></div></td>
+                                          <td width="54%"><input name="last_name" id="last_name" value="<?php if( isset( $this->cartInfo['basic']['last_name']) ) echo $this->cartInfo['basic']['last_name']?>" type="text" class="input1" /></td>
                                         </tr>
                                       </table></td>
                                     </tr>
@@ -359,9 +359,9 @@
                                   <tr>
                                     <td width="33%"><table width="77%" border="0" cellspacing="0" cellpadding="0">
                                       <tr>
-                                        <td width="15%"><div align="right">Work:</div></td>
+                                        <td width="15%"><div align="right"><span style="color:red">Work:</span></div></td>
                                         <td width="85%"><div align="left">
-                                          <input name="work" value="<?php if( isset( $this->cartInfo['basic']['work']) ) echo $this->cartInfo['basic']['work']?>" type="text" class="input1" />
+                                          <input name="work" id="work" value="<?php if( isset( $this->cartInfo['basic']['work']) ) echo $this->cartInfo['basic']['work']?>" type="text" class="input1" />
                                         </div></td>
                                       </tr>
                                     </table></td>
@@ -390,9 +390,9 @@
                                   <tr>
                                     <td width="30%"><table width="94%" border="0" cellspacing="0" cellpadding="0">
                                       <tr>
-                                        <td width="26%"><div align="left">Public:</div></td>
+                                        <td width="26%"><div align="left"><span style="color:red">Public:</span></div></td>
                                         <td width="74%"><div align="left">
-                                            <input name="public" value="<?php if( isset( $this->cartInfo['basic']['public']) ) echo $this->cartInfo['basic']['public']?>" type="text" class="input2" />
+                                            <input name="public" id="public" value="<?php if( isset( $this->cartInfo['basic']['public']) ) echo $this->cartInfo['basic']['public']?>" type="text" class="input2" />
                                         </div></td>
                                       </tr>
                                     </table></td>
@@ -438,3 +438,36 @@
                   </tr>
                 </table>
                 <!-- InstanceEndEditable --></td>
+                
+                <script>
+                function checkForm(){
+
+                	if( !$("#first_name").val() ){
+                		alert( "please fill in your first name." );
+            			return false;
+                    }
+
+                	if( !$("#middle_name").val() ){
+                		alert( "please fill in your middle name." );
+            			return false;
+                    }
+
+                	if( !$("#last_name").val() ){
+                		alert( "please fill in your last name." );
+            			return false;
+                    }
+
+                	if( !$("#work").val() ){
+                		alert( "please fill in your work phone number." );
+            			return false;
+                    }
+
+                	if( !$("#public").val() ){
+                		alert( "please fill in your public email address." );
+            			return false;
+                    }
+
+                    return true;
+                }
+
+                </script>

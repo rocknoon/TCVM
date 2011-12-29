@@ -185,6 +185,7 @@
 			$rtn = array();
 			
 			$product = TCVM_Product_Factory::Factory();
+			$user    = TCVM_User_Factory::Factory();
 			
 			$orderDatas = $this->_orderModel->getAllByConditions( $conditions, $order, $pageNo , $pageSize );
 			
@@ -195,7 +196,8 @@
 				$orderInfo = $orderData;
 				$orderInfo["cart_info"] = unserialize( $orderInfo["cart_info"] );
 				$orderInfo['products'] = array();
-				
+				$userInfo = $user->getUserById( $orderInfo["user_id"] );
+				$orderInfo["email"] = $userInfo["email"];
 				foreach( $orderProductDatas as $orderProductData ){
 					
 					$productEntity = $product->getById( $orderProductData['product_id'] );

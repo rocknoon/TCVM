@@ -27,7 +27,7 @@
                             <td>&nbsp;</td>
                             <td class="orderid">Order ID:<?php echo $order['id']?></td>
                             <td class="orderid"><div align="left">Date:</div></td>
-                            <td class="orderid">2011-7-28</td>
+                            <td class="orderid"><?php echo date( "Y-m-d" , $order["date_add"] )?></td>
                             <td>&nbsp;</td>
                           </tr>
                           
@@ -62,7 +62,11 @@
                                   	
                                   <?php endswitch;?>
                                   </div>                                  
-                                  <div align="left" class="STYLE2"></div>
+                                  <div align="left" class="STYLE2">
+                                  <?php if( isset($order["cart_info"][TCVM_Cart_Imple::STEP_PRODUCT]["new"]) ):?>
+										Application Fee: <?php echo $order["cart_info"][TCVM_Cart_Imple::STEP_PRODUCT]["new"]?>
+									<?php endif;?>
+                                  </div>
                             </td>
                             <td class="STYLE2">&nbsp;</td>
                             <?php endif;?>

@@ -31,7 +31,7 @@
                                     
                                     <tr>
                                       <td><input type="radio" name="paymethod" <?php if( $this->cartInfo['payinfo']['paymethod'] == TCVM_Payment_Imple::PAYMENT_ELECTRONIC_TRANSFER ) echo "checked"?> value="<?php echo TCVM_Payment_Imple::PAYMENT_ELECTRONIC_TRANSFER?>" /></td>
-                                      <td colspan="3"><div align="left">Bank Transfer?(please email <span class="STYLE9" style="font-weight: bold"><a href="mailto:admin@tcvm.com.au">admin@tcvm.com</a></span><a href="mailto:admin@tcvm.com.au">.au</a> for detailed instructions)</div></td>
+                                      <td colspan="3"><div align="left">Bank Transfer(please email <span class="STYLE9" style="font-weight: bold"><a href="mailto:admin@tcvm.com.au">admin@tcvm.com</a></span><a href="mailto:admin@tcvm.com.au">.au</a> for detailed instructions)</div></td>
                                     </tr>
                                     <tr>
                                       <td><input type="radio" name="paymethod" value="<?php echo TCVM_Payment_Imple::PAYMENT_PAYPAL_ADAPTIVE?>" <?php if( $this->cartInfo['payinfo']['paymethod'] == TCVM_Payment_Imple::PAYMENT_PAYPAL_ADAPTIVE ) echo "checked"?> /></td>

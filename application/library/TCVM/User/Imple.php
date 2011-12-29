@@ -30,8 +30,8 @@
 	
 			
 		public function getUserById($id) {
-			// TODO Auto-generated method stub
 			
+			return $this->_model->getOneByConditions( array( "id" => $id ) );
 		}
 	
 			

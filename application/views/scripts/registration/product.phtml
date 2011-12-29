@@ -95,18 +95,6 @@
                                 <td class="STYLE2"><table width="95%" border="0" align="left" cellpadding="0" cellspacing="10">
                                   <tr>
                                     <td width="6%"><div align="right">
-                                      
-                                    </div></td>
-                                    <td width="94%"><div align="left">Application fee AU $100 (for new student only<strong>) </strong></div></td>
-                                  </tr>
-                                  <tr>
-                                    <td><div align="right">
-                                      
-                                    </div></td>
-                                    <td><div align="left">30% discount (if  re-taking the course) </div></td>
-                                  </tr>
-                                  <tr>
-                                    <td><div align="right">
                                       <input type="checkbox" 
                                       <?php if(  $this->cartInfo[TCVM_Cart_Imple::STEP_PRODUCT]["deduct"] ):?>
 	                                          checked
@@ -114,8 +102,28 @@
 	                                  onclick="chooseDeduct()"
                                       name="deduct" value="checkbox" />
                                     </div></td>
-                                    <td><p align="left">Deduct AU $350 from the 5th Session if you do not  wish to get certified:AU $250 for certification exams and AU $100 for  case report review</p>                                      </td>
+                                    <td width="94%"><p align="left">Deduct AU $350 from the 5th Session if you do not  wish to get certified:AU $250 for certification exams and AU $100 for  case report review</p>                                      </td>
                                   </tr>
+                                  <tr>
+                                    <td ><div align="right">
+                                      
+                                    </div></td>
+                                    <td ><div align="left">Application fee AU $100 (for new student only<strong>) </strong></div></td>
+                                  </tr>
+                                  <tr>
+                                    <td><div align="right">
+                                      
+                                    </div></td>
+                                    <td><div align="left">30% discount (if  re-taking the course) </div></td>
+                                  </tr>
+                                  
+                                  <tr>
+                                    <td><div align="right">
+                                      
+                                    </div></td>
+                                    <td><div align="left"><input type="button" onclick="cleanCart();" value="Clean Cart" /></div></td>
+                                  </tr>
+                                  
                                   <tr>
                                     <td><div align="right">
                                 
@@ -190,6 +198,24 @@
 				response = rocknoon.ajax.prase(response);
 				if( response.status ){
 					refreshCart( response.info );
+				}else{
+					alert(response.info );
+				}
+			}
+		});
+	 
+	 }
+
+ function cleanCart(){
+
+	 $.ajax({
+			type: "POST",
+			data: {},
+			url : "<?php echo $this->url(array("action" => "ajax-clean-product" , "controller" => "registration"), 'default', true);?>",
+			complete : function( response ){
+				response = rocknoon.ajax.prase(response);
+				if( response.status ){
+					location.reload();
 				}else{
 					alert(response.info );
 				}
