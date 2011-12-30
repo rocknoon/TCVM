@@ -77,6 +77,10 @@
 		 */
 		public function modifyUserPassword( $id , $password );
 		
+		public function getUserRegistrationBasic( $id );
+		
+		public function modifyUserRegistrationBasic( $id , $basic );
+		
 		
 		
 		/**

@@ -91,6 +91,13 @@
 				
 			}
 			
+			//application fee
+			if( $orderEntity["cart_info"][TCVM_Cart_Imple::STEP_PRODUCT]["new"] ){
+				$nvp['receiverEmail']["au"] = TCVM::GetInstance()->config->payment->paypal->receiver->au;
+				$nvp['receiverAmount']["au"] = $nvp['receiverAmount']["au"] + $orderEntity["cart_info"][TCVM_Cart_Imple::STEP_PRODUCT]["new"];
+				$nvp['primaryReceiver']["au"] = "false";
+			}
+			
 			
 			
 			return $nvp;

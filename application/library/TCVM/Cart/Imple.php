@@ -146,6 +146,17 @@
 		
 		
 		
+		
+		public function rememberBasic() {
+			
+			$userMod = TCVM_User_Factory::Factory();
+			$session = $this->_getSession();
+			
+			$loginUser = $userMod->getLoginedUser();
+			$userMod->modifyUserRegistrationBasic($loginUser["id"], $session[self::STEP_BASIC]);
+
+		}
+
 		public function cleanCart() {
 			WeFlex_Session::Set( self::SESSION_CART, null );
 			
@@ -183,18 +194,26 @@
 			
 			$session = WeFlex_Session::Get( self::SESSION_CART );
 			
+			$userMod = TCVM_User_Factory::Factory();
+			
+			$loginUser = $userMod->getLoginedUser();
+			$basic = $userMod->getUserRegistrationBasic($loginUser["id"]);
 			
 			//init 4 step
 			if( !$session ){
 				$session = array();
 			}
 			
-			if( !isset($session[self::STEP_BASIC]) ){
+			if( !isset($session[self::STEP_BASIC]) && !$basic ){
 				$session[self::STEP_BASIC] = array();
 				$session[self::STEP_BASIC]["veterinary_acupuncture"] = array();
 				$session[self::STEP_BASIC]["tcvm_clinical_approach"] = array();
 				$session[self::STEP_BASIC]["advanced_programs"] = array();
 				$session[self::STEP_BASIC]["practice"] = array();
+			}
+			
+			if( !isset($session[self::STEP_BASIC]) && $basic ){
+				$session[self::STEP_BASIC] = $basic;
 			}
 			
 			if( !isset($session[self::STEP_PAYINFO]) ){

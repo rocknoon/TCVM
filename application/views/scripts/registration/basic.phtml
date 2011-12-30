@@ -177,7 +177,7 @@
                                       </div></td>
                                       <td width="33%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                         <tr>
-                                          <td width="45%"><div align="right"><span style="color:red">Middle Name:</span></div></td>
+                                          <td width="45%"><div align="right">Middle Name:</div></td>
                                           <td width="55%"><input name="middle_name" id="middle_name" value="<?php if( isset( $this->cartInfo['basic']['middle_name']) ) echo $this->cartInfo['basic']['first_name']?>" type="text" class="input1" /></td>
                                         </tr>
                                       </table></td>
@@ -447,10 +447,6 @@
             			return false;
                     }
 
-                	if( !$("#middle_name").val() ){
-                		alert( "please fill in your middle name." );
-            			return false;
-                    }
 
                 	if( !$("#last_name").val() ){
                 		alert( "please fill in your last name." );

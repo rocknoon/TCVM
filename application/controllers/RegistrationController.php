@@ -114,6 +114,7 @@ class RegistrationController extends TCVM_ZendX_Controller_Action_Front
 		
 		
 		$this->_cart->profileAttached( $data );
+		$this->_cart->rememberBasic();
 		$order->generateLoginUserOrder();
 		$this->_cart->cleanCart();
 		

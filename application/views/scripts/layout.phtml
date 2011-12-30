@@ -56,9 +56,9 @@ if( WeFlex_Application::GetInstance()->config->js->compress ){
                   <td>
                   	<div align="right" class="headerLogin">
                   		<?php if( !$this->isLogin ):?>
-                        	<!-- InstanceBeginEditable name="EditRegion2" --><a href="<?php echo $this->url(array("action" => "login" , "controller" => "user"), 'default', true);?>">Login</a><!-- InstanceEndEditable -->
+                        	<!-- InstanceBeginEditable name="EditRegion2" --><a style="color:white" href="<?php echo $this->url(array("action" => "login" , "controller" => "user"), 'default', true);?>">Login</a><!-- InstanceEndEditable -->
                         <?php else:?>
-                        	<!-- InstanceBeginEditable name="EditRegion2" -->Welcome: <?php echo $this->loginUser['email']?> <a href="<?php echo $this->url(array("action" => "do-logout" , "controller" => "user"), 'default', true);?>">Logout</a><!-- InstanceEndEditable -->
+                        	<!-- InstanceBeginEditable name="EditRegion2" -->Welcome: <?php echo $this->loginUser['email']?> <a style="color:white" href="<?php echo $this->url(array("action" => "do-logout" , "controller" => "user"), 'default', true);?>">Logout</a><!-- InstanceEndEditable -->
                         <?php endif;?>
                   		
                   	</div>

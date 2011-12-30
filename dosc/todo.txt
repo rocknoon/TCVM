@@ -1,3 +1,5 @@
 1. 支付验证
 2. 记忆用户资料
 3. 
+
+ALTER TABLE `user` ADD `registration_basic_defualt` TEXT NULL AFTER `mobile` 

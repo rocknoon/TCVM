@@ -93,8 +93,22 @@
 			// TODO Auto-generated method stub
 			
 		}
-	
+		
+		
+		public function getUserRegistrationBasic($id) {
 			
+			$user = $this->_model->getOneByConditions( array( "id" => $id ) );
+			
+			return unserialize( $user["registration_basic_defualt"] );
+		}
+
+			
+		public function modifyUserRegistrationBasic($id, $basic) {
+			
+			$this->_model->update( array( "registration_basic_defualt" => serialize( $basic ) ) ,array( "id" => $id ));
+			
+		}
+
 		public function register($data) {
 			
 			if( !$data['email'] ){
