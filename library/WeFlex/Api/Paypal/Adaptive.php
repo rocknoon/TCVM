@@ -215,6 +215,21 @@ require_once "Adaptive/NVP_SampleConstants.php";
 			
 		}
 		
+		public function paymentDetail( $payKey ){
+			
+			$request_array = array (
+			"payKey" => $payKey,
+			"requestEnvelope.errorLanguage"=> 'en_US'
+			);
+			
+			$nvpStr=http_build_query($request_array, '', '&');
+			$resArray=$this->_hash_call("AdaptivePayments/PaymentDetails",$nvpStr);
+			
+			
+			return $resArray;
+			
+		}
+		
 		
 		private function _hash_call($methodName,$nvpStr,$sandboxEmailAddress = '')
 		{

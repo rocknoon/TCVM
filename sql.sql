@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2011 年 12 月 11 日 11:54
+-- 生成日期: 2012 年 01 月 07 日 13:36
 -- 服务器版本: 5.1.44
 -- PHP 版本: 5.3.1
 
@@ -46,6 +46,21 @@ CREATE TABLE IF NOT EXISTS `apply_etf` (
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `log_adaptive`
+--
+
+DROP TABLE IF EXISTS `log_adaptive`;
+CREATE TABLE IF NOT EXISTS `log_adaptive` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) NOT NULL,
+  `pay_key` varchar(255) NOT NULL,
+  `date_add` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `log_payment_error`
 --
 
@@ -57,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `log_payment_error` (
   `error` text NOT NULL,
   `date_add` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -121,15 +136,15 @@ DROP TABLE IF EXISTS `product_courses`;
 CREATE TABLE IF NOT EXISTS `product_courses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
-  `perlink` varchar(100) NOT NULL,
-  `price` float NOT NULL,
-  `short_desc` text,
-  `desc` text,
   `image` varchar(255) DEFAULT NULL,
   `visible` tinyint(1) NOT NULL DEFAULT '1',
+  `paypal` varchar(10) NOT NULL,
+  `time_start` int(11) NOT NULL,
+  `time_end` int(11) NOT NULL,
+  `before_price` float NOT NULL,
+  `now_price` float NOT NULL,
   `date_add` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `perlink` (`perlink`),
   KEY `date_add` (`date_add`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
@@ -153,6 +168,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `state` varchar(60) DEFAULT NULL,
   `telephone` varchar(100) DEFAULT NULL,
   `mobile` varchar(100) DEFAULT NULL,
+  `registration_basic_defualt` text,
   `date_add` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)

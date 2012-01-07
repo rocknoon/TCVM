@@ -1,29 +1,60 @@
 <?php 
 	class TCVM_Product_Imple implements TCVM_Product_Interface{
 		
+		/**
+		 * @var TCVM_Product_Model
+		 */
+		private $_model;
 		
-		public function getCourses() {
+		function __construct(){
 			
-		
-			return $this->_getCourses();
-		 
-		    					
-		    					
-
-  	
-
+			$this->_model = TCVM_Product_Model::GetInstance();
 			
 		}
 		
+		public function getCourses() {
+			
+			
+			$data = $this->_model->getAllByConditions( array( "visible" => intval(true) ) , "date_add DESC" );
+			
+			$rtn = array();
+			
+			foreach( $data as $course ){
+				$rtn[$course["id"]] = $this->_rebuildCourse($course);;
+			}
+			return $rtn;
+		}
+		
+		
+		public function getAllCourses() {
+			
+			$data = $this->_model->getAllByConditions( array() , "date_add DESC" );
+			
+			$rtn = array();
+			
+			foreach( $data as $course ){
+				$rtn[$course["id"]] = $this->_rebuildCourse($course);;
+			}
+			return $rtn;
+			
+		}
+		
+		
+		
 		public function getById($id) {
 			
-			$courses = $this->_getCourses();
-			return $courses[$id];
+			$data = $this->_model->getOneByConditions(array( "id" => $id ) );
+			
+			if( $data ){
+				$data = $this->_rebuildCourse( $data );
+			}
+			
+			return $data;
 			
 		}
 		
 		public function canGetBeforePrice( $id ){
-			$courses = $this->_getCourses();
+			$courses = $this->getCourses();
 			$course = $courses[$id];
 			
 			$now = time();
@@ -46,67 +77,73 @@
 			
 		}
 		
-		private function _getCourses(){
-			
-			$session1 = array();
-			$session1["id"] = 1;
-			$session1["name"] = "Session 1";
-			$session1["image"] = "/images/s1.jpg";
-			$session1["time_start"] = array( "year" => "2012","month" => 5,"date"  => 1);
-			$session1["time_end"] =  array( "year" => "2012","month" => 7,"date"  => 1);
-			$session1["price"] =  array("before" => 1045,"now"    => 1095 );
+
+		
+		public function save($data) {
 			
 			
-			
-			$session2 = array();
-			$session2["id"] = 2;
-			$session2["name"] = "Session 2";
-			$session2["image"] = "/images/s2.jpg";
-			$session2["time_start"] = array( "year" => "2012","month" => 7,"date"  => 5);
-			$session2["time_end"] =  array( "year" => "2012","month" => 7,"date"  => 8);
-			$session2["price"] =  array("before" => 1620,"now"    => 1670 );
-			
-			$session3 = array();
-			$session3["id"] = 3;
-			$session3["name"] = "Session 3";
-			$session3["image"] = "/images/s3.jpg";
-			$session3["time_start"] = array( "year" => "2012","month" => 7,"date"  => 9);
-			$session3["time_end"] =  array( "year" => "2012","month" => 10,"date"  => 17);
-			$session3["price"] =  array("before" => 945,"now"    => 995 );
-			
-			$session4 = array();
-			$session4["id"] = 4;
-			$session4["name"] = "Session 4";
-			$session4["image"] = "/images/s4.jpg";
-			$session4["time_start"] = array( "year" => "2012","month" => 10,"date"  => 18);
-			$session4["time_end"] =  array( "year" => "2012","month" => 10,"date"  => 21);
-			$session4["price"] =  array("before" => 1620,"now"    => 1670 );
-			
-			$session5 = array();
-			$session5["id"] = 5;
-			$session5["name"] = "Session 5";
-			$session5["image"] = "/images/s5.jpg";
-			$session5["time_start"] = array( "year" => "2013","month" => 1,"date"  => 17);
-			$session5["time_end"] =  array( "year" => "2013","month" => 1,"date"  => 20);
-			$session5["price"] =  array("before" => 1720,"now"    => 1770 );
+			$id = $data['id'];
+			$image = $data['image'];
+			unset( $data['id'] );
+			unset( $data['image'] );
 			
 			
-			$rtn = array( $session1["id"] => $session1,
-						  $session2["id"] => $session2,
-						  $session3["id"] => $session3,
-					$session4["id"] => $session4,
-					$session5["id"] => $session5  );
+			if( $id ){
+				$this->_model->update( $data , array( "id" => $id ) );
+			}
+			//create
+			else{
+				$data['date_add'] = time();
+				$id =  $this->_model->insert( $data );
+			}
 			
-			return $rtn;
+			if( $image ){	
+				$imageModel = new TCVM_Product_Image();
+				$imageUrl = $imageModel->formal( $id , $image );
+				$updateArray['image'] = $imageUrl;
+				$this->_model->update( $updateArray , array( "id" => $id ));
+			}
+			
+			return $id;
+			
+		}
+		
+		
+		public function delete($id) {
+			
+			$this->_model->delete( array("id" => $id) );
 			
 		}
 
-		
-		
+		private function _rebuildCourse( $course ){
+			
+			$timeStart = array();
+			$timeStart["year"] = intval( date( "Y" , $course["time_start"] ) );
+			$timeStart["month"] = intval( date( "n" , $course["time_start"] ) );
+			$timeStart["date"] = intval( date( "j" , $course["time_start"] ) );
+			
+			$timeEnd = array();
+			$timeEnd["year"] = intval( date( "Y" , $course["time_end"] ) );
+			$timeEnd["month"] = intval( date( "n" , $course["time_end"] ) );
+			$timeEnd["date"] = intval( date( "j" , $course["time_end"] ) );
+			
+			
+			$price = array();
+			$price["before"] = $course["before_price"];
+			$price["now"] 	 = $course["now_price"];
+			
+			
+			$course["time_start_int"] = $course["time_start"];
+			$course["time_end_int"] = $course["time_end"];
+			$course["time_start"] = $timeStart;
+			$course["time_end"] = $timeEnd;
+			$course["price"] = $price;
+			
+			
+			return $course;
+			
+		}
 
-		
-		
-		
 		
 		
 		

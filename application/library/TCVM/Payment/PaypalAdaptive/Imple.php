@@ -37,18 +37,48 @@
 		
 			try {
 				$rtn = $this->_paypal->pay( $param );
+				
+				//pay key
+				WeFlex_Session::Set( "paypal-adaptive-pay-key" , $rtn["payKey"]);
+				WeFlex_Session::Set( "order_id" , $orderId);
+				
+				$this->_logAdaptive( $orderId, $rtn["payKey"] );
 				$this->_paypal->redirect( $rtn );
 			}catch( Exception $ex ){
 				$this->_logErrorPayment( $orderId, TCVM_Payment_Imple::PAYMENT_PAYPAL_ADAPTIVE, $ex->getMessage() );
 				throw $ex;
 			}
 			
-			$this->_logSuccessPayment( $orderId, TCVM_Payment_Imple::PAYMENT_PAYPAL_ADAPTIVE, $rtn['TRANSACTIONID'] , $rtn );
-    		
-			
-			return $rtn;
 			
 			
+			return $rtn;	
+			
+		}
+		
+		public function checkPayment(){
+
+			$payKey = WeFlex_Session::Get( "paypal-adaptive-pay-key");
+			$orderId = WeFlex_Session::Get( "order_id" );
+			
+			if( !$payKey ){
+				throw new Exception( "no pay key" );
+			}
+			
+		
+			$rtn = $this->_paypal->paymentDetail( $payKey );
+			
+			/* Display the API response back to the browser.
+			   If the response from PayPal was a success, display the response parameters'
+			   If the response was an error, display the errors received using APIError.php.
+			 */
+			$ack = strtoupper($rtn["responseEnvelope.ack"]);
+			
+			if( $ack != "SUCCESS" ){
+				$this->_logErrorPayment( $orderId , TCVM_Payment_Imple::PAYMENT_PAYPAL_ADAPTIVE, $rtn);
+				throw new Exception("the payment has some error");
+			}
+			
+			$this->_logSuccessPayment( $orderId , TCVM_Payment_Imple::PAYMENT_PAYPAL_ADAPTIVE, $payKey , $rtn);
 			
 		}
 		
@@ -75,7 +105,7 @@
 			
 			foreach( $products as $id => $product ){
 				
-				if( $id == 1 || $id == 3 ){
+				if( $product["paypal"] == "us" ){
 					
 					$nvp['receiverEmail']["us"] = TCVM::GetInstance()->config->payment->paypal->receiver->us;
 					$nvp['receiverAmount']["us"] = $nvp['receiverAmount']["us"] + $product["price"];
@@ -93,9 +123,9 @@
 			
 			//application fee
 			if( $orderEntity["cart_info"][TCVM_Cart_Imple::STEP_PRODUCT]["new"] ){
-				$nvp['receiverEmail']["au"] = TCVM::GetInstance()->config->payment->paypal->receiver->au;
-				$nvp['receiverAmount']["au"] = $nvp['receiverAmount']["au"] + $orderEntity["cart_info"][TCVM_Cart_Imple::STEP_PRODUCT]["new"];
-				$nvp['primaryReceiver']["au"] = "false";
+				$nvp['receiverEmail']["us"] = TCVM::GetInstance()->config->payment->paypal->receiver->us;
+				$nvp['receiverAmount']["us"] = $nvp['receiverAmount']["us"] + $orderEntity["cart_info"][TCVM_Cart_Imple::STEP_PRODUCT]["new"];
+				$nvp['primaryReceiver']["us"] = "false";
 			}
 			
 			
@@ -123,6 +153,18 @@
 		private function _checkOrderCanExpress( $orderEntity ){
 			
 			
+			
+		}
+		
+		protected function _logAdaptive( $orderId, $payKey ){
+			
+			$errorModel = TCVM_Payment_Model_LogAdaptive::GetInstance();
+			
+			$errorModel->insert( array(
+				"order_id" => $orderId,
+				"pay_key"  => $payKey,
+				"date_add" => time()
+			) );
 			
 		}
 

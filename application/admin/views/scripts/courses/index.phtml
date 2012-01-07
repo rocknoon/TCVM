@@ -7,14 +7,16 @@
           <table class="backend_show_book" cellpadding="0" cellspacing="0" border="0" width="100%">
             <tr class="head">
               <th>Name</th>
-              <th>Price</th>
+              <th>Start Time</th>
+              <th>End   Time</th>
               <th>Action</th>
             </tr>
             
             <?php foreach( $this->coursess as $courses ):?>
             <tr>
               <td><?php echo $courses['name']?></td>
-              <td><?php echo $courses['price']?></td>
+              <td><?php echo $courses['time_start']["year"] . "-" .  $courses['time_start']["month"] . "-" .  $courses['time_start']["date"]  ?></td>
+              <td><?php echo $courses['time_end']["year"] . "-" .  $courses['time_end']["month"] .  "-" . $courses['time_end']["date"]  ?></td>
               <td>
               	<a href="<?php echo $this->url(array('controller' => 'courses', 'action' => 'edit', 'module' => 'admin' , "id" => $courses['id']), "default" , true);?>">Edit</a>
 				<a href="javascript:void(0);" onclick="deleteone(<?php echo $courses['id']?>);">Delete</a>

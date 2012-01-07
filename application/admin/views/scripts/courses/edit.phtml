@@ -16,19 +16,26 @@
 		<input name="name" id="name" type="text" value="<?php if( $this->courses )echo $this->courses['name']?>"></input>
 		</div>
 		
+
+		
 		<div>
-		<label>Price:</label>
-		<input name="price" id="price" type="text" value="<?php if( $this->courses )echo $this->courses['price']?>"></input>
+		<label>Start Date:</label>
+		<input name="time_start" id="time_start" type="text" value="<?php if( $this->courses )echo date("d-m-Y", $this->courses['time_start_int'] )?>"></input>
 		</div>
 		
 		<div>
-		<label>Short Description:</label>
-		<textarea name="short_desc" id="short_desc" rows="" cols="50"><?php if( $this->courses )echo $this->courses['short_desc']?></textarea>
+		<label>End Date:</label>
+		<input name="time_end" id="time_end" type="text" value="<?php if( $this->courses )echo date("d-m-Y", $this->courses['time_end_int'] )?>"></input>
 		</div>
 		
 		<div>
-		<label>Description:</label>
-		<textarea name="desc" id="desc" rows="" cols="100"><?php if( $this->courses )echo $this->courses['desc']?></textarea>
+		<label>Discount Price:</label>
+		<input name="before_price" id="before_price" type="text" value="<?php if( $this->courses )echo $this->courses['before_price']?>"></input>
+		</div>
+		
+		<div>
+		<label>Normal Price:</label>
+		<input name="now_price" id="now_price" type="text" value="<?php if( $this->courses )echo $this->courses['now_price']?>"></input>
 		</div>
 		
 		<div>
@@ -36,6 +43,14 @@
 		<select name="visible" id="visible">
 			<option value="1">Visible</option>
 			<option value="0">Disable</option>
+		</select>
+		</div>
+		
+		<div>
+		<label>Paypal:</label>
+		<select name="paypal" id="paypal">
+			<option value="au">AU</option>
+			<option value="us">US</option>
 		</select>
 		</div>
 		
@@ -65,8 +80,12 @@
 
 <script>
 
+	$("#time_start").datepicker({ dateFormat: 'dd-mm-yy' });
+	$("#time_end").datepicker({ dateFormat: 'dd-mm-yy' });
+
 	<?php if($this->courses):?>
 		$("#visible").val(<?php echo $this->courses['visible']?>);
+		$("#paypal").val("<?php echo $this->courses['paypal']?>");
 	<?php endif; ?>
 
 	//header image swfupload

@@ -11,6 +11,8 @@
 		echo $this->headTitle();
 	?>
 	
+	<script type="text/javascript" src="<?php echo $this->baseUrl()?>/js/jquery-ui-1.8.16.custom.min.js"></script>
+	<link href="<?php echo $this->baseUrl()?>/js/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css">   
 	<script type="text/javascript">
 	//<!-- 
 	var __BASE_URL__ = '<?php echo $this->baseUrl()?>';
@@ -62,6 +64,7 @@
 			<li class="page_current_on">
 				<a href="#">Manage</a>
 				<ul class="nav_sub">
+					<li><a href="<?php echo $this->url(array('controller' => 'courses' , 'module' => 'admin' ), 'default', true);?>">Course</a></li>
 					<li><a href="<?php echo $this->url(array('controller' => 'user' , 'module' => 'admin' ), 'default', true);?>">User</a></li>
 					<li><a href="<?php echo $this->url(array('controller' => 'admin' , 'module' => 'admin' ), 'default', true);?>">Admin</a></li>
 					<li><a href="<?php echo $this->url(array('controller' => 'order' , 'module' => 'admin' ), 'default', true);?>">Order</a></li>

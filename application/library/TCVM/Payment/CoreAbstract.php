@@ -35,7 +35,7 @@
 			$errorModel->insert( array(
 				"order_id" => $orderId,
 				"payment"  => $payment,
-				"error"	   => $error,
+				"error"	   => serialize( $error ),
 				"date_add" => time()
 			) );
 			

@@ -17,7 +17,7 @@
 
 		public function indexAction(){
 
-			$coursess = $this->_product->gets( TCVM_Product_Imple::TYPE_COURSES, array(), "date_add DESC" );
+			$coursess = $this->_product->getAllCourses();
 			
 			$this->assign( "coursess" , $coursess );
 		
@@ -37,7 +37,7 @@
 	
 			$id = $this->_getParam( "id" );
 			
-			$courses 		= $this->_product->get( TCVM_Product_Imple::TYPE_COURSES , $id);
+			$courses 		= $this->_product->getById($id);
 			
 			
 			$this->assign( "courses" , $courses );
@@ -50,14 +50,17 @@
 			$data = array();
 			$data['id']     = $this->_getParam( "id" );
 			$data['name']  = $this->_getParam( "name" );
-			$data['desc']   = $this->_getParam( "desc" );
-			$data['short_desc']   = $this->_getParam( "short_desc" );
-			$data['price'] = $this->_getParam( "price" );
+			$data["time_start"]   = strtotime($this->_getParam( "time_start" ));
+			$data["time_end"]     =  strtotime($this->_getParam( "time_end" ));
+			$data["before_price"] =  $this->_getParam( "before_price" );
+			$data["now_price"]  =  $this->_getParam( "now_price" );
 			$data['image'] = $this->_getParam( "image" );
 			$data['visible'] = $this->_getParam( "visible" );
+			$data['paypal'] = $this->_getParam( "paypal" );
+			
 			
 			//check data
-			$this->_product->save( TCVM_Product_Imple::TYPE_COURSES, $data );
+			$this->_product->save( $data );
 			
 			
 			$this->redirect( "index" , "courses" , "admin" );
@@ -69,7 +72,7 @@
 			$id = $this->_getParam( "id" );
 			
 		
-			$this->_product->delete( TCVM_Product_Imple::TYPE_COURSES, $id);
+			$this->_product->delete( $id);
 			
 			$this->redirect( "index" , "courses" , "admin" );
 		}

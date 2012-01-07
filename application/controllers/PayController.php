@@ -56,11 +56,13 @@ class PayController extends TCVM_ZendX_Controller_Action_Front
 	public function callbackPaypalAdaptiveAction(){
 	
 		
+		$paypal = new TCVM_Payment_PaypalAdaptive_Imple();
+		
+		$paypal->checkPayment();
+		
 		$params = array();
 		$orderId = $this->_getParam( "orderId" );
-		
 		TCVM_Order_Factory::Factory()->adminStatus( $orderId , TCVM_Order_Imple::STATUS_SUCCESS);
-		
 		$this->redirect( "success", "pay", "default",  array( "order_id" => $orderId ));
 		
 	}

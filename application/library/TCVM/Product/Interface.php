@@ -27,18 +27,24 @@
 		 *    )
 		 * 	
 		 * )
+		 * 
+		 * only get the visible courses
 		 */
 		public function getCourses();
+		
+		/*
+		 * get all courses
+		 */
+		public function getAllCourses();		
 		
 		
 		public function getById( $id );
 		
 		public function canGetBeforePrice( $id );
 		
+		public function save( $data );
 		
-		
-		
-		
-		
+		public function delete( $id);
+			
 	}
 ?>

@@ -47,6 +47,7 @@
 			
 			$rtn[self::STEP_PRODUCT]["products"][$id] = array();
 			$rtn[self::STEP_PRODUCT]["products"][$id]["type"] = $type;
+			$rtn[self::STEP_PRODUCT]["products"][$id]["paypal"] = $course["paypal"];
 			
 			$this->_setSession( self::STEP_PRODUCT , $rtn[self::STEP_PRODUCT]);
 			
