@@ -63,6 +63,38 @@
 			
 			
 		}
+		
+
+		public function email($orderId) {
+			
+			$orderInfo = TCVM_Order_Factory::Factory()->getOrder($orderId);
+			
+			$zendView = new Zend_View();
+			$zendView->assign( "orderInfo" , $orderInfo );
+			$zendView->setEncoding( 'UTF-8' );
+			
+			$path = realpath(dirname(__FILE__) );
+			$zendView->setScriptPath( $path );	
+			
+			$html = $zendView->render("success.phtml" );
+			
+			$headers = "MIME-Version: 1.0" . "\r\n";
+			$headers .= "Content-type:text/html;charset=utf-8" . "\r\n";
+			$headers .= 'From: admin@tcvm.com.au' . "\r\n" . 'Reply-To: admin@tcvm.com.au' . "\r\n";
+			
+			$to = array( $orderInfo["email"] , "register@tcvm.com" ,"naturalvet@earthlink.net", "admin@tcvm.com.au" );
+			
+			
+			foreach( $to as $emailA ){
+				@mail(	$emailA , 
+					"TCVM Course Booking",
+					$html,
+					$headers );
+			}
+			
+			
+			
+		}
 
 		private function _orderSuccess( $orderId ){
 			

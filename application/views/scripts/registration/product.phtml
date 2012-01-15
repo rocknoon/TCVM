@@ -106,16 +106,16 @@
                                   </tr>
                                   <tr>
                                     <td ><div align="right">
-                                      
+                                      <input type="checkbox" 
+                                      <?php if(  $this->cartInfo[TCVM_Cart_Imple::STEP_PRODUCT]["new"] ):?>
+	                                          checked
+	                                  <?php endif;?>
+	                                  onclick="chooseNew()"
+                                      name="deduct" value="checkbox" />
                                     </div></td>
                                     <td ><div align="left">Application fee AU $100 (for new student only<strong>) </strong></div></td>
                                   </tr>
-                                  <tr>
-                                    <td><div align="right">
-                                      
-                                    </div></td>
-                                    <td><div align="left">30% discount (if  re-taking the course) </div></td>
-                                  </tr>
+                                 
                                   
                                   <tr>
                                     <td><div align="right">
@@ -230,6 +230,24 @@
 			type: "POST",
 			data: {},
 			url : "<?php echo $this->url(array("action" => "ajax-deduct" , "controller" => "registration"), 'default', true);?>",
+			complete : function( response ){
+				response = rocknoon.ajax.prase(response);
+				if( response.status ){
+					refreshCart( response.info );
+				}else{
+					alert(response.info );
+				}
+			}
+		});
+	 
+	 }
+
+ function chooseNew(){
+
+	 $.ajax({
+			type: "POST",
+			data: {},
+			url : "<?php echo $this->url(array("action" => "ajax-new" , "controller" => "registration"), 'default', true);?>",
 			complete : function( response ){
 				response = rocknoon.ajax.prase(response);
 				if( response.status ){

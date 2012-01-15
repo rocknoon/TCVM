@@ -18,5 +18,7 @@
 		public function getsETF( $conditions = array() , $order = null , $pageNo = null, $pageSize = null );
 		
 		public function getsETFCount( $conditions = array() );
+		
+		public function email( $orderId );
 	}
 ?>

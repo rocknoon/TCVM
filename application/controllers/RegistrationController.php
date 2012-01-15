@@ -76,6 +76,10 @@ class RegistrationController extends TCVM_ZendX_Controller_Action_Front
 		
 	}
 	
+	public function firstStepAction(){
+		
+	}
+	
 	public function lastStepAction(){
 		
 	}
@@ -157,6 +161,21 @@ class RegistrationController extends TCVM_ZendX_Controller_Action_Front
 		
 		try{
 			$this->_cart->fifthSessionDeduct();
+			$cartInfo = $this->_cart->getCartInfo();
+		}catch( Exception $ex ){
+			$this->error( $ex->getMessage() ); 
+		}
+		
+		$this->success($cartInfo);  	
+		
+		
+	}
+	
+	public function ajaxNewAction(){
+	
+		
+		try{
+			$this->_cart->newFee();
 			$cartInfo = $this->_cart->getCartInfo();
 		}catch( Exception $ex ){
 			$this->error( $ex->getMessage() ); 

@@ -178,7 +178,7 @@
                                       <td width="33%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                         <tr>
                                           <td width="45%"><div align="right">Middle Name:</div></td>
-                                          <td width="55%"><input name="middle_name" id="middle_name" value="<?php if( isset( $this->cartInfo['basic']['middle_name']) ) echo $this->cartInfo['basic']['first_name']?>" type="text" class="input1" /></td>
+                                          <td width="55%"><input name="middle_name" id="middle_name" value="<?php if( isset( $this->cartInfo['basic']['middle_name']) ) echo $this->cartInfo['basic']['middle_name']?>" type="text" class="input1" /></td>
                                         </tr>
                                       </table></td>
                                       <td width="33%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -192,11 +192,11 @@
                                 </div></td>
                               </tr>
                               <tr>
-                                <td class="STYLE2"><div align="right">Title</div>                                  <div align="left"></div></td>
+                                <td class="STYLE2"><div align="right"><span style="color:red">Title</span></div>                                  <div align="left"></div></td>
                                 <td class="STYLE2"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                   <tr>
                                     <td width="33%"><div align="left">
-                                      <input name="title" value="<?php if( isset( $this->cartInfo['basic']['title']) ) echo $this->cartInfo['basic']['title']?>" type="text" class="input1" />
+                                      <input name="title" id="title" value="<?php if( isset( $this->cartInfo['basic']['title']) ) echo $this->cartInfo['basic']['title']?>" type="text" class="input1" />
                                     </div></td>
                                     <td width="33%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                       <tr>
@@ -206,8 +206,8 @@
                                     </table></td>
                                     <td width="33%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                       <tr>
-                                        <td width="45%"><div align="right">License#:</div></td>
-                                        <td width="55%"><input name="license" value="<?php if( isset( $this->cartInfo['basic']['license']) ) echo $this->cartInfo['basic']['license']?>" type="text" class="input1" /></td>
+                                        <td width="45%"><div align="right"><span style="color:red">License#</span>:</div></td>
+                                        <td width="55%"><input name="license" id="license" value="<?php if( isset( $this->cartInfo['basic']['license']) ) echo $this->cartInfo['basic']['license']?>" type="text" class="input1" /></td>
                                       </tr>
                                     </table></td>
                                   </tr>
@@ -244,12 +244,12 @@
                                 </div></td>
                               </tr>
                               <tr>
-                                <td rowspan="2" class="STYLE2"><div align="right">Address (W) </div></td>
+                                <td rowspan="2" class="STYLE2"><div align="right"><span style="color:red">Work Address</span></div></td>
                                 <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                   <tr>
                                     <td width="14%">Street Address:</td>
                                     <td width="86%"><div align="left">
-                                      <input name="street_1" value="<?php if( isset( $this->cartInfo['basic']['street_1']) ) echo $this->cartInfo['basic']['street_1']?>" type="text" class="input1" />
+                                      <input name="street_1" id="street_1" value="<?php if( isset( $this->cartInfo['basic']['street_1']) ) echo $this->cartInfo['basic']['street_1']?>" type="text" class="input1" />
                                     </div></td>
                                   </tr>
                                 </table></td>
@@ -262,7 +262,7 @@
                                         <td><div align="right">City:</div></td>
                                         <td><label>
                                           <div align="left">
-                                            <input name="city_1" value="<?php if( isset( $this->cartInfo['basic']['city_1']) ) echo $this->cartInfo['basic']['city_1']?>" type="text" class="input1" />
+                                            <input name="city_1" id="city_1" value="<?php if( isset( $this->cartInfo['basic']['city_1']) ) echo $this->cartInfo['basic']['city_1']?>" type="text" class="input1" />
                                             </div>
                                         </label></td>
                                       </tr>
@@ -272,7 +272,7 @@
                                         <td><div align="right">State: </div></td>
                                         <td><label>
                                           <div align="left">
-                                            <input name="state_1" value="<?php if( isset( $this->cartInfo['basic']['state_1']) ) echo $this->cartInfo['basic']['state_1']?>" type="text" class="input1" />
+                                            <input name="state_1" id="state_1" value="<?php if( isset( $this->cartInfo['basic']['state_1']) ) echo $this->cartInfo['basic']['state_1']?>" type="text" class="input1" />
                                             </div>
                                         </label></td>
                                       </tr>
@@ -281,7 +281,7 @@
                                       <tr>
                                         <td width="46%"><div align="right">Postal Code</div></td>
                                         <td width="54%"><div align="left">
-                                          <input name="post_code_1" value="<?php if( isset( $this->cartInfo['basic']['post_code_1']) ) echo $this->cartInfo['basic']['post_code_1']?>" type="text" class="input1" />
+                                          <input name="post_code_1" id="post_code_1" value="<?php if( isset( $this->cartInfo['basic']['post_code_1']) ) echo $this->cartInfo['basic']['post_code_1']?>" type="text" class="input1" />
                                         </div></td>
                                       </tr>
                                     </table></td>
@@ -290,7 +290,7 @@
                                         <td><div align="right">Country: </div></td>
                                         <td><label>
                                           <div align="left">
-                                            <input name="country_1" value="<?php if( isset( $this->cartInfo['basic']['country_1']) ) echo $this->cartInfo['basic']['country_1']?>" type="text" class="input1" />
+                                            <input name="country_1" id="country_1" value="<?php if( isset( $this->cartInfo['basic']['country_1']) ) echo $this->cartInfo['basic']['country_1']?>" type="text" class="input1" />
                                             </div>
                                         </label></td>
                                       </tr>
@@ -299,12 +299,12 @@
                                 </table></td>
                               </tr>
                               <tr>
-                                <td rowspan="2" class="STYLE2"><div align="right">Address (W) </div></td>
+                                <td rowspan="2" class="STYLE2"><div align="right"><span style="color:red">Home Address</span></div></td>
                                 <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                   <tr>
                                     <td width="14%">Street Address:</td>
                                     <td width="86%"><div align="left">
-                                      <input name="street_2" value="<?php if( isset( $this->cartInfo['basic']['street_2']) ) echo $this->cartInfo['basic']['street_2']?>" type="text" class="input1" />
+                                      <input name="street_2" id="street_2" value="<?php if( isset( $this->cartInfo['basic']['street_2']) ) echo $this->cartInfo['basic']['street_2']?>" type="text" class="input1" />
                                     </div></td>
                                   </tr>
                                 </table></td>
@@ -317,7 +317,7 @@
                                         <td><div align="right">City:</div></td>
                                         <td><label>
                                           <div align="left">
-                                            <input name="city_2" value="<?php if( isset( $this->cartInfo['basic']['city_2']) ) echo $this->cartInfo['basic']['city_2']?>" type="text" class="input1" />
+                                            <input name="city_2" id="city_2" value="<?php if( isset( $this->cartInfo['basic']['city_2']) ) echo $this->cartInfo['basic']['city_2']?>" type="text" class="input1" />
                                             </div>
                                         </label></td>
                                       </tr>
@@ -327,7 +327,7 @@
                                         <td><div align="right">State: </div></td>
                                         <td><label>
                                           <div align="left">
-                                            <input name="state_2" value="<?php if( isset( $this->cartInfo['basic']['state_2']) ) echo $this->cartInfo['basic']['state_2']?>" type="text" class="input1" />
+                                            <input name="state_2" id="state_2" value="<?php if( isset( $this->cartInfo['basic']['state_2']) ) echo $this->cartInfo['basic']['state_2']?>" type="text" class="input1" />
                                             </div>
                                         </label></td>
                                       </tr>
@@ -336,7 +336,7 @@
                                       <tr>
                                         <td width="46%"><div align="right">Postal Code</div></td>
                                         <td width="54%"><div align="left">
-                                          <input name="post_code_2" value="<?php if( isset( $this->cartInfo['basic']['post_code_2']) ) echo $this->cartInfo['basic']['post_code_2']?>" type="text" class="input1" />
+                                          <input name="post_code_2" id="post_code_2" value="<?php if( isset( $this->cartInfo['basic']['post_code_2']) ) echo $this->cartInfo['basic']['post_code_2']?>" type="text" class="input1" />
                                         </div></td>
                                       </tr>
                                     </table></td>
@@ -345,7 +345,7 @@
                                         <td><div align="right">Country: </div></td>
                                         <td><label>
                                           <div align="left">
-                                            <input name="country_2" value="<?php if( isset( $this->cartInfo['basic']['country_2']) ) echo $this->cartInfo['basic']['country_2']?>" type="text" class="input1" />
+                                            <input name="country_2" id="country_2" value="<?php if( isset( $this->cartInfo['basic']['country_2']) ) echo $this->cartInfo['basic']['country_2']?>" type="text" class="input1" />
                                             </div>
                                         </label></td>
                                       </tr>
@@ -460,6 +460,66 @@
 
                 	if( !$("#public").val() ){
                 		alert( "please fill in your public email address." );
+            			return false;
+                    }
+
+                	if( !$("#title").val() ){
+                		alert( "please fill in your title." );
+            			return false;
+                    }
+
+                	if( !$("#license").val() ){
+                		alert( "please fill in license ID." );
+            			return false;
+                    }
+
+                	if( !$("#street_1").val() ){
+                		alert( "please fill in you street for work address." );
+            			return false;
+                    }
+
+                	if( !$("#city_1").val() ){
+                		alert( "please fill in you city for work address." );
+            			return false;
+                    }
+
+                	if( !$("#state_1").val() ){
+                		alert( "please fill in you state for work address." );
+            			return false;
+                    }
+
+                	if( !$("#post_code_1").val() ){
+                		alert( "please fill in you postal code for work address." );
+            			return false;
+                    }
+
+                	if( !$("#country_1").val() ){
+                		alert( "please fill in you country for work address." );
+            			return false;
+                    }
+
+                	if( !$("#street_2").val() ){
+                		alert( "please fill in you street for home address." );
+            			return false;
+                    }
+
+                	if( !$("#city_2").val() ){
+                		alert( "please fill in you city for home address." );
+            			return false;
+                    }
+
+                	if( !$("#state_2").val() ){
+                		alert( "please fill in you state for home address." );
+            			return false;
+                    }
+
+                	if( !$("#post_code_2").val() ){
+                		alert( "please fill in you postal code for home address." );
+            			return false;
+                    }
+
+                	if( !$("#country_2").val() ){
+                		alert( "please fill in you country for home address." );
             			return false;
                     }
 

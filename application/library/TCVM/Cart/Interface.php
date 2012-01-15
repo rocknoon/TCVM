@@ -19,6 +19,8 @@
 		
 		public function fifthSessionDeduct();
 		
+		public function newFee();
+		
 		public function rememberBasic();
 		
 		public function cleanProduct();

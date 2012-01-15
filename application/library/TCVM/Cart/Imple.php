@@ -26,8 +26,18 @@
 			$this->_setSession( self::STEP_PRODUCT , $rtn[self::STEP_PRODUCT]);
 			
 		}
-	
+		
+
+		public function newFee() {
 			
+			$rtn = $this->_getSession();
+			
+			$rtn[self::STEP_PRODUCT]["new"] = self::NEW_USER_FEE;
+			
+			$this->_setSession( self::STEP_PRODUCT , $rtn[self::STEP_PRODUCT]);
+			
+		}
+
 		public function pushProduct( $id , $type ) {
 			
 			$productMod = TCVM_Product_Factory::Factory();
@@ -225,10 +235,7 @@
 				$session[self::STEP_PRODUCT] = array();
 				$session[self::STEP_PRODUCT]["products"] = array();
 				$session[self::STEP_PRODUCT]["deduct"] = 0;
-				
-				if( $this->_isMeNewUser() ){
-					$session[self::STEP_PRODUCT]["new"] = self::NEW_USER_FEE;
-				}
+				$session[self::STEP_PRODUCT]["new"] = 0;
 				
 			}
 			
@@ -258,7 +265,7 @@
 			$rtn = 0;
 			
 			//if a new user, add 100$fee
-			if( $this->_isMeNewUser() ){
+			if( $cartInfo[self::STEP_PRODUCT]["new"] ){
 				$rtn += self::NEW_USER_FEE;
 			}
 			
@@ -311,6 +318,10 @@
 		}
 		
 		private function _myReTokenCourse( $id ){
+			
+			
+			//customer don't wanna this
+			return false;
 			
 			$user = TCVM_User_Factory::Factory()->getLoginedUser();
 			
