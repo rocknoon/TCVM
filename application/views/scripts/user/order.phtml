@@ -42,7 +42,7 @@
                             <?php if( $key == 0 ):?>
                             <td rowspan="<?php echo count($order['products']);?>" valign="top" class="underline">    
                                   <div align="left">
-                                  <a style="font-size:12px;"href="<?php echo $this->url(array("action" => "success" , "controller" => "pay", "order_id" => $order["id"]), 'default', true);?>">View Detail</a>
+                                  <a style="font-size:12px;"href="<?php echo $this->url(array("action" => "view" , "controller" => "pay", "order_id" => $order["id"]), 'default', true);?>">View Detail</a>
                                   <?php switch( $order['status'] ):
                                   
                                   	 case TCVM_Order_Imple::STATUS_WAITTING_PAY:?>

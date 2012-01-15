@@ -111,6 +111,16 @@ class PayController extends TCVM_ZendX_Controller_Action_Front
 		
 	}
 	
+	public function viewAction(){
+		
+		$orderId = $this->_getParam( "order_id" );
+		
+		$this->assign( "orderInfo" , TCVM_Order_Factory::Factory()->getOrder($orderId) );
+		
+		$this->render( "success" );
+		
+	}
+	
 	public function successEtfAction(){
 		
 		
