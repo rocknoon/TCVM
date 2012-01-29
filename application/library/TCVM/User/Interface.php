@@ -65,18 +65,6 @@
 
 		public function isEmailExist( $email );
 		
-		/**
-		 * modify user password
-		 * 
-		 * permission ( Magzine_User::ACL_USER_PUT )
-		 * 
-		 * @param int  $id
-		 * @param enum $password
-		 * 
-		 * @throws Exception('you have no Magzine_User::ACL_USER_ROLE_PUT permission');
-		 */
-		public function modifyUserPassword( $id , $password );
-		
 		public function getUserRegistrationBasic( $id );
 		
 		public function modifyUserRegistrationBasic( $id , $basic );
@@ -110,7 +98,13 @@
 		 * @return array( Magazine_User_Entity )]
 		 * 
 		 */
-		 public function getLoginedUser();
+		public function getLoginedUser();
+		 
+		public function changePassword($password);
+
+		public function findPassword($email);
+
+		public function loginThroughFindPassword($code);
 		
 	
 	

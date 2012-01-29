@@ -85,14 +85,6 @@
 			$this->_setSession( null );
 			
 		}
-	
-			/* (non-PHPdoc)
-		 * @see TCVM_User_Interface::modifyUserPassword()
-		 */
-		public function modifyUserPassword($id, $password) {
-			// TODO Auto-generated method stub
-			
-		}
 		
 		
 		public function getUserRegistrationBasic($id) {
@@ -131,6 +123,76 @@
 
 			$this->_model->insert( $data );
 			
+			
+		}
+		
+		public function changePassword($password) {
+			
+			$isLogined = $this->_getSession();
+			
+			if( !$isLogined ){
+				throw new Exception( "you should login first to change your password" );
+			}
+			
+			
+			$userInfo = $this->_getSession();
+			
+			$this->_changePassword( $userInfo['id'] , $password );
+			
+			
+			
+			
+		}
+
+		
+		public function findPassword($email) {
+			
+			$userInfo = $this->_getByEmail( $email );
+			
+			
+			$code = md5(time());
+			
+			$this->_model->update( array( "findpassword_code" => $code, "findpassword_code_used" => intval(false) ) , array( "id" => $userInfo["id"] ) );
+	
+			$title = "TCVM User FindPassword";
+			
+			
+			$url = WeFlex_Util::GetFullUrl( array( "controller" => "user" , "action" => "change-password" , "code" => $code ) , "default"  );
+			$html = '';
+			$html .= "****************************************************<br/>";
+			$html .= "****************************************************<br/>";
+			$html .= "Dear ".$userInfo["first_name"].",<br/><br/>";
+			$html .= "Here you can change your password.<br/><br/>";
+			$html .= '<p><a href="'.$url.'">'.$url.'</a></p><br/><br/>';
+			$html .= 'TCVM Team<br/>';
+			
+			$headers = "MIME-Version: 1.0" . "\r\n";
+			$headers .= "Content-type:text/html;charset=utf-8" . "\r\n";
+			$headers .= 'From: admin@tcvm.com.au' . "\r\n" . 'Reply-To: admin@tcvm.com.au' . "\r\n";
+			
+			@mail(	$email , 
+					$title,
+					$html,
+					$headers );
+		}
+
+		
+		public function loginThroughFindPassword($code) {
+				
+			$userInfo = $this->_model->getOneByConditions( array( "findpassword_code" => $code ) );
+			
+			if( !$userInfo ){
+				throw new Exception( "the url is not correct");
+			}
+			
+
+			if( $userInfo['findpassword_code_used'] ){
+				throw new Exception( "this code is already be used");
+			}
+			
+			$this->_setSession( $userInfo );
+			
+			$this->_model->update( array( "findpassword_code_used" => intval(true) ) , array( "id" => $userInfo['id'] ) );
 			
 		}
 		
@@ -193,6 +255,11 @@
 			}
 			return false;
 			
+		}
+		
+		private function _changePassword( $id , $password ){
+			
+			$this->_model->update( array( "password" => md5($password) ) , array( "id" => $id ) );
 		}
 
 		

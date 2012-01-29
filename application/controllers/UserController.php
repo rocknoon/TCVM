@@ -45,6 +45,35 @@ class UserController extends TCVM_ZendX_Controller_Action_Front
 	
 	
 	
+	public function findPasswordSuccessfulAction(){
+    
+    
+    }
+    
+    public function findPasswordErrorAction(){
+    
+    	$this->assign( "info" , $this->_getParam( "info" ) );
+    }
+    
+	public function changePasswordSuccessfulAction(){
+    
+ 
+    }
+    
+    public function changePasswordAction(){
+    	
+    	$code = $this->_getParam( "code" );
+    
+    	$this->_user->loginThroughFindPassword($code);
+    	
+    }
+    
+	public function findPasswordAction(){
+    	
+    }
+	
+	
+	
 	public function doRegisterAction(){
 	
 		$data = array();
@@ -86,6 +115,37 @@ class UserController extends TCVM_ZendX_Controller_Action_Front
 		$this->redirect( "index", "index" );
 		
 	}
+	
+	public function postFindPasswordAction(){
+    
+    	$this->checkMethod("post");
+    	
+    	$email = $this->_getParam( "email" );
+    	
+    	try{
+    		$this->_user->findPassword( $email );
+    	}catch( Exception $ex ){
+    		$this->redirect( "find-password-error", "user" , "default" , array( "info" => $ex->getMessage() )  );
+    	}
+    	
+    	
+    	$this->redirect( "find-password-successful", "user"  );
+    	
+    
+    }
+    
+	public function postChangePasswordAction(){
+    
+    	$this->checkMethod("post");
+    	
+    	$password = $this->_getParam( "password" );
+    	
+    	$this->_user->changePassword( $password );
+    	
+    	$this->redirect( "change-password-successful", "user"  );
+    	
+    
+    }
 	
 	
 

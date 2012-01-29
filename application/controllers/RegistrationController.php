@@ -15,19 +15,9 @@ class RegistrationController extends TCVM_ZendX_Controller_Action_Front
     }
     
     
- 
-    
-	
-	
-	
+
 	public function preDispatch() {
-		parent::preDispatch();
-		
-		
-		
-		
-		
-		
+		parent::preDispatch();	
 	}
 	
 	public function loginFirstAction(){
@@ -81,6 +71,16 @@ class RegistrationController extends TCVM_ZendX_Controller_Action_Front
 	}
 	
 	public function lastStepAction(){
+		
+	}
+	
+	public function demoAction(){
+	
+		$productMod = TCVM_Product_Factory::Factory();
+		
+		$courses = $productMod->getCourses();
+		
+		$this->assign( "courses",  $courses );
 		
 	}
 	
