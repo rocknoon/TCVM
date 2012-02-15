@@ -2,14 +2,17 @@
                 <div align="center"></div>
                 <table width="750" border="0" cellspacing="0" cellpadding="0">
                   <tr>
-                    <td><p align="center" class="STYLE5">Error</p>
+                    <td><p align="center" class="STYLE5">Sorry, a error occur</p>
                     
                     <table width="80%" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-bottom:20px;" >
                           <tr>
                             <td>
-                            <div>
-                          		you should login first.
-							</div>
+                            <p>
+                          		Becuase to register our courses you need to sign in TCVM website first. 
+							</p>
+							<p>
+                          		<a href="<?php echo $this->url(array("action" => "login" , "controller" => "user"), 'default', true);?>">click here</a>  you can sign in, or if you don't have account,  <a href="<?php echo $this->url(array("action" => "register" , "controller" => "user"), 'default', true);?>">click here</a> to sign up. Thanks! 
+							</p>
                     		</td>
                           </tr>
                     </table>

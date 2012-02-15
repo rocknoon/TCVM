@@ -2,7 +2,7 @@
                 <div align="center"></div>
                 <table width="750" border="0" cellspacing="0" cellpadding="0">
                   <tr>
-                    <td><p align="center" class="STYLE5">Login</p>
+                    <td><p align="center" class="STYLE5">Sign in</p>
                       <form id="form1" name="form1" method="post" onsubmit="return checkForm();" action="<?php echo $this->url(array("action" => "do-login" , "controller" => "user"), 'default', true);?>">
                         <table width="80%" border="1" align="center" cellpadding="10" cellspacing="0" bordercolor="#FFFFFF" bgcolor="#FCFCFC" class="STYLE2">
                         
@@ -23,7 +23,9 @@
                           <tr>
                             <td class="STYLE2"></td>
                             <td><div align="left">
-                                <a href="<?php echo $this->url(array("action" => "find-password" , "controller" => "user"), 'default', true);?>">forget password</a>
+                               
+                            	<a href="<?php echo $this->url(array("action" => "register" , "controller" => "user"), 'default', true);?>">sign up</a>
+                            	&nbsp;&nbsp;&nbsp;<a href="<?php echo $this->url(array("action" => "find-password" , "controller" => "user"), 'default', true);?>">forget password</a>
                             </div></td>
                           </tr>
                           
@@ -33,7 +35,7 @@
                             <td class="STYLE2"></td>
                             <td><div align="left">
                                 <label>
-                                <input type="submit" name="Submit" value="login" />
+                                <input type="submit" name="Submit" value="sign in" /> 
                                 </label>
                             </div></td>
                           </tr>

@@ -68,6 +68,12 @@ class RegistrationController extends TCVM_ZendX_Controller_Action_Front
 	
 	public function firstStepAction(){
 		
+		$productMod = TCVM_Product_Factory::Factory();
+		
+		$courses = $productMod->getCourses();
+		
+		$this->assign( "courses",  $courses );
+		
 	}
 	
 	public function lastStepAction(){

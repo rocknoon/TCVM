@@ -15,7 +15,7 @@
 		public function getCourses() {
 			
 			
-			$data = $this->_model->getAllByConditions( array( "visible" => intval(true) ) , "date_add DESC" );
+			$data = $this->_model->getAllByConditions( array( "visible" => intval(true) ) , "id ASC" );
 			
 			$rtn = array();
 			
