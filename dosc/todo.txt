@@ -6,3 +6,5 @@ ALTER TABLE `user` ADD `registration_basic_defualt` TEXT NULL AFTER `mobile`
 
 ALTER TABLE  `user` ADD  `findpassword_code` VARCHAR( 255 ) NULL AFTER  `registration_basic_defualt` ,
 ADD  `findpassword_code_used` TINYINT NULL AFTER  `findpassword_code`
+
+ALTER TABLE  `product_courses` ADD  `desc` TEXT NULL AFTER  `image`;

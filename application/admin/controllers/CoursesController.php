@@ -57,6 +57,7 @@
 			$data['image'] = $this->_getParam( "image" );
 			$data['visible'] = $this->_getParam( "visible" );
 			$data['paypal'] = $this->_getParam( "paypal" );
+			$data['desc'] = $this->_getParam( "desc" );
 			
 			
 			//check data

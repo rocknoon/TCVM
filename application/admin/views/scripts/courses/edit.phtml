@@ -16,6 +16,12 @@
 		<input name="name" id="name" type="text" value="<?php if( $this->courses )echo $this->courses['name']?>"></input>
 		</div>
 		
+		
+		<div>
+		<label>Description:</label>
+		<textarea name="desc" id="desc"><?php if( $this->courses )echo htmlspecialchars_decode(stripslashes($this->courses['desc']));?></textarea>
+		</div>
+		
 
 		
 		<div>
