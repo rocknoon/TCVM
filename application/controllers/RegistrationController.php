@@ -72,7 +72,13 @@ class RegistrationController extends TCVM_ZendX_Controller_Action_Front
 		
 		$courses = $productMod->getCourses();
 		
-		$this->assign( "courses",  $courses );
+		//hack
+		$rtn = array();
+		foreach( $courses as $course ){
+			$rtn []= $course;
+		}
+
+		$this->assign( "courses",  $rtn );
 		
 	}
 	

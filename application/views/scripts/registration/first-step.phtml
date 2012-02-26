@@ -1,125 +1,473 @@
-			<td width="81%" align="center" valign="top"><!-- InstanceBeginEditable name="EditRegion1" -->
-                <div align="center"></div>
-                <table width="750" border="0" cellspacing="0" cellpadding="0">
-                  <tr>
-                    <td><p>&nbsp;</p>
-                      <p class="STYLE5" align="center" style='margin-top:9.0pt;margin-right:0cm;
-  margin-bottom:9.0pt;margin-left:0cm;text-align:center'><b style='mso-bidi-font-weight:
-  normal'><span style='font-size:14.0pt' lang="EN-US" xml:lang="EN-US">Chi Institute Australia
-                        2012 Small Animal Acupuncture Program
-                              <o:p></o:p>
-                      </span></b></p>
-                      <p class="STYLE5" align="center" style='margin-top:6.0pt;margin-right:0cm;
-  margin-bottom:6.0pt;margin-left:0cm;text-align:center'><b style='mso-bidi-font-weight:
-  normal'><span style='font-size:14.0pt' lang="EN-US" xml:lang="EN-US">Class Registration
-                        </span></b></p>
-                     
-                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                          <tr>
-                            <td><div align="left">
-                              <p class="STYLE3"><strong>Thanks for visiting TCVM registration wizard, you have 2 options below.</strong></p> 
-                              <p class="STYLE3"><strong>Option 1: Register Online.  <a href="<?php echo $this->url(array("action" => "basic" , "controller" => "registration"), 'default', true);?>">click here</a> to continue.</strong></p> 
-                              <p class="STYLE3"><strong>Option 2: Also you can choose another way to pay the courses,  <a href="<?php echo $this->baseUrl() ?>/form.doc">Here</a> is the docs for the registration form, print and SIGN . Mail and fax (if possible) the signed form with your payment to us. </strong></p>
-                            
-                         
-                            </div></td>
-                            </tr>
-
-                        </table>
-                        
-                        <table width="750" border="0" cellspacing="0" cellpadding="0">
-                  <tr>
-                    <td><p>&nbsp;</p>
-                      <p class="STYLE5" align="center" style='margin-top:9.0pt;margin-right:0cm;
-  margin-bottom:9.0pt;margin-left:0cm;text-align:center'><b style='mso-bidi-font-weight:
-  normal'><span style='font-size:14.0pt' lang="EN-US" xml:lang="EN-US">Chi Institute Australia
-                        2012 Small Animal Acupuncture Program
-                              <o:p></o:p>
-                      </span></b></p>
- 
-                          <tr>
-                            <td><table width="100%" border="1" align="center" cellpadding="10" cellspacing="0" bordercolor="#FFFFFF" bgcolor="#FCFCFC" class="STYLE2">
-                              
-                              
-                              <?php foreach( $this->courses as $id => $course ):?>
-                              <tr>
-                                <td width="30%" class="STYLE2"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<TD vAlign=top width="81%" align=middle><!-- InstanceBeginEditable name="EditRegion1" -->
+                  <DIV align=center></DIV>
+                  <TABLE border=0 cellSpacing=0 cellPadding=0 width=750>
+                    <TBODY>
+                    <TR>
+                      <TD valign="top">
+                        <P>&nbsp;</P>
+                        <P style="TEXT-ALIGN: center; MARGIN: 9pt 0cm" 
+                        class=STYLE5 align=center><B 
+                        style="mso-bidi-font-weight: normal"><SPAN 
+                        style="FONT-SIZE: 14pt" lang=EN-US xml:lang="EN-US">Chi 
+                        Institute Australia 2012 Small Animal Acupuncture 
+                        Program <O:P></O:P></SPAN></B></P>
+                        <P style="TEXT-ALIGN: center; MARGIN: 6pt 0cm" 
+                        class=STYLE5 align=center><B 
+                        style="mso-bidi-font-weight: normal"><SPAN 
+                        style="FONT-SIZE: 14pt" lang=EN-US 
+                        xml:lang="EN-US">Class Registration </SPAN></B></P>
+                        <TABLE border=0 cellSpacing=0 cellPadding=5 width=750>
+                          <TBODY><TR>
+                                <TD colspan="2" background="<?php echo $this->baseUrl() ?>/new_images/dotline.gif"><img src="<?php echo $this->baseUrl() ?>/new_images/dotline.gif" width="4" height="1">
+                              <TR>
+                                <TD colspan="2"><table width="100%" border="0" cellpadding="0" cellspacing="0" class="STYLE3">
                                   <tr>
-                                    <td width="28%"><div align="right"><img src="<?php echo $this->baseUrl().$course["image"]?>" width="60" height="60" /></div></td>
-                                    <td width="72%" valign="top"><table width="95%" border="0" align="right" cellpadding="0" cellspacing="0">
+                                    <td><div align="left"><STRONG>Thanks for visiting TCVM 
+                                      registration wizard, you have 2 options 
+                                      below.</STRONG></div></td>
+                                  </tr>
+                                  <tr>
+                                    <td background="<?php echo $this->baseUrl() ?>/new_images/dotline.gif"><img src="<?php echo $this->baseUrl() ?>/new_images/dotline.gif" width="4" height="20"></td>
+                                  </tr>
+                                  <tr>
+                                    <td><table width="100%" border="0" cellpadding="5" cellspacing="0">
                                       <tr>
-                                        <td><p align="left" class="STYLE4"><strong><?php echo $course["name"]?></strong></p></td>
+                                        <td width="69%" height="35"><div align="left"><span class="STYLE5"><STRONG>Option 1</STRONG></span><STRONG>:<span class="STYLE5">Register Online. click 
+                                          button to continue.</span></STRONG></div></td>
+                                        <td width="31%"><div align="left"><a href="<?php echo $this->url(array("action" => "basic" , "controller" => "registration"), 'default', true);?>"><img src="<?php echo $this->baseUrl() ?>/new_images/register.gif" width="126" height="36"></a></div></td>
                                       </tr>
                                       <tr>
-                                        <td><div align="left">
-                                        <strong>
+                                        <td colspan="2" background="<?php echo $this->baseUrl() ?>/new_images/dotline.gif">&nbsp;</td>
+                                        </tr>
+                                      <tr>
+                                        <td colspan="2"><table width="100%" cellpadding="5" cellspacing="0" bordercolor="#FFFFFF">
+                                          <tr>
+                                            <td colspan="2"><div align="left"><span class="STYLE5"><STRONG >Option 2</STRONG><STRONG class="STYLE3"></STRONG></span><STRONG class="STYLE5">:Register by mail/email:</STRONG></div></td>
+                                          </tr>
+                                          <tr>
+                                            <td width="50%"><table width="100%" height="75" border="0" cellpadding="0" cellspacing="0">
+                                              <tr>
+                                                <td width="26%" height="75"><div align="left"><img src="<?php echo $this->baseUrl() ?>/new_images/download.png" width="70" height="75"></div></td>
+                                                <td width="74%"><p align="left"><STRONG class="STYLE3">First, download <U><a href="<?php echo $this->baseUrl() ?>/Doc_SA_Austrailia.pdf">the   registration form</a></U>,</STRONG></p>
+                                                    <p align="left"><STRONG class="STYLE3"> print and SIGN</STRONG></p></td>
+                                              </tr>
+                                            </table></td>
+                                            <td width="50%"><table width="100%" height="75" border="0" cellpadding="0" cellspacing="0">
+                                              <tr>
+                                                <td width="26%" height="75"><div align="left"><img src="<?php echo $this->baseUrl() ?>/new_images/email.gif" width="70" height="75"></div></td>
+                                                <td width="74%"><p align="left"><STRONG class="STYLE3">Or email the scanned form to</STRONG></p>
+                                                    <p align="left"><STRONG class="STYLE3"><A href="mailto:admin@tcvm.com.au">admin@tcvm.com.au</A>.</STRONG></p></td>
+                                              </tr>
+                                            </table></td>
+                                          </tr>
+                                          <tr>
+                                            <td colspan="2"><div align="left">
+                                              <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                                <tr>
+                                                  <td width="13%"><img src="<?php echo $this->baseUrl() ?>/new_images/mail.png" width="70" height="70"></td>
+                                                  <td width="37%"><p><STRONG class="STYLE3">Mail the signed form with your payment information</STRONG><STRONG class="STYLE3">to the   following address.</STRONG></p>                                                      </td>
+                                                  <td width="50%"><table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="STYLE4">
+                                                    <tr>
+                                                      <td><div align="left">Bruce Ferguson DVM,   MS</div></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td><div align="left">P.O. Box 7100 </div></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td><div align="left">Karawara, WA 6152, AUSTRALIA</div></td>
+                                                    </tr>
+                                                  </table></td>
+                                                </tr>
+                                              </table>
+                                            </div></td>
+                                          </tr>
+                                        </table></td>
+                                      </tr>
+                                      
+                                    </table></td>
+                                  </tr>
                                   
-                                        	<?php echo during_time( $course["id"] )?>
-                                        </strong></div></td>
-                                      </tr>
-                                    </table>
-                                      <div align="center" class="STYLE3">
-                                        <div align="left"></div>
+                                </table>
+                                        <TR>
+                                                                <TD colspan="2">
+                                      <TR>
+                                <TD colspan="2" background="<?php echo $this->baseUrl() ?>/new_images/dotline.gif">                              
+                              <TR>
+                            <TD height="50" colspan="2"><div align="center" class="STYLE5"><B 
+                              style="mso-bidi-font-weight: normal"><span style="FONT-SIZE: 14pt">Program</span></B></div></TD>
+                          </TR>
+                          
+                          <TR>
+                            <TD colspan="2"><table width="100%" border="0" cellspacing="0" cellpadding="10">
+                              
+                              
+                              <?php 
+                              $i = 0;
+                              $length = count( $this->courses );
+                              for( $i; $i < $length; $i++ ):?>
+                              
+                              <?php if( $i % 2 == 0 ):?>
+                        		<tr>
+                        	  <?php endif;?>
+                        	  
+                        	  
+                                <td width="50%" valign="top" 
+                          <?php if( ($i % 4 == 3) || ($i % 4 == 0)  ):?>
+                          bgcolor="#FCFCFC"
+                          <?php endif;?>><table width="100%" border="0" cellspacing="0" cellpadding="5">
+                                    <tr>
+                                      <td width="30%"><img src="<?php echo $this->baseUrl().$this->courses[$i]["image"]?>" width="111" height="97" /></td>
+                                      <td width="70%" valign="top" class="STYLE4"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                            <td><div align="left"><?php echo $this->courses[$i]["name"] ;?></div></td>
+                                          </tr>
+                                          <tr>
+                                            <td class="STYLE2">
+                                            	<div align="left"><?php echo during_time( $this->courses[$i]["id"] )?></div>
+                                            </td>
+                                          </tr>
+                                      </table></td>
+                                    </tr>
+                                    <tr>
+                                      <td colspan="2" class="STYLE3"><div align="left">AU $<?php echo $this->courses[$i]["price"]["before"]?> (GST inclusive)paid before <?php echo before_time($this->courses[$i]["id"]);?> </div></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                      <td colspan="2" class="STYLE3"><div align="left">AU $<?php echo $this->courses[$i]["price"]["now"]?> (GST inclusive)paid <?php echo between_time($this->courses[$i]["id"]);?> </div></td>
+                                    </tr>
+                                    <tr>
+                                      <td colspan="2" class="STYLE3"><div align="left">Lecture Topics</div></td>
+                                    </tr>
+                                    <tr>
+                                      <td colspan="2" class="STYLE2"><div align="left">Introduction to Whole Program<br />
+                                       <?php echo htmlspecialchars_decode(stripslashes($this->courses[$i]['desc']));?>
+                                       </div></td>
+                                    </tr>
+                                </table></td>
+                    
+                             <?php if( $i % 2 == 1 ):?>
+                        		</tr>
+                        	<?php endif;?>
+                              
+                              <?php endfor;?>
+                              
+                               <?php if( count( $this->courses ) % 2 == 0 ):?>
+			                     <tr>
+			                   <?php endif;?>
+			                   
+			                   <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="5">
+                                    <tr>
+                                      <td width="30%"><img src="<?php echo $this->baseUrl() ?>/new_images/ms1.jpg" width="111" height="97" /></td>
+                                      <td width="70%" valign="top" class="STYLE4"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                            <td><div align="left">Major Speakers from Australia </div></td>
+                                          </tr>
+                                          <tr>
+                                            <td class="STYLE2"><div align="left">The Key Speaker and Director of the<br />
+                                              Chi Institute Australia</div></td>
+                                          </tr>
+                                          <tr>
+                                            <td height="40" class="STYLE2"><div align="left">
+                                                <p><a href="faculty.html">more details&gt;</a></p>
+                                            </div></td>
+                                          </tr>
+                                      </table></td>
+                                    </tr>
+                                    <tr>
+                                      <td colspan="2" class="STYLE3"><div align="left" class="STYLE4">Major Speakers from USA</div>
+                                          <div align="left"></div></td>
+                                    </tr>
+                                    <tr>
+                                      <td colspan="2" class="STYLE3"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                            <td width="6%" valign="middle"><img src="<?php echo $this->baseUrl() ?>/new_images/arrow.gif" width="3" height="5" /></td>
+                                            <td width="94%" valign="middle" class="STYLE3"><div align="left">Cheryl Chrisman, DVM, MS, EdS, ACVIM-Neurology, CVA</div></td>
+                                          </tr>
+                                          <tr>
+                                            <td valign="middle"><img src="<?php echo $this->baseUrl() ?>/new_images/arrow.gif" width="3" height="5" /></td>
+                                            <td valign="middle"><div align="left">Roger Clemmons, DVM, Ph.D, CVA</div></td>
+                                          </tr>
+                                          <tr>
+                                            <td valign="middle"><img src="<?php echo $this->baseUrl() ?>/new_images/arrow.gif" width="3" height="5" /></td>
+                                            <td valign="middle"><div align="left">Huisheng Xie, DVM, Ph.D</div></td>
+                                          </tr>
+                                      </table></td>
+                                    </tr>
+                                    <tr>
+                                      <td colspan="2" class="STYLE2"><div align="left">
+                                          <table width="100%" border="0" align="left" cellpadding="1" cellspacing="0">
+                                            <tr>
+                                              <td><div align="left"><img src="<?php echo $this->baseUrl() ?>/new_images/ms2.jpg" width="102" height="102" /></div></td>
+                                              <td><div align="left"><img src="<?php echo $this->baseUrl() ?>/new_images/ms3.jpg" width="102" height="102" /></div></td>
+                                              <td><div align="left"><img src="<?php echo $this->baseUrl() ?>/new_images/ms4.jpg" width="102" height="102" /></div></td>
+                                            </tr>
+                                          </table>
                                       </div></td>
-                                  </tr>
-                                </table></td>
-                                <td width="70%" class="STYLE2"><table width="95%" border="0" align="left" cellpadding="0" cellspacing="10">
-                                  <tr>
-                                    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                      <tr>
-                                        <td width="4%"><div align="right">
-                                         
-                                        </div></td>
-                                        <td width="96%"><div align="left">AU $<?php echo $course["price"]["before"]?> (GST inclusive)paid before <?php echo before_time($course["id"]);?> </div></td>
-                                      </tr>
-                                    </table></td>
-                                  </tr>
-                                  <tr>
-                                    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                      <tr>
-                                        <td width="4%"><div align="right">
-                                           
-                                        </div></td>
-                                        <td width="96%"><div align="left">AU $<?php echo $course["price"]["now"]?> (GST inclusive)paid <?php echo between_time($course["id"]);?> </div></td>
-                                      </tr>
-                                    </table></td>
-                                  </tr>
-                                </table></td>
+                                    </tr>
+                                </table></td>   
                               </tr>
                               
-                              
+                            </table></TD>
+                          </TR>
+                          <TR>
+                            <TD colspan="2">&nbsp;</TD>
+                          </TR>
+                          <TR>
+                            <TD height="1" colspan="2" background="<?php echo $this->baseUrl() ?>/new_images/dotline.gif"><div align="left"><img src="<?php echo $this->baseUrl() ?>/new_images/dotline.gif" width="4" height="20"><strong class="STYLE4">Major   Topics in Wet-lab</strong></div></TD>
+                          </TR>
+                          
+                          <TR>
+                            <TD width="50%" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0" class="STYLE3">
                               <tr>
-                                <td colspan='2' class="STYLE2" style="padding-right:60px;">
-                                	<?php echo htmlspecialchars_decode(stripslashes($course['desc']));?>
-                                </td>
-                               
+                                <td width="8%">&nbsp;</td>
+                                <td colspan="2"><p align="left" class="STYLE4">&nbsp;</p></td>
                               </tr>
-                              
-                              <?php endforeach;?>
-                              
-                              
-                             
-                             
-                            
-                             
+                              <tr>
+                                <td rowspan="2">&nbsp;</td>
+                                <td width="5%"><img src="<?php echo $this->baseUrl() ?>/new_images/reddot.gif" width="4" height="4"></td>
+                                <TD width="87%"><p align="left">120   transpositional canine acupuncture points: </p></TD>
+                              </tr>
+                              <tr>
+                                <td width="5%">&nbsp;</td>
+                                <TD><div align="left">wet lab demo &amp; hands   on.</div></TD>
+                              </tr>
+                              <tr>
+                                <td rowspan="2">&nbsp;</td>
+                                <td><img src="<?php echo $this->baseUrl() ?>/new_images/reddot.gif" width="4" height="4"></td>
+                                <TD width="87%"><p align="left">50   classical canine acupuncture points: </p></TD>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <TD><div align="left">wet lab demonstration &amp; hands   on.</div></TD>
+                              </tr>
+                              <tr>
+                                <td rowspan="2">&nbsp;</td>
+                                <td><img src="<?php echo $this->baseUrl() ?>/new_images/reddot.gif" width="4" height="4"></td>
+                                <TD width="87%"><p align="left">How to   needle the acupuncture points in dogs,</p></TD>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <TD> <div align="left">cats and birds.</div></TD>
+                              </tr>
+                              <tr>
+                                <td rowspan="2">&nbsp;</td>
+                                <td><img src="<?php echo $this->baseUrl() ?>/new_images/reddot.gif" width="4" height="4"></td>
+                                <TD width="87%"><p align="left">TCM   diagnosis systems including tongue &amp; pulse </p></TD>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <TD width="87%"><div align="left">diagnosis.</div></TD>
+                                </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td><img src="<?php echo $this->baseUrl() ?>/new_images/reddot.gif" width="4" height="4"></td>
+                                <TD width="87%"><div align="left">How to   integrate acupuncture into your practice.</div></TD>
+                              </tr>
 
-                              
-                            </table></td>
-                            </tr>
-                        </table>
-                        
-                        
-                       
-                      <p class="STYLE5" align="center" style='margin-top:6.0pt;margin-right:0cm;
-  margin-bottom:6.0pt;margin-left:0cm;text-align:center'>&nbsp;</p>
-                      <p>&nbsp;</p>
-                      <p>&nbsp;</p></td>
-                  </tr>
-                </table>
-                <!-- InstanceEndEditable --></td>
+
+                            </table></TD>
+                            <TD width="50%" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0" class="STYLE3">
+                              <tr>
+                                <td width="8%" rowspan="3">&nbsp;</td>
+                                <td colspan="2"><p align="left" class="STYLE4">&nbsp;</p></td>
+                              </tr>
+                              <tr>
+                                <td><img src="<?php echo $this->baseUrl() ?>/new_images/reddot.gif" width="4" height="4"></td>
+                                <td><div align="left">How to   use veterinary acupuncture to diagnose</div></td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td><div align="left">and treat:</div></td>
+                              </tr>
+
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td width="5%"><img src="<?php echo $this->baseUrl() ?>/new_images/reddot.gif" width="4" height="4"></td>
+                                <TD width="87%"><p align="left">Veterinary   acupuncture techniques:</p></TD>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <TD><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                      <td><div align="left" class="STYLE2">
+                                          <p>1. Dry   Needle (conventional needling).<BR>
+                                            2. Aqu-Acupuncture (point injection).<BR>
+                                            3.   Electro-Acupuncture.<BR>
+                                            4. Hemo-Acupuncture.<BR>
+                                            5. Pneumo-Acupuncture.<BR>
+                                            6.   Moxibustion.</p>
+                                      </div></td>
+                                    </tr>
+                                </table></TD>
+                              </tr>
+                            </table></TD>
+                          </TR>
+                          <TR>
+                            <TD colspan="2">&nbsp;</TD>
+                          </TR>
+                          <TR>
+                            <TD colspan="2"><table width="100%" border="0" cellpadding="2" cellspacing="0">
+                              <tr>
+                                <td height="30" colspan="2" background="<?php echo $this->baseUrl() ?>/new_images/dotline.gif"><div align="left"><strong class="STYLE4">Student Benefits</strong></div></td>
+                              </tr>
+                              <tr>
+                                <td width="50%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                  <tr>
+                                    <td height="" colspan="2">&nbsp;</td>
+                                    <td width="5%"><div align="center"><img src="<?php echo $this->baseUrl() ?>/new_images/reddot.gif" width="4" height="4"></div></td>
+                                    <td width="61%" class="STYLE3"><div align="left">Awarded the Diploma of </div></td>
+                                    <td width="27%" height="70" rowspan="3"><img src="<?php echo $this->baseUrl() ?>/new_images/1.gif" width="75" height="65"></td>
+                                  </tr>
+                                  <tr>
+                                    <td width="3%" height="19" rowspan="2">&nbsp;</td>
+                                    <td width="4%" rowspan="2">&nbsp;</td>
+                                    <td rowspan="2">&nbsp;</td>
+                                    <td width="61%" height="22" class="STYLE3"><div align="left">Certified Veterinary Acupuncturist</div></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="STYLE3"><div align="left"></div></td>
+                                  </tr>
+                                </table></td>
+                                <td width="50%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                  <tr>
+                                    <td height="" colspan="2">&nbsp;</td>
+                                    <td width="5%"><div align="center"><img src="<?php echo $this->baseUrl() ?>/new_images/reddot.gif" width="4" height="4"></div></td>
+                                    <td width="61%" class="STYLE3"><div align="left">Complimentary Lunches, Canine</div></td>
+                                    <td width="27%" height="70" rowspan="3"><img src="<?php echo $this->baseUrl() ?>/new_images/2.gif" width="81" height="69"></td>
+                                  </tr>
+                                  <tr>
+                                    <td width="3%" height="19" rowspan="2">&nbsp;</td>
+                                    <td width="4%" rowspan="2">&nbsp;</td>
+                                    <td rowspan="2">&nbsp;</td>
+                                    <td width="61%" height="22" class="STYLE3"><div align="left"> Aupuncture Charts and Client FAQ </div></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="STYLE3"><div align="left">Brochures</div></td>
+                                  </tr>
+                                </table></td>
+                              </tr>
+                              <tr>
+                                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                  <tr>
+                                    <td height="" colspan="2">&nbsp;</td>
+                                    <td width="5%"><div align="center"><img src="<?php echo $this->baseUrl() ?>/new_images/reddot.gif" width="4" height="4"></div></td>
+                                    <td width="61%" class="STYLE3"><div align="left">1-Year Membership and Subscription</div></td>
+                                    <td width="27%" height="70" rowspan="3"><img src="<?php echo $this->baseUrl() ?>/new_images/3.gif" width="66" height="60"></td>
+                                  </tr>
+                                  <tr>
+                                    <td width="3%" height="19" rowspan="2">&nbsp;</td>
+                                    <td width="4%" rowspan="2">&nbsp;</td>
+                                    <td rowspan="2">&nbsp;</td>
+                                    <td width="61%" height="22" class="STYLE3"><div align="left">to American Journal of TCVM</div></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="STYLE3"><div align="left"></div></td>
+                                  </tr>
+                                </table></td>
+                                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                  <tr>
+                                    <td height="" colspan="2">&nbsp;</td>
+                                    <td width="5%"><div align="center"><img src="<?php echo $this->baseUrl() ?>/new_images/reddot.gif" width="4" height="4"></div></td>
+                                    <td width="61%" class="STYLE3"><div align="left">Free Case Consultation</div></td>
+                                    <td width="27%" height="70" rowspan="3"><img src="<?php echo $this->baseUrl() ?>/new_images/4.jpg" width="58" height="58"></td>
+                                  </tr>
+                                  <tr>
+                                    <td width="3%" height="19" rowspan="2">&nbsp;</td>
+                                    <td width="4%" rowspan="2">&nbsp;</td>
+                                    <td rowspan="2">&nbsp;</td>
+                                    <td width="61%" height="22" class="STYLE3"><div align="left">with Chi Faculty</div></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="STYLE3"><div align="left"></div></td>
+                                  </tr>
+                                </table></td>
+                              </tr>
+                            </table></TD>
+                          </TR>
+                          <TR>
+                            <TD colspan="2">&nbsp;</TD>
+                          </TR>
+                          <TR>
+                            <TD colspan="2"><table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#FCFCFC" class="STYLE3">
+                              <tr>
+                                <td width="3%">&nbsp;</td>
+                                <td colspan="2"><p align="left" class="STYLE4"><strong>Program   Feature</strong></p>                                </td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td width="3%"><img src="<?php echo $this->baseUrl() ?>/new_images/reddot.gif" width="4" height="4"></td>
+                                <TD width="94%" height="30"><div align="left">1.    Limited   seats, small lab group (5-6 members with one TA in a group), more hands-on   learning in the wet lab.</div></TD>
+                              </tr>
+                              <tr>
+                                <td rowspan="2">&nbsp;</td>
+                                <td height="22"><img src="<?php echo $this->baseUrl() ?>/new_images/reddot.gif" width="4" height="4"></td>
+                                <TD width="94%" height="50" rowspan="2"><div align="left">2.    Learn   from the Masters, Dr. Bruce Ferguson and Dr. Huisheng Xie, (<A href="http://www.cbsnews.com/video/watch/?id=1167056n?source=search_video" target="_blank">"The leading authority in the animal acupuncture.", quoted from   CBS News Early Show, Dec 28th, 2005</A>). </div></TD>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td rowspan="2">&nbsp;</td>
+                                <td height="26"><img src="<?php echo $this->baseUrl() ?>/new_images/reddot.gif" width="4" height="4"></td>
+                                <TD width="94%" height="50" rowspan="2"><div align="left">3.    Offered   on-line and on-site: lower total cost and better learning experience (majority   of lectures may be reviewed online during the entire study period). </div></TD>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td><img src="<?php echo $this->baseUrl() ?>/new_images/reddot.gif" width="4" height="4"></td>
+                                <TD width="94%" height="30"><div align="left">4.    Free   case consultation with TCVM experts for all students.</div></TD>
+                              </tr>
+                              <tr>
+                                <td rowspan="2">&nbsp;</td>
+                                <td height="22"><img src="<?php echo $this->baseUrl() ?>/new_images/reddot.gif" width="4" height="4"></td>
+                                <TD width="94%" height="50" rowspan="2"><div align="left">5.    Awarded   the Certificate of <A href="http://www.tcvm.com/cert1.htm" target="_blank">Certified Veterinary Acupuncturist</A> registered at the Chi   Institute and the China National Society of TCVM after fulfilling all   requirements.</div></TD>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td rowspan="2">&nbsp;</td>
+                                <td height="25"><img src="<?php echo $this->baseUrl() ?>/new_images/reddot.gif" width="4" height="4"></td>
+                                <TD width="94%" height="50" rowspan="2"><div align="left">6.    Practicality   is highly emphasized during the entire program. The goal of each session is <em>(session 1 &amp; 3 are are on-line, session 2,4 and 5 are on-site)</em>: </div></TD>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                              </tr>
+
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <TD><div align="left">
+                                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                          <td><div align="left" class="STYLE2">• Session 2: Practice on client patients <BR>
+                                            • Session 4: More efficiently   practice acupuncture<BR>
+                                            • Session 5: Daily integration of acupuncture</div></td>
+                                        </tr>
+                                                                  </table>
+                                </div></TD>
+                              </tr>
+                            </table></TD>
+                          </TR>
+                          </TBODY></TABLE>
+                        <P style="TEXT-ALIGN: center; MARGIN: 6pt 0cm" 
+                        class=STYLE5 align=center>&nbsp;</P>
+                        <P>&nbsp;</P>
+                        <P>&nbsp;</P></TD></TR>
+                    <TR>
+                      <TD>&nbsp;</TD>
+                    </TR>
+                    <TR>
+                      <TD>&nbsp;</TD>
+                    </TR>
+                    </TBODY></TABLE>
+                <!-- InstanceEndEditable --></TD>
                 
                 
-                <?php 
+                  <?php 
  function before_time( $courseId ){
  	
  	$course  = TCVM_Product_Factory::Factory()->getById( $courseId );

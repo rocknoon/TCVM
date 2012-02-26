@@ -1,0 +1,84 @@
+BODY {
+	MARGIN-TOP: 0px; MARGIN-LEFT: 0px; MARGIN-RIGHT: 0px
+}
+IMG {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+.STYLE1 {
+	FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #ffffff; FONT-SIZE: 12px
+}
+.STYLE1 A:link {
+	FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #ffffff; FONT-SIZE: 12px; TEXT-DECORATION: none
+}
+.STYLE2 {
+	FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #353535; FONT-SIZE: 12px
+}
+.STYLE2 A:link {
+	FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #353535; FONT-SIZE: 12px; TEXT-DECORATION: none
+}
+.STYLE2 A:visited {
+	FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #353535; FONT-SIZE: 12px; TEXT-DECORATION: none
+}
+.STYLE2 A:hover {
+	FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #cc0000; FONT-SIZE: 12px; TEXT-DECORATION: none
+}
+.STYLE3 {
+	FONT-FAMILY: Arial, Helvetica, sans-serif; FONT-SIZE: 12px; FONT-WEIGHT: bold
+}
+.STYLE4 {
+	FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #9b080e; FONT-SIZE: 12px; FONT-WEIGHT: bold
+}
+.STYLE5 {
+	FONT-FAMILY: Georgia, "Times New Roman", Times, serif; COLOR: #a72424; FONT-SIZE: 18px; FONT-WEIGHT: bold
+}
+.STYLE9 {
+	FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #2b677f; FONT-SIZE: 12px
+}
+.STYLE9 A:link {
+	FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #2b677f; FONT-SIZE: 12px
+}
+.STYLE10 {
+	FONT-FAMILY: Arial, Helvetica, sans-serif; FONT-SIZE: 12px
+}
+.input1 {
+	BORDER-BOTTOM: #666666 1px solid; BORDER-LEFT: #666666 1px solid; BACKGROUND-COLOR: #ffffff; WIDTH: 100px; FONT-FAMILY: Arial, Helvetica, sans-serif; FONT-SIZE: 11px; BORDER-TOP: #666666 1px solid; BORDER-RIGHT: #666666 1px solid
+}
+.input2 {
+	BORDER-BOTTOM: #666666 1px solid; BORDER-LEFT: #666666 1px solid; BACKGROUND-COLOR: #ffffff; WIDTH: 200px; FONT-FAMILY: Arial, Helvetica, sans-serif; FONT-SIZE: 11px; BORDER-TOP: #666666 1px solid; BORDER-RIGHT: #666666 1px solid
+}
+.input3 {
+	BORDER-BOTTOM: #666666 1px solid; BORDER-LEFT: #666666 1px solid; BACKGROUND-COLOR: #ffffff; WIDTH: 50px; FONT-FAMILY: Arial, Helvetica, sans-serif; FONT-SIZE: 11px; BORDER-TOP: #666666 1px solid; BORDER-RIGHT: #666666 1px solid
+}
+.input4 {
+	BORDER-BOTTOM: #666666 1px solid; BORDER-LEFT: #666666 1px solid; BACKGROUND-COLOR: #ffffff; WIDTH: 530px; FONT-FAMILY: Arial, Helvetica, sans-serif; FONT-SIZE: 11px; BORDER-TOP: #666666 1px solid; BORDER-RIGHT: #666666 1px solid
+}
+.xx {
+	BORDER-BOTTOM: #cccccc 1px dashed
+}
+.table2 {
+	BACKGROUND-COLOR: #fcfcfc
+}
+.underline {
+	BORDER-BOTTOM: #cccccc thin solid; BACKGROUND-COLOR: #fcfcfc
+}
+.underline2 {
+	BORDER-BOTTOM: #cccccc thin solid; BACKGROUND-COLOR: #fcfcfc; FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #9b080e; FONT-SIZE: 12px; FONT-WEIGHT: bold
+}
+.redbutton {
+	BACKGROUND-COLOR: #ce2607; FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #ffffff; FONT-SIZE: 16px; FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+.redbutton2 {
+	BORDER-BOTTOM: #330000 thin solid; BORDER-LEFT: #330000 thin solid; BACKGROUND-COLOR: #ce2607; FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #ffffff; FONT-SIZE: 12px; BORDER-TOP: #330000 thin solid; FONT-WEIGHT: bold; BORDER-RIGHT: #330000 thin solid; TEXT-DECORATION: none
+}
+.orderid {
+	TEXT-ALIGN: left; BACKGROUND-COLOR: #cccccc; FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #ffffff; FONT-SIZE: 12px; FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+.topmenu A:link {
+	FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #ffffff; FONT-SIZE: 12px; BORDER-TOP: #931919 7px solid; FONT-WEIGHT: bold; TEXT-DECORATION: none; PADDING-TOP: 15px
+}
+.topmenu A:visited {
+	FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #ffffff; FONT-SIZE: 12px; BORDER-TOP: #931919 7px solid; FONT-WEIGHT: bold; TEXT-DECORATION: none; PADDING-TOP: 15px
+}
+.topmenu A:hover {
+	FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #ffffff; FONT-SIZE: 12px; BORDER-TOP: #fff 7px solid; FONT-WEIGHT: bold; TEXT-DECORATION: none; PADDING-TOP: 15px
+}
