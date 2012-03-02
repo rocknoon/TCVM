@@ -18,6 +18,15 @@ class PayController extends TCVM_ZendX_Controller_Action_Front
     
     
   	public function executeAction(){
+  		
+  		
+  		
+  		//hack check
+  		$user = TCVM_User_Factory::Factory()->getLoginedUser();
+  		if( $user["email"] != "zhen@tcvm.com" ){
+  			echo "Sorry, TCVM is in the testing phase. you can't do payment right now.";
+  			die();
+  		}
   	
   		$orderId = $this->_getParam( "order_id" );
   		$order = TCVM_Order_Factory::Factory()->getOrder( $orderId );
